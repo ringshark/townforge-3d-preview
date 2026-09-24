@@ -76,7 +76,7 @@ var ENVIRONMENT_IS_SHELL = !ENVIRONMENT_IS_WEB && !ENVIRONMENT_IS_NODE && !ENVIR
 
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
-// include: C:\Users\markr\AppData\Local\Temp\tmpakmfs2t6.js
+// include: C:\Users\markr\AppData\Local\Temp\tmpjglixdw0.js
 
   if (!Module['expectedDataFileDownloads']) Module['expectedDataFileDownloads'] = 0;
   Module['expectedDataFileDownloads']++;
@@ -243,21 +243,21 @@ Module['FS_createPath']("/assets/wilderness_v2", "monsters", true, true);
 
   })();
 
-// end include: C:\Users\markr\AppData\Local\Temp\tmpakmfs2t6.js
-// include: C:\Users\markr\AppData\Local\Temp\tmp95m9e4hy.js
+// end include: C:\Users\markr\AppData\Local\Temp\tmpjglixdw0.js
+// include: C:\Users\markr\AppData\Local\Temp\tmpoc3192wo.js
 
     // All the pre-js content up to here must remain later on, we need to run
     // it.
     if ((typeof ENVIRONMENT_IS_WASM_WORKER != 'undefined' && ENVIRONMENT_IS_WASM_WORKER) || (typeof ENVIRONMENT_IS_PTHREAD != 'undefined' && ENVIRONMENT_IS_PTHREAD) || (typeof ENVIRONMENT_IS_AUDIO_WORKLET != 'undefined' && ENVIRONMENT_IS_AUDIO_WORKLET)) Module['preRun'] = [];
     var necessaryPreJSTasks = Module['preRun'].slice();
-  // end include: C:\Users\markr\AppData\Local\Temp\tmp95m9e4hy.js
-// include: C:\Users\markr\AppData\Local\Temp\tmpaoplse3r.js
+  // end include: C:\Users\markr\AppData\Local\Temp\tmpoc3192wo.js
+// include: C:\Users\markr\AppData\Local\Temp\tmpcbna4l90.js
 
     if (!Module['preRun']) throw 'Module.preRun should exist because file support used it; did a pre-js delete it?';
     necessaryPreJSTasks.forEach((task) => {
       if (Module['preRun'].indexOf(task) < 0) throw 'All preRun tasks that exist before user pre-js code should remain after; did you replace Module or modify Module.preRun?';
     });
-  // end include: C:\Users\markr\AppData\Local\Temp\tmpaoplse3r.js
+  // end include: C:\Users\markr\AppData\Local\Temp\tmpcbna4l90.js
 
 
 var programArgs = [];
@@ -8268,8 +8268,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
 
   var _glBindFramebuffer = _emscripten_glBindFramebuffer;
 
-  var _glBindRenderbuffer = _emscripten_glBindRenderbuffer;
-
   var _glBindTexture = _emscripten_glBindTexture;
 
   var _glBlendFunc = _emscripten_glBlendFunc;
@@ -8277,8 +8275,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   var _glBufferData = _emscripten_glBufferData;
 
   var _glBufferSubData = _emscripten_glBufferSubData;
-
-  var _glCheckFramebufferStatus = _emscripten_glCheckFramebufferStatus;
 
   var _glClear = _emscripten_glClear;
 
@@ -8298,19 +8294,11 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
 
   var _glDeleteBuffers = _emscripten_glDeleteBuffers;
 
-  var _glDeleteFramebuffers = _emscripten_glDeleteFramebuffers;
-
   var _glDeleteProgram = _emscripten_glDeleteProgram;
-
-  var _glDeleteRenderbuffers = _emscripten_glDeleteRenderbuffers;
-
-  var _glDeleteShader = _emscripten_glDeleteShader;
 
   var _glDeleteTextures = _emscripten_glDeleteTextures;
 
   var _glDepthFunc = _emscripten_glDepthFunc;
-
-  var _glDetachShader = _emscripten_glDetachShader;
 
   var _glDisable = _emscripten_glDisable;
 
@@ -8324,17 +8312,9 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
 
   var _glEnableVertexAttribArray = _emscripten_glEnableVertexAttribArray;
 
-  var _glFramebufferRenderbuffer = _emscripten_glFramebufferRenderbuffer;
-
-  var _glFramebufferTexture2D = _emscripten_glFramebufferTexture2D;
-
   var _glFrontFace = _emscripten_glFrontFace;
 
   var _glGenBuffers = _emscripten_glGenBuffers;
-
-  var _glGenFramebuffers = _emscripten_glGenFramebuffers;
-
-  var _glGenRenderbuffers = _emscripten_glGenRenderbuffers;
 
   var _glGenTextures = _emscripten_glGenTextures;
 
@@ -8343,8 +8323,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   var _glGetAttribLocation = _emscripten_glGetAttribLocation;
 
   var _glGetFloatv = _emscripten_glGetFloatv;
-
-  var _glGetFramebufferAttachmentParameteriv = _emscripten_glGetFramebufferAttachmentParameteriv;
 
   var _glGetProgramInfoLog = _emscripten_glGetProgramInfoLog;
 
@@ -8363,8 +8341,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   var _glPixelStorei = _emscripten_glPixelStorei;
 
   var _glReadPixels = _emscripten_glReadPixels;
-
-  var _glRenderbufferStorage = _emscripten_glRenderbufferStorage;
 
   var _glScissor = _emscripten_glScissor;
 
@@ -10262,48 +10238,48 @@ function checkIncomingModuleAPI() {
   ignoredModuleProp('wasmBinary');
 }
 var ASM_CONSTS = {
-  160026: () => { if (document.fullscreenElement) return 1; },  
- 160072: () => { return document.getElementById('canvas').width; },  
- 160124: () => { return parseInt(document.getElementById('canvas').style.width); },  
- 160192: () => { document.exitFullscreen(); },  
- 160219: () => { setTimeout(function() { Module.requestFullscreen(false, false); }, 100); },  
- 160292: () => { if (document.fullscreenElement) return 1; },  
- 160338: () => { return document.getElementById('canvas').width; },  
- 160390: () => { return screen.width; },  
- 160415: () => { document.exitFullscreen(); },  
- 160442: () => { setTimeout(function() { Module.requestFullscreen(false, true); setTimeout(function() { canvas.style.width="unset"; }, 100); }, 100); },  
- 160575: () => { return window.innerWidth; },  
- 160601: () => { return window.innerHeight; },  
- 160628: () => { if (document.fullscreenElement) return 1; },  
- 160674: () => { return document.getElementById('canvas').width; },  
- 160726: () => { return parseInt(document.getElementById('canvas').style.width); },  
- 160794: () => { if (document.fullscreenElement) return 1; },  
- 160840: () => { return document.getElementById('canvas').width; },  
- 160892: () => { return screen.width; },  
- 160917: () => { return window.innerWidth; },  
- 160943: () => { return window.innerHeight; },  
- 160970: () => { if (document.fullscreenElement) return 1; },  
- 161016: () => { return document.getElementById('canvas').width; },  
- 161068: () => { return screen.width; },  
- 161093: () => { document.exitFullscreen(); },  
- 161120: () => { if (document.fullscreenElement) return 1; },  
- 161166: () => { return document.getElementById('canvas').width; },  
- 161218: () => { return parseInt(document.getElementById('canvas').style.width); },  
- 161286: () => { document.exitFullscreen(); },  
- 161313: ($0) => { document.getElementById('canvas').style.opacity = $0; },  
- 161371: () => { return screen.width; },  
- 161396: () => { return screen.height; },  
- 161422: () => { return window.screenX; },  
- 161449: () => { return window.screenY; },  
- 161476: ($0) => { navigator.clipboard.writeText(UTF8ToString($0)); },  
- 161529: ($0) => { document.getElementById("canvas").style.cursor = UTF8ToString($0); },  
- 161600: () => { document.getElementById('canvas').style.cursor = 'none'; },  
- 161657: ($0, $1, $2, $3) => { try { navigator.getGamepads()[$0].vibrationActuator.playEffect('dual-rumble', { startDelay: 0, duration: $3, weakMagnitude: $1, strongMagnitude: $2 }); } catch (e) { try { navigator.getGamepads()[$0].hapticActuators[0].pulse($2, $3); } catch (e) { } } },  
- 161913: ($0) => { document.getElementById('canvas').style.cursor = UTF8ToString($0); },  
- 161984: () => { if (document.fullscreenElement) return 1; },  
- 162030: () => { return window.innerWidth; },  
- 162056: () => { return window.innerHeight; },  
- 162083: () => { if (document.pointerLockElement) return 1; }
+  159210: () => { if (document.fullscreenElement) return 1; },  
+ 159256: () => { return document.getElementById('canvas').width; },  
+ 159308: () => { return parseInt(document.getElementById('canvas').style.width); },  
+ 159376: () => { document.exitFullscreen(); },  
+ 159403: () => { setTimeout(function() { Module.requestFullscreen(false, false); }, 100); },  
+ 159476: () => { if (document.fullscreenElement) return 1; },  
+ 159522: () => { return document.getElementById('canvas').width; },  
+ 159574: () => { return screen.width; },  
+ 159599: () => { document.exitFullscreen(); },  
+ 159626: () => { setTimeout(function() { Module.requestFullscreen(false, true); setTimeout(function() { canvas.style.width="unset"; }, 100); }, 100); },  
+ 159759: () => { return window.innerWidth; },  
+ 159785: () => { return window.innerHeight; },  
+ 159812: () => { if (document.fullscreenElement) return 1; },  
+ 159858: () => { return document.getElementById('canvas').width; },  
+ 159910: () => { return parseInt(document.getElementById('canvas').style.width); },  
+ 159978: () => { if (document.fullscreenElement) return 1; },  
+ 160024: () => { return document.getElementById('canvas').width; },  
+ 160076: () => { return screen.width; },  
+ 160101: () => { return window.innerWidth; },  
+ 160127: () => { return window.innerHeight; },  
+ 160154: () => { if (document.fullscreenElement) return 1; },  
+ 160200: () => { return document.getElementById('canvas').width; },  
+ 160252: () => { return screen.width; },  
+ 160277: () => { document.exitFullscreen(); },  
+ 160304: () => { if (document.fullscreenElement) return 1; },  
+ 160350: () => { return document.getElementById('canvas').width; },  
+ 160402: () => { return parseInt(document.getElementById('canvas').style.width); },  
+ 160470: () => { document.exitFullscreen(); },  
+ 160497: ($0) => { document.getElementById('canvas').style.opacity = $0; },  
+ 160555: () => { return screen.width; },  
+ 160580: () => { return screen.height; },  
+ 160606: () => { return window.screenX; },  
+ 160633: () => { return window.screenY; },  
+ 160660: ($0) => { navigator.clipboard.writeText(UTF8ToString($0)); },  
+ 160713: ($0) => { document.getElementById("canvas").style.cursor = UTF8ToString($0); },  
+ 160784: () => { document.getElementById('canvas').style.cursor = 'none'; },  
+ 160841: ($0, $1, $2, $3) => { try { navigator.getGamepads()[$0].vibrationActuator.playEffect('dual-rumble', { startDelay: 0, duration: $3, weakMagnitude: $1, strongMagnitude: $2 }); } catch (e) { try { navigator.getGamepads()[$0].hapticActuators[0].pulse($2, $3); } catch (e) { } } },  
+ 161097: ($0) => { document.getElementById('canvas').style.cursor = UTF8ToString($0); },  
+ 161168: () => { if (document.fullscreenElement) return 1; },  
+ 161214: () => { return window.innerWidth; },  
+ 161240: () => { return window.innerHeight; },  
+ 161267: () => { if (document.pointerLockElement) return 1; }
 };
 function JS_InitPersistence() { try { FS.mkdir('/persist'); } catch (e) {} FS.mount(IDBFS, {}, '/persist'); FS.syncfs(true, function(err) { if (err) console.error('Town Forge: IDBFS initial load failed', err); Module._TF_persistReady = 1; }); }
 function JS_PersistReady() { return (typeof Module._TF_persistReady !== 'undefined' && Module._TF_persistReady) ? 1 : 0; }
@@ -10788,8 +10764,6 @@ var wasmImports = {
   /** @export */
   glBindFramebuffer: _glBindFramebuffer,
   /** @export */
-  glBindRenderbuffer: _glBindRenderbuffer,
-  /** @export */
   glBindTexture: _glBindTexture,
   /** @export */
   glBlendFunc: _glBlendFunc,
@@ -10797,8 +10771,6 @@ var wasmImports = {
   glBufferData: _glBufferData,
   /** @export */
   glBufferSubData: _glBufferSubData,
-  /** @export */
-  glCheckFramebufferStatus: _glCheckFramebufferStatus,
   /** @export */
   glClear: _glClear,
   /** @export */
@@ -10818,19 +10790,11 @@ var wasmImports = {
   /** @export */
   glDeleteBuffers: _glDeleteBuffers,
   /** @export */
-  glDeleteFramebuffers: _glDeleteFramebuffers,
-  /** @export */
   glDeleteProgram: _glDeleteProgram,
-  /** @export */
-  glDeleteRenderbuffers: _glDeleteRenderbuffers,
-  /** @export */
-  glDeleteShader: _glDeleteShader,
   /** @export */
   glDeleteTextures: _glDeleteTextures,
   /** @export */
   glDepthFunc: _glDepthFunc,
-  /** @export */
-  glDetachShader: _glDetachShader,
   /** @export */
   glDisable: _glDisable,
   /** @export */
@@ -10844,17 +10808,9 @@ var wasmImports = {
   /** @export */
   glEnableVertexAttribArray: _glEnableVertexAttribArray,
   /** @export */
-  glFramebufferRenderbuffer: _glFramebufferRenderbuffer,
-  /** @export */
-  glFramebufferTexture2D: _glFramebufferTexture2D,
-  /** @export */
   glFrontFace: _glFrontFace,
   /** @export */
   glGenBuffers: _glGenBuffers,
-  /** @export */
-  glGenFramebuffers: _glGenFramebuffers,
-  /** @export */
-  glGenRenderbuffers: _glGenRenderbuffers,
   /** @export */
   glGenTextures: _glGenTextures,
   /** @export */
@@ -10863,8 +10819,6 @@ var wasmImports = {
   glGetAttribLocation: _glGetAttribLocation,
   /** @export */
   glGetFloatv: _glGetFloatv,
-  /** @export */
-  glGetFramebufferAttachmentParameteriv: _glGetFramebufferAttachmentParameteriv,
   /** @export */
   glGetProgramInfoLog: _glGetProgramInfoLog,
   /** @export */
@@ -10883,8 +10837,6 @@ var wasmImports = {
   glPixelStorei: _glPixelStorei,
   /** @export */
   glReadPixels: _glReadPixels,
-  /** @export */
-  glRenderbufferStorage: _glRenderbufferStorage,
   /** @export */
   glScissor: _glScissor,
   /** @export */
