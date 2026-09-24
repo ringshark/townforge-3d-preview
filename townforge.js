@@ -76,7 +76,7 @@ var ENVIRONMENT_IS_SHELL = !ENVIRONMENT_IS_WEB && !ENVIRONMENT_IS_NODE && !ENVIR
 
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
-// include: C:\Users\markr\AppData\Local\Temp\tmpkpescrdc.js
+// include: C:\Users\markr\AppData\Local\Temp\tmp5k2qehae.js
 
   if (!Module['expectedDataFileDownloads']) Module['expectedDataFileDownloads'] = 0;
   Module['expectedDataFileDownloads']++;
@@ -174,6 +174,7 @@ Module['FS_createPath']("/assets", "ground", true, true);
 Module['FS_createPath']("/assets", "hero", true, true);
 Module['FS_createPath']("/assets", "item_icons", true, true);
 Module['FS_createPath']("/assets", "knight", true, true);
+Module['FS_createPath']("/assets", "models", true, true);
 Module['FS_createPath']("/assets", "monsters", true, true);
 Module['FS_createPath']("/assets", "monsters_boss", true, true);
 Module['FS_createPath']("/assets", "monsters_boss_v2", true, true);
@@ -191,6 +192,7 @@ Module['FS_createPath']("/assets/paperdoll", "hand_right", true, true);
 Module['FS_createPath']("/assets/paperdoll", "head", true, true);
 Module['FS_createPath']("/assets/paperdoll", "legs", true, true);
 Module['FS_createPath']("/assets", "saltmere_buildings", true, true);
+Module['FS_createPath']("/assets", "shaders", true, true);
 Module['FS_createPath']("/assets", "skeleton", true, true);
 Module['FS_createPath']("/assets", "spell_icons", true, true);
 Module['FS_createPath']("/assets", "spellbook_icons", true, true);
@@ -237,25 +239,25 @@ Module['FS_createPath']("/assets/wilderness_v2", "monsters", true, true);
     }
 
     }
-    loadPackage({"files": [{"filename": "/assets/buildings/alchemy.png", "start": 0, "end": 758}, {"filename": "/assets/buildings/bank.png", "start": 758, "end": 1605}, {"filename": "/assets/buildings/carpenter.png", "start": 1605, "end": 1996}, {"filename": "/assets/buildings/door.png", "start": 1996, "end": 3954}, {"filename": "/assets/buildings/healer.png", "start": 3954, "end": 4136}, {"filename": "/assets/buildings/provisioner.png", "start": 4136, "end": 4744}, {"filename": "/assets/buildings/smith.png", "start": 4744, "end": 5360}, {"filename": "/assets/buildings/stable.png", "start": 5360, "end": 6012}, {"filename": "/assets/buildings/tailor.png", "start": 6012, "end": 6668}, {"filename": "/assets/buildings/townhall.png", "start": 6668, "end": 7262}, {"filename": "/assets/dungeon/floor.png", "start": 7262, "end": 9622}, {"filename": "/assets/dungeon/wall.png", "start": 9622, "end": 9783}, {"filename": "/assets/dungeon_themed/alchemy_floor.png", "start": 9783, "end": 10921}, {"filename": "/assets/dungeon_themed/alchemy_wall.png", "start": 10921, "end": 11374}, {"filename": "/assets/dungeon_themed/bloodtusk_floor.png", "start": 11374, "end": 11944}, {"filename": "/assets/dungeon_themed/bloodtusk_wall.png", "start": 11944, "end": 12724}, {"filename": "/assets/dungeon_themed/carpenter_floor.png", "start": 12724, "end": 13865}, {"filename": "/assets/dungeon_themed/carpenter_wall.png", "start": 13865, "end": 14790}, {"filename": "/assets/dungeon_themed/emberveil_brazier.png", "start": 14790, "end": 15396}, {"filename": "/assets/dungeon_themed/emberveil_floor.png", "start": 15396, "end": 16515}, {"filename": "/assets/dungeon_themed/emberveil_wall.png", "start": 16515, "end": 17824}, {"filename": "/assets/dungeon_themed/hollowwarrens_floor.png", "start": 17824, "end": 17985}, {"filename": "/assets/dungeon_themed/hollowwarrens_rug.png", "start": 17985, "end": 20005}, {"filename": "/assets/dungeon_themed/hollowwarrens_torch.png", "start": 20005, "end": 20315}, {"filename": "/assets/dungeon_themed/hollowwarrens_wall.png", "start": 20315, "end": 20450}, {"filename": "/assets/dungeon_themed/provisioner_floor.png", "start": 20450, "end": 21600}, {"filename": "/assets/dungeon_themed/provisioner_wall.png", "start": 21600, "end": 22402}, {"filename": "/assets/dungeon_themed/smith_floor.png", "start": 22402, "end": 22849}, {"filename": "/assets/dungeon_themed/smith_wall.png", "start": 22849, "end": 23974}, {"filename": "/assets/dungeon_themed/sunkencrypt_floor.png", "start": 23974, "end": 24883}, {"filename": "/assets/dungeon_themed/sunkencrypt_wall.png", "start": 24883, "end": 25925}, {"filename": "/assets/dungeon_themed/sunkencrypt_water.png", "start": 25925, "end": 26342}, {"filename": "/assets/dungeon_themed/tailor_floor.png", "start": 26342, "end": 27221}, {"filename": "/assets/dungeon_themed/tailor_wall.png", "start": 27221, "end": 28034}, {"filename": "/assets/dungeon_themed/wyrmscar_floor.png", "start": 28034, "end": 29262}, {"filename": "/assets/dungeon_themed/wyrmscar_wall.png", "start": 29262, "end": 29743}, {"filename": "/assets/fonts/Nunito.ttf", "start": 29743, "end": 306675}, {"filename": "/assets/gear_icons/amulet.png", "start": 306675, "end": 310535}, {"filename": "/assets/gear_icons/gauntlet.png", "start": 310535, "end": 315392}, {"filename": "/assets/gear_icons/helmet.png", "start": 315392, "end": 323876}, {"filename": "/assets/gear_icons/shield.png", "start": 323876, "end": 335299}, {"filename": "/assets/gear_icons/shield2.png", "start": 335299, "end": 346531}, {"filename": "/assets/gear_icons/sword.png", "start": 346531, "end": 349634}, {"filename": "/assets/ground/dirt.png", "start": 349634, "end": 350096}, {"filename": "/assets/ground/foliage.png", "start": 350096, "end": 351338}, {"filename": "/assets/ground/grass.png", "start": 351338, "end": 352513}, {"filename": "/assets/hero/hero_v2.png", "start": 352513, "end": 1560959}, {"filename": "/assets/hero/hero_v3.png", "start": 1560959, "end": 3111015}, {"filename": "/assets/hero/walk.png", "start": 3111015, "end": 3179238}, {"filename": "/assets/item_icons/Bardiche.bmp", "start": 3179238, "end": 3192452}, {"filename": "/assets/item_icons/BlackStaff.bmp", "start": 3192452, "end": 3215898}, {"filename": "/assets/item_icons/Bow.bmp", "start": 3215898, "end": 3223696}, {"filename": "/assets/item_icons/Broadsword.bmp", "start": 3223696, "end": 3227974}, {"filename": "/assets/item_icons/ChainTunic.bmp", "start": 3227974, "end": 3416032}, {"filename": "/assets/item_icons/ChainmailGloves.bmp", "start": 3416032, "end": 3600946}, {"filename": "/assets/item_icons/ChainmailLeggings.bmp", "start": 3600946, "end": 3789004}, {"filename": "/assets/item_icons/Club.bmp", "start": 3789004, "end": 3794690}, {"filename": "/assets/item_icons/CompositeBow.bmp", "start": 3794690, "end": 3802488}, {"filename": "/assets/item_icons/Crossbow.bmp", "start": 3802488, "end": 3808350}, {"filename": "/assets/item_icons/Cutlass.bmp", "start": 3808350, "end": 3812760}, {"filename": "/assets/item_icons/GnarledStaff.bmp", "start": 3812760, "end": 3836206}, {"filename": "/assets/item_icons/Halberd.bmp", "start": 3836206, "end": 3849420}, {"filename": "/assets/item_icons/HeavyCrossbow.bmp", "start": 3849420, "end": 3855810}, {"filename": "/assets/item_icons/Katana.bmp", "start": 3855810, "end": 3860748}, {"filename": "/assets/item_icons/Kryss.bmp", "start": 3860748, "end": 3865686}, {"filename": "/assets/item_icons/LeatherGloves.bmp", "start": 3865686, "end": 4050600}, {"filename": "/assets/item_icons/LeatherLeggings.bmp", "start": 4050600, "end": 4238658}, {"filename": "/assets/item_icons/LeatherSleeves.bmp", "start": 4238658, "end": 4426716}, {"filename": "/assets/item_icons/LeatherTunic.bmp", "start": 4426716, "end": 4614774}, {"filename": "/assets/item_icons/Longsword.bmp", "start": 4614774, "end": 4619712}, {"filename": "/assets/item_icons/Mace.bmp", "start": 4619712, "end": 4626454}, {"filename": "/assets/item_icons/Maul.bmp", "start": 4626454, "end": 4633900}, {"filename": "/assets/item_icons/Pitchfork.bmp", "start": 4633900, "end": 4650894}, {"filename": "/assets/item_icons/PlateArms.bmp", "start": 4650894, "end": 4838952}, {"filename": "/assets/item_icons/PlateChest.bmp", "start": 4838952, "end": 5027010}, {"filename": "/assets/item_icons/PlateGloves.bmp", "start": 5027010, "end": 5211924}, {"filename": "/assets/item_icons/PlateLegs.bmp", "start": 5211924, "end": 5399982}, {"filename": "/assets/item_icons/PotionDamage.bmp", "start": 5399982, "end": 5408064}, {"filename": "/assets/item_icons/PotionHeal.bmp", "start": 5408064, "end": 5416146}, {"filename": "/assets/item_icons/PotionPoison.bmp", "start": 5416146, "end": 5424228}, {"filename": "/assets/item_icons/PotionStamina.bmp", "start": 5424228, "end": 5432310}, {"filename": "/assets/item_icons/Quarterstaff.bmp", "start": 5432310, "end": 5455756}, {"filename": "/assets/item_icons/RingMailLeggings.bmp", "start": 5455756, "end": 5643814}, {"filename": "/assets/item_icons/RingMailSleeves.bmp", "start": 5643814, "end": 5831872}, {"filename": "/assets/item_icons/RingMailTunic.bmp", "start": 5831872, "end": 6019930}, {"filename": "/assets/item_icons/Scimitar.bmp", "start": 6019930, "end": 6025264}, {"filename": "/assets/item_icons/ShepherdsCrook.bmp", "start": 6025264, "end": 6053654}, {"filename": "/assets/item_icons/ShortSpear.bmp", "start": 6053654, "end": 6063708}, {"filename": "/assets/item_icons/Spear.bmp", "start": 6063708, "end": 6090022}, {"filename": "/assets/item_icons/StuddedGloves.bmp", "start": 6090022, "end": 6274936}, {"filename": "/assets/item_icons/StuddedLeggings.bmp", "start": 6274936, "end": 6462994}, {"filename": "/assets/item_icons/StuddedSleeves.bmp", "start": 6462994, "end": 6651052}, {"filename": "/assets/item_icons/StuddedTunic.bmp", "start": 6651052, "end": 6839110}, {"filename": "/assets/item_icons/VikingSword.bmp", "start": 6839110, "end": 6844312}, {"filename": "/assets/item_icons/WarAxe.bmp", "start": 6844312, "end": 6850042}, {"filename": "/assets/item_icons/WarFork.bmp", "start": 6850042, "end": 6857664}, {"filename": "/assets/item_icons/WarHammer.bmp", "start": 6857664, "end": 6862074}, {"filename": "/assets/knight/attack1.png", "start": 6862074, "end": 6888818}, {"filename": "/assets/knight/attack2.png", "start": 6888818, "end": 6915538}, {"filename": "/assets/knight/defend.png", "start": 6915538, "end": 6939562}, {"filename": "/assets/knight/hurt.png", "start": 6939562, "end": 6963025}, {"filename": "/assets/knight/idle.png", "start": 6963025, "end": 6988829}, {"filename": "/assets/knight/protect.png", "start": 6988829, "end": 7011057}, {"filename": "/assets/monsters/bat.png", "start": 7011057, "end": 7011252}, {"filename": "/assets/monsters/bloodtusk.png", "start": 7011252, "end": 7011712}, {"filename": "/assets/monsters/emberveil.png", "start": 7011712, "end": 7012215}, {"filename": "/assets/monsters/ghost.png", "start": 7012215, "end": 7012404}, {"filename": "/assets/monsters/hollowwarrens.png", "start": 7012404, "end": 7012985}, {"filename": "/assets/monsters/orc.png", "start": 7012985, "end": 7013188}, {"filename": "/assets/monsters/slime.png", "start": 7013188, "end": 7013377}, {"filename": "/assets/monsters/sunkencrypt.png", "start": 7013377, "end": 7013614}, {"filename": "/assets/monsters/wyrmscar.png", "start": 7013614, "end": 7014564}, {"filename": "/assets/monsters_boss/bloodtusk.png", "start": 7014564, "end": 7015693}, {"filename": "/assets/monsters_boss/emberveil.png", "start": 7015693, "end": 7016225}, {"filename": "/assets/monsters_boss/hollowwarrens.png", "start": 7016225, "end": 7016687}, {"filename": "/assets/monsters_boss/sunkencrypt.png", "start": 7016687, "end": 7017163}, {"filename": "/assets/monsters_boss/wyrmscar.png", "start": 7017163, "end": 7017694}, {"filename": "/assets/monsters_boss_v2/bloodtusk.png", "start": 7017694, "end": 7363232}, {"filename": "/assets/monsters_boss_v2/emberveil.png", "start": 7363232, "end": 7882663}, {"filename": "/assets/monsters_boss_v2/hollowwarrens.png", "start": 7882663, "end": 8151407}, {"filename": "/assets/monsters_boss_v2/sunkencrypt.png", "start": 8151407, "end": 8710265}, {"filename": "/assets/monsters_boss_v2/wyrmscar.png", "start": 8710265, "end": 8990817}, {"filename": "/assets/monsters_v2/bloodtusk.png", "start": 8990817, "end": 9301535}, {"filename": "/assets/monsters_v2/emberveil.png", "start": 9301535, "end": 10195812}, {"filename": "/assets/monsters_v2/hollowwarrens.png", "start": 10195812, "end": 10477960}, {"filename": "/assets/monsters_v2/sunkencrypt.png", "start": 10477960, "end": 10836755}, {"filename": "/assets/monsters_v2/wyrmscar.png", "start": 10836755, "end": 11093161}, {"filename": "/assets/npcs_v2/captain_ysolde.png", "start": 11093161, "end": 11749804}, {"filename": "/assets/npcs_v2/cobb_stableboy.png", "start": 11749804, "end": 12207011}, {"filename": "/assets/npcs_v2/dockhand_fenn.png", "start": 12207011, "end": 12655254}, {"filename": "/assets/npcs_v2/harbormaster_thane.png", "start": 12655254, "end": 13115869}, {"filename": "/assets/npcs_v2/nessa_netmender.png", "start": 13115869, "end": 13696481}, {"filename": "/assets/npcs_v2/old_corwin.png", "start": 13696481, "end": 14203514}, {"filename": "/assets/npcs_v2/old_miran.png", "start": 14203514, "end": 14820773}, {"filename": "/assets/npcs_v2/salty_bjorn.png", "start": 14820773, "end": 15359825}, {"filename": "/assets/npcs_v2/sister_meraude.png", "start": 15359825, "end": 15829886}, {"filename": "/assets/npcs_v2/widow_aelith.png", "start": 15829886, "end": 16180186}, {"filename": "/assets/npcs_v2/wystan_baker.png", "start": 16180186, "end": 16797352}, {"filename": "/assets/npcs_v2/young_petra.png", "start": 16797352, "end": 17252805}, {"filename": "/assets/paperdoll/arms/chainmail.png", "start": 17252805, "end": 17255136}, {"filename": "/assets/paperdoll/arms/leather.png", "start": 17255136, "end": 17257526}, {"filename": "/assets/paperdoll/arms/plate.png", "start": 17257526, "end": 17260080}, {"filename": "/assets/paperdoll/arms/ringmail.png", "start": 17260080, "end": 17262325}, {"filename": "/assets/paperdoll/arms/studded.png", "start": 17262325, "end": 17264776}, {"filename": "/assets/paperdoll/base/human_male.png", "start": 17264776, "end": 17275029}, {"filename": "/assets/paperdoll/body/chainmail.png", "start": 17275029, "end": 17282006}, {"filename": "/assets/paperdoll/body/leather_armor.png", "start": 17282006, "end": 17288789}, {"filename": "/assets/paperdoll/body/leather_stud.png", "start": 17288789, "end": 17295782}, {"filename": "/assets/paperdoll/body/plate.png", "start": 17295782, "end": 17302595}, {"filename": "/assets/paperdoll/body/ringmail.png", "start": 17302595, "end": 17308868}, {"filename": "/assets/paperdoll/boots/middle_brown.png", "start": 17308868, "end": 17311201}, {"filename": "/assets/paperdoll/brown_1.png", "start": 17311201, "end": 17313104}, {"filename": "/assets/paperdoll/gloves/gauntlet_blue.png", "start": 17313104, "end": 17315847}, {"filename": "/assets/paperdoll/gloves/glove_black.png", "start": 17315847, "end": 17318490}, {"filename": "/assets/paperdoll/gloves/glove_brown.png", "start": 17318490, "end": 17321075}, {"filename": "/assets/paperdoll/gloves/glove_gold.png", "start": 17321075, "end": 17323844}, {"filename": "/assets/paperdoll/gloves/glove_gray.png", "start": 17323844, "end": 17326289}, {"filename": "/assets/paperdoll/gorget/leather.png", "start": 17326289, "end": 17327608}, {"filename": "/assets/paperdoll/gorget/plate.png", "start": 17327608, "end": 17329111}, {"filename": "/assets/paperdoll/gorget/studded.png", "start": 17329111, "end": 17330524}, {"filename": "/assets/paperdoll/hair/brown_1.png", "start": 17330524, "end": 17331746}, {"filename": "/assets/paperdoll/hand_right/bow.png", "start": 17331746, "end": 17331918}, {"filename": "/assets/paperdoll/hand_right/bow_2.png", "start": 17331918, "end": 17332102}, {"filename": "/assets/paperdoll/hand_right/bow_3.png", "start": 17332102, "end": 17332302}, {"filename": "/assets/paperdoll/hand_right/broadsword.png", "start": 17332302, "end": 17332575}, {"filename": "/assets/paperdoll/hand_right/club.png", "start": 17332575, "end": 17332770}, {"filename": "/assets/paperdoll/hand_right/crossbow.png", "start": 17332770, "end": 17333065}, {"filename": "/assets/paperdoll/hand_right/crossbow_3.png", "start": 17333065, "end": 17333278}, {"filename": "/assets/paperdoll/hand_right/fork_2.png", "start": 17333278, "end": 17333464}, {"filename": "/assets/paperdoll/hand_right/glaive_new.png", "start": 17333464, "end": 17333686}, {"filename": "/assets/paperdoll/hand_right/great_mace.png", "start": 17333686, "end": 17333909}, {"filename": "/assets/paperdoll/hand_right/halberd_new.png", "start": 17333909, "end": 17334149}, {"filename": "/assets/paperdoll/hand_right/heavy_sword.png", "start": 17334149, "end": 17334377}, {"filename": "/assets/paperdoll/hand_right/katana.png", "start": 17334377, "end": 17334576}, {"filename": "/assets/paperdoll/hand_right/large_mace.png", "start": 17334576, "end": 17334789}, {"filename": "/assets/paperdoll/hand_right/long_sword.png", "start": 17334789, "end": 17334967}, {"filename": "/assets/paperdoll/hand_right/mace_new.png", "start": 17334967, "end": 17335157}, {"filename": "/assets/paperdoll/hand_right/pole_forked.png", "start": 17335157, "end": 17335400}, {"filename": "/assets/paperdoll/hand_right/quarterstaff.png", "start": 17335400, "end": 17335572}, {"filename": "/assets/paperdoll/hand_right/rapier.png", "start": 17335572, "end": 17335789}, {"filename": "/assets/paperdoll/hand_right/sabre.png", "start": 17335789, "end": 17335999}, {"filename": "/assets/paperdoll/hand_right/scimitar_new.png", "start": 17335999, "end": 17336252}, {"filename": "/assets/paperdoll/hand_right/spear.png", "start": 17336252, "end": 17336456}, {"filename": "/assets/paperdoll/hand_right/spear_1.png", "start": 17336456, "end": 17336622}, {"filename": "/assets/paperdoll/hand_right/staff_evil.png", "start": 17336622, "end": 17336917}, {"filename": "/assets/paperdoll/hand_right/staff_organic.png", "start": 17336917, "end": 17337224}, {"filename": "/assets/paperdoll/hand_right/staff_plain.png", "start": 17337224, "end": 17337412}, {"filename": "/assets/paperdoll/hand_right/war_axe_new.png", "start": 17337412, "end": 17337633}, {"filename": "/assets/paperdoll/head/cap_black_1.png", "start": 17337633, "end": 17337835}, {"filename": "/assets/paperdoll/head/chain.png", "start": 17337835, "end": 17338815}, {"filename": "/assets/paperdoll/head/hood_ybrown.png", "start": 17338815, "end": 17340617}, {"filename": "/assets/paperdoll/head/iron_1.png", "start": 17340617, "end": 17342307}, {"filename": "/assets/paperdoll/human_male.png", "start": 17342307, "end": 17355383}, {"filename": "/assets/paperdoll/legs/leg_armor_1.png", "start": 17355383, "end": 17358945}, {"filename": "/assets/paperdoll/legs/leg_armor_2.png", "start": 17358945, "end": 17362138}, {"filename": "/assets/paperdoll/legs/leg_armor_4.png", "start": 17362138, "end": 17366142}, {"filename": "/assets/paperdoll/legs/pants_black.png", "start": 17366142, "end": 17370132}, {"filename": "/assets/paperdoll/legs/pants_brown.png", "start": 17370132, "end": 17374420}, {"filename": "/assets/paperdoll/middle_brown.png", "start": 17374420, "end": 17377577}, {"filename": "/assets/player.png", "start": 17377577, "end": 17378291}, {"filename": "/assets/saltmere_buildings/alchemy.png", "start": 17378291, "end": 17595712}, {"filename": "/assets/saltmere_buildings/bank.png", "start": 17595712, "end": 18040743}, {"filename": "/assets/saltmere_buildings/carpenter.png", "start": 18040743, "end": 18240479}, {"filename": "/assets/saltmere_buildings/healer.png", "start": 18240479, "end": 18654899}, {"filename": "/assets/saltmere_buildings/house.png", "start": 18654899, "end": 19138935}, {"filename": "/assets/saltmere_buildings/provisioner.png", "start": 19138935, "end": 19517448}, {"filename": "/assets/saltmere_buildings/smith.png", "start": 19517448, "end": 19948908}, {"filename": "/assets/saltmere_buildings/stable.png", "start": 19948908, "end": 20246742}, {"filename": "/assets/saltmere_buildings/tailor.png", "start": 20246742, "end": 20642359}, {"filename": "/assets/saltmere_buildings/townhall.png", "start": 20642359, "end": 21036052}, {"filename": "/assets/skeleton/attack1.png", "start": 21036052, "end": 21061260}, {"filename": "/assets/skeleton/hurt.png", "start": 21061260, "end": 21081923}, {"filename": "/assets/skeleton/idle.png", "start": 21081923, "end": 21104815}, {"filename": "/assets/spell_icons/ArcBolt.bmp", "start": 21104815, "end": 21110677}, {"filename": "/assets/spell_icons/BlessingOfVigor.bmp", "start": 21110677, "end": 21116539}, {"filename": "/assets/spell_icons/CloudMind.bmp", "start": 21116539, "end": 21122401}, {"filename": "/assets/spell_icons/Detonation.bmp", "start": 21122401, "end": 21128263}, {"filename": "/assets/spell_icons/EmberBurst.bmp", "start": 21128263, "end": 21134125}, {"filename": "/assets/spell_icons/FumblingCurse.bmp", "start": 21134125, "end": 21139987}, {"filename": "/assets/spell_icons/GreaterMending.bmp", "start": 21139987, "end": 21145849}, {"filename": "/assets/spell_icons/InfernoStrike.bmp", "start": 21145849, "end": 21151711}, {"filename": "/assets/spell_icons/MendingWord.bmp", "start": 21151711, "end": 21157573}, {"filename": "/assets/spell_icons/PsychicShatter.bmp", "start": 21157573, "end": 21163435}, {"filename": "/assets/spell_icons/SapStrength.bmp", "start": 21163435, "end": 21169297}, {"filename": "/assets/spell_icons/SparkDart.bmp", "start": 21169297, "end": 21175159}, {"filename": "/assets/spell_icons/StormLance.bmp", "start": 21175159, "end": 21181021}, {"filename": "/assets/spell_icons/SummonFiend.bmp", "start": 21181021, "end": 21186883}, {"filename": "/assets/spell_icons/VenomSting.bmp", "start": 21186883, "end": 21192745}, {"filename": "/assets/spell_icons/WoundingTouch.bmp", "start": 21192745, "end": 21198607}, {"filename": "/assets/spellbook_icons/spell_buff.png", "start": 21198607, "end": 21202320}, {"filename": "/assets/spellbook_icons/spell_debuff.png", "start": 21202320, "end": 21206340}, {"filename": "/assets/spellbook_icons/spell_offensive.png", "start": 21206340, "end": 21210555}, {"filename": "/assets/spellbook_icons/spell_utility.png", "start": 21210555, "end": 21215023}, {"filename": "/assets/town_buildings/alchemy.png", "start": 21215023, "end": 21601755}, {"filename": "/assets/town_buildings/bank.png", "start": 21601755, "end": 21956189}, {"filename": "/assets/town_buildings/carpenter.png", "start": 21956189, "end": 22253951}, {"filename": "/assets/town_buildings/healer.png", "start": 22253951, "end": 22609001}, {"filename": "/assets/town_buildings/house.png", "start": 22609001, "end": 22729371}, {"filename": "/assets/town_buildings/provisioner.png", "start": 22729371, "end": 23115668}, {"filename": "/assets/town_buildings/smith.png", "start": 23115668, "end": 23438378}, {"filename": "/assets/town_buildings/stable.png", "start": 23438378, "end": 23718747}, {"filename": "/assets/town_buildings/tailor.png", "start": 23718747, "end": 24104978}, {"filename": "/assets/town_buildings/townhall.png", "start": 24104978, "end": 24414070}, {"filename": "/assets/village/anvil.png", "start": 24414070, "end": 24415199}, {"filename": "/assets/village/autumnbush.png", "start": 24415199, "end": 24417648}, {"filename": "/assets/village/barrel.png", "start": 24417648, "end": 24418985}, {"filename": "/assets/village/bookshelf.png", "start": 24418985, "end": 24419152}, {"filename": "/assets/village/chest.png", "start": 24419152, "end": 24419348}, {"filename": "/assets/village/chicken.png", "start": 24419348, "end": 24419570}, {"filename": "/assets/village/cow.png", "start": 24419570, "end": 24419801}, {"filename": "/assets/village/crate.png", "start": 24419801, "end": 24420890}, {"filename": "/assets/village/door_alchemy.png", "start": 24420890, "end": 24423761}, {"filename": "/assets/village/door_carpenter.png", "start": 24423761, "end": 24425826}, {"filename": "/assets/village/door_smith.png", "start": 24425826, "end": 24427729}, {"filename": "/assets/village/door_tailor.png", "start": 24427729, "end": 24430404}, {"filename": "/assets/village/farmland.png", "start": 24430404, "end": 24430866}, {"filename": "/assets/village/fencepost.png", "start": 24430866, "end": 24431263}, {"filename": "/assets/village/fountain.png", "start": 24431263, "end": 24433231}, {"filename": "/assets/village/lumberpile.png", "start": 24433231, "end": 24434387}, {"filename": "/assets/village/potion_purple.png", "start": 24434387, "end": 24434563}, {"filename": "/assets/village/potion_red.png", "start": 24434563, "end": 24434745}, {"filename": "/assets/village/sheep.png", "start": 24434745, "end": 24434969}, {"filename": "/assets/village/sign_smith.png", "start": 24434969, "end": 24436130}, {"filename": "/assets/village/stall1.png", "start": 24436130, "end": 24437928}, {"filename": "/assets/village/stall2.png", "start": 24437928, "end": 24439485}, {"filename": "/assets/village/stall3.png", "start": 24439485, "end": 24441073}, {"filename": "/assets/village/statue.png", "start": 24441073, "end": 24442719}, {"filename": "/assets/village/streetlamp.png", "start": 24442719, "end": 24443993}, {"filename": "/assets/village/well.png", "start": 24443993, "end": 24445593}, {"filename": "/assets/wilderness/bear.png", "start": 24445593, "end": 24446245}, {"filename": "/assets/wilderness/bison.png", "start": 24446245, "end": 24477490}, {"filename": "/assets/wilderness/bush1.png", "start": 24477490, "end": 24479657}, {"filename": "/assets/wilderness/bush2.png", "start": 24479657, "end": 24481953}, {"filename": "/assets/wilderness/dog.png", "start": 24481953, "end": 24482646}, {"filename": "/assets/wilderness/dragon.png", "start": 24482646, "end": 24483596}, {"filename": "/assets/wilderness/drake.png", "start": 24483596, "end": 24503988}, {"filename": "/assets/wilderness/fern1.png", "start": 24503988, "end": 24507039}, {"filename": "/assets/wilderness/griffin.png", "start": 24507039, "end": 24507711}, {"filename": "/assets/wilderness/horse.png", "start": 24507711, "end": 24524370}, {"filename": "/assets/wilderness/ore1.png", "start": 24524370, "end": 24527288}, {"filename": "/assets/wilderness/ore2.png", "start": 24527288, "end": 24530422}, {"filename": "/assets/wilderness/ore3.png", "start": 24530422, "end": 24533647}, {"filename": "/assets/wilderness/panther.png", "start": 24533647, "end": 24545080}, {"filename": "/assets/wilderness/rock.png", "start": 24545080, "end": 24545414}, {"filename": "/assets/wilderness/sabertooth.png", "start": 24545414, "end": 24565284}, {"filename": "/assets/wilderness/tree.png", "start": 24565284, "end": 24569500}, {"filename": "/assets/wilderness/wild_bandit.png", "start": 24569500, "end": 24569899}, {"filename": "/assets/wilderness/wild_bat.png", "start": 24569899, "end": 24570290}, {"filename": "/assets/wilderness/wild_goblin.png", "start": 24570290, "end": 24571352}, {"filename": "/assets/wilderness/wild_imp.png", "start": 24571352, "end": 24572193}, {"filename": "/assets/wilderness/wild_wolf.png", "start": 24572193, "end": 24574081}, {"filename": "/assets/wilderness/wolf.png", "start": 24574081, "end": 24574793}, {"filename": "/assets/wilderness/wyvern.png", "start": 24574793, "end": 24605927}, {"filename": "/assets/wilderness_entrances/bloodtusk.png", "start": 24605927, "end": 24606424}, {"filename": "/assets/wilderness_entrances/emberveil.png", "start": 24606424, "end": 24606961}, {"filename": "/assets/wilderness_entrances/hollowwarrens.png", "start": 24606961, "end": 24607734}, {"filename": "/assets/wilderness_entrances/sunkencrypt.png", "start": 24607734, "end": 24608224}, {"filename": "/assets/wilderness_entrances/wyrmscar.png", "start": 24608224, "end": 24608699}, {"filename": "/assets/wilderness_props/bush.png", "start": 24608699, "end": 24614614}, {"filename": "/assets/wilderness_props/cactus.png", "start": 24614614, "end": 24618243}, {"filename": "/assets/wilderness_props/chest.png", "start": 24618243, "end": 24627067}, {"filename": "/assets/wilderness_props/deerskull.png", "start": 24627067, "end": 24633105}, {"filename": "/assets/wilderness_props/fence.png", "start": 24633105, "end": 24639271}, {"filename": "/assets/wilderness_props/grass.png", "start": 24639271, "end": 24649257}, {"filename": "/assets/wilderness_props/haybale.png", "start": 24649257, "end": 24657670}, {"filename": "/assets/wilderness_props/plant.png", "start": 24657670, "end": 24661930}, {"filename": "/assets/wilderness_props/rocks.png", "start": 24661930, "end": 24668181}, {"filename": "/assets/wilderness_props/water.png", "start": 24668181, "end": 24674952}, {"filename": "/assets/wilderness_v2/creatures/bear.png", "start": 24674952, "end": 25169722}, {"filename": "/assets/wilderness_v2/creatures/bison.png", "start": 25169722, "end": 25698408}, {"filename": "/assets/wilderness_v2/creatures/dog.png", "start": 25698408, "end": 26125782}, {"filename": "/assets/wilderness_v2/creatures/dragon.png", "start": 26125782, "end": 26651365}, {"filename": "/assets/wilderness_v2/creatures/drake.png", "start": 26651365, "end": 26996497}, {"filename": "/assets/wilderness_v2/creatures/griffin.png", "start": 26996497, "end": 27553529}, {"filename": "/assets/wilderness_v2/creatures/horse.png", "start": 27553529, "end": 27815067}, {"filename": "/assets/wilderness_v2/creatures/panther.png", "start": 27815067, "end": 27940460}, {"filename": "/assets/wilderness_v2/creatures/sabertooth.png", "start": 27940460, "end": 28098475}, {"filename": "/assets/wilderness_v2/creatures/wolf.png", "start": 28098475, "end": 28313679}, {"filename": "/assets/wilderness_v2/creatures/wyvern.png", "start": 28313679, "end": 28635953}, {"filename": "/assets/wilderness_v2/monsters/bandit.png", "start": 28635953, "end": 29179766}, {"filename": "/assets/wilderness_v2/monsters/bat.png", "start": 29179766, "end": 29487570}, {"filename": "/assets/wilderness_v2/monsters/goblin.png", "start": 29487570, "end": 30281402}, {"filename": "/assets/wilderness_v2/monsters/imp.png", "start": 30281402, "end": 30685354}, {"filename": "/assets/wilderness_v2/monsters/wolf.png", "start": 30685354, "end": 30773844}, {"filename": "/assets/wilderness_v2/rival_adventurer.png", "start": 30773844, "end": 31072093}], "remote_package_size": 31072093});
+    loadPackage({"files": [{"filename": "/assets/buildings/alchemy.png", "start": 0, "end": 758}, {"filename": "/assets/buildings/bank.png", "start": 758, "end": 1605}, {"filename": "/assets/buildings/carpenter.png", "start": 1605, "end": 1996}, {"filename": "/assets/buildings/door.png", "start": 1996, "end": 3954}, {"filename": "/assets/buildings/healer.png", "start": 3954, "end": 4136}, {"filename": "/assets/buildings/provisioner.png", "start": 4136, "end": 4744}, {"filename": "/assets/buildings/smith.png", "start": 4744, "end": 5360}, {"filename": "/assets/buildings/stable.png", "start": 5360, "end": 6012}, {"filename": "/assets/buildings/tailor.png", "start": 6012, "end": 6668}, {"filename": "/assets/buildings/townhall.png", "start": 6668, "end": 7262}, {"filename": "/assets/dungeon/floor.png", "start": 7262, "end": 9622}, {"filename": "/assets/dungeon/wall.png", "start": 9622, "end": 9783}, {"filename": "/assets/dungeon_themed/alchemy_floor.png", "start": 9783, "end": 10921}, {"filename": "/assets/dungeon_themed/alchemy_wall.png", "start": 10921, "end": 11374}, {"filename": "/assets/dungeon_themed/bloodtusk_floor.png", "start": 11374, "end": 11944}, {"filename": "/assets/dungeon_themed/bloodtusk_wall.png", "start": 11944, "end": 12724}, {"filename": "/assets/dungeon_themed/carpenter_floor.png", "start": 12724, "end": 13865}, {"filename": "/assets/dungeon_themed/carpenter_wall.png", "start": 13865, "end": 14790}, {"filename": "/assets/dungeon_themed/emberveil_brazier.png", "start": 14790, "end": 15396}, {"filename": "/assets/dungeon_themed/emberveil_floor.png", "start": 15396, "end": 16515}, {"filename": "/assets/dungeon_themed/emberveil_wall.png", "start": 16515, "end": 17824}, {"filename": "/assets/dungeon_themed/hollowwarrens_floor.png", "start": 17824, "end": 17985}, {"filename": "/assets/dungeon_themed/hollowwarrens_rug.png", "start": 17985, "end": 20005}, {"filename": "/assets/dungeon_themed/hollowwarrens_torch.png", "start": 20005, "end": 20315}, {"filename": "/assets/dungeon_themed/hollowwarrens_wall.png", "start": 20315, "end": 20450}, {"filename": "/assets/dungeon_themed/provisioner_floor.png", "start": 20450, "end": 21600}, {"filename": "/assets/dungeon_themed/provisioner_wall.png", "start": 21600, "end": 22402}, {"filename": "/assets/dungeon_themed/smith_floor.png", "start": 22402, "end": 22849}, {"filename": "/assets/dungeon_themed/smith_wall.png", "start": 22849, "end": 23974}, {"filename": "/assets/dungeon_themed/sunkencrypt_floor.png", "start": 23974, "end": 24883}, {"filename": "/assets/dungeon_themed/sunkencrypt_wall.png", "start": 24883, "end": 25925}, {"filename": "/assets/dungeon_themed/sunkencrypt_water.png", "start": 25925, "end": 26342}, {"filename": "/assets/dungeon_themed/tailor_floor.png", "start": 26342, "end": 27221}, {"filename": "/assets/dungeon_themed/tailor_wall.png", "start": 27221, "end": 28034}, {"filename": "/assets/dungeon_themed/wyrmscar_floor.png", "start": 28034, "end": 29262}, {"filename": "/assets/dungeon_themed/wyrmscar_wall.png", "start": 29262, "end": 29743}, {"filename": "/assets/fonts/Nunito.ttf", "start": 29743, "end": 306675}, {"filename": "/assets/gear_icons/amulet.png", "start": 306675, "end": 310535}, {"filename": "/assets/gear_icons/gauntlet.png", "start": 310535, "end": 315392}, {"filename": "/assets/gear_icons/helmet.png", "start": 315392, "end": 323876}, {"filename": "/assets/gear_icons/shield.png", "start": 323876, "end": 335299}, {"filename": "/assets/gear_icons/shield2.png", "start": 335299, "end": 346531}, {"filename": "/assets/gear_icons/sword.png", "start": 346531, "end": 349634}, {"filename": "/assets/ground/dirt.png", "start": 349634, "end": 350096}, {"filename": "/assets/ground/foliage.png", "start": 350096, "end": 351338}, {"filename": "/assets/ground/grass.png", "start": 351338, "end": 352513}, {"filename": "/assets/hero/hero_v2.png", "start": 352513, "end": 1560959}, {"filename": "/assets/hero/hero_v3.png", "start": 1560959, "end": 3111015}, {"filename": "/assets/hero/walk.png", "start": 3111015, "end": 3179238}, {"filename": "/assets/item_icons/Bardiche.bmp", "start": 3179238, "end": 3192452}, {"filename": "/assets/item_icons/BlackStaff.bmp", "start": 3192452, "end": 3215898}, {"filename": "/assets/item_icons/Bow.bmp", "start": 3215898, "end": 3223696}, {"filename": "/assets/item_icons/Broadsword.bmp", "start": 3223696, "end": 3227974}, {"filename": "/assets/item_icons/ChainTunic.bmp", "start": 3227974, "end": 3416032}, {"filename": "/assets/item_icons/ChainmailGloves.bmp", "start": 3416032, "end": 3600946}, {"filename": "/assets/item_icons/ChainmailLeggings.bmp", "start": 3600946, "end": 3789004}, {"filename": "/assets/item_icons/Club.bmp", "start": 3789004, "end": 3794690}, {"filename": "/assets/item_icons/CompositeBow.bmp", "start": 3794690, "end": 3802488}, {"filename": "/assets/item_icons/Crossbow.bmp", "start": 3802488, "end": 3808350}, {"filename": "/assets/item_icons/Cutlass.bmp", "start": 3808350, "end": 3812760}, {"filename": "/assets/item_icons/GnarledStaff.bmp", "start": 3812760, "end": 3836206}, {"filename": "/assets/item_icons/Halberd.bmp", "start": 3836206, "end": 3849420}, {"filename": "/assets/item_icons/HeavyCrossbow.bmp", "start": 3849420, "end": 3855810}, {"filename": "/assets/item_icons/Katana.bmp", "start": 3855810, "end": 3860748}, {"filename": "/assets/item_icons/Kryss.bmp", "start": 3860748, "end": 3865686}, {"filename": "/assets/item_icons/LeatherGloves.bmp", "start": 3865686, "end": 4050600}, {"filename": "/assets/item_icons/LeatherLeggings.bmp", "start": 4050600, "end": 4238658}, {"filename": "/assets/item_icons/LeatherSleeves.bmp", "start": 4238658, "end": 4426716}, {"filename": "/assets/item_icons/LeatherTunic.bmp", "start": 4426716, "end": 4614774}, {"filename": "/assets/item_icons/Longsword.bmp", "start": 4614774, "end": 4619712}, {"filename": "/assets/item_icons/Mace.bmp", "start": 4619712, "end": 4626454}, {"filename": "/assets/item_icons/Maul.bmp", "start": 4626454, "end": 4633900}, {"filename": "/assets/item_icons/Pitchfork.bmp", "start": 4633900, "end": 4650894}, {"filename": "/assets/item_icons/PlateArms.bmp", "start": 4650894, "end": 4838952}, {"filename": "/assets/item_icons/PlateChest.bmp", "start": 4838952, "end": 5027010}, {"filename": "/assets/item_icons/PlateGloves.bmp", "start": 5027010, "end": 5211924}, {"filename": "/assets/item_icons/PlateLegs.bmp", "start": 5211924, "end": 5399982}, {"filename": "/assets/item_icons/PotionDamage.bmp", "start": 5399982, "end": 5408064}, {"filename": "/assets/item_icons/PotionHeal.bmp", "start": 5408064, "end": 5416146}, {"filename": "/assets/item_icons/PotionPoison.bmp", "start": 5416146, "end": 5424228}, {"filename": "/assets/item_icons/PotionStamina.bmp", "start": 5424228, "end": 5432310}, {"filename": "/assets/item_icons/Quarterstaff.bmp", "start": 5432310, "end": 5455756}, {"filename": "/assets/item_icons/RingMailLeggings.bmp", "start": 5455756, "end": 5643814}, {"filename": "/assets/item_icons/RingMailSleeves.bmp", "start": 5643814, "end": 5831872}, {"filename": "/assets/item_icons/RingMailTunic.bmp", "start": 5831872, "end": 6019930}, {"filename": "/assets/item_icons/Scimitar.bmp", "start": 6019930, "end": 6025264}, {"filename": "/assets/item_icons/ShepherdsCrook.bmp", "start": 6025264, "end": 6053654}, {"filename": "/assets/item_icons/ShortSpear.bmp", "start": 6053654, "end": 6063708}, {"filename": "/assets/item_icons/Spear.bmp", "start": 6063708, "end": 6090022}, {"filename": "/assets/item_icons/StuddedGloves.bmp", "start": 6090022, "end": 6274936}, {"filename": "/assets/item_icons/StuddedLeggings.bmp", "start": 6274936, "end": 6462994}, {"filename": "/assets/item_icons/StuddedSleeves.bmp", "start": 6462994, "end": 6651052}, {"filename": "/assets/item_icons/StuddedTunic.bmp", "start": 6651052, "end": 6839110}, {"filename": "/assets/item_icons/VikingSword.bmp", "start": 6839110, "end": 6844312}, {"filename": "/assets/item_icons/WarAxe.bmp", "start": 6844312, "end": 6850042}, {"filename": "/assets/item_icons/WarFork.bmp", "start": 6850042, "end": 6857664}, {"filename": "/assets/item_icons/WarHammer.bmp", "start": 6857664, "end": 6862074}, {"filename": "/assets/knight/attack1.png", "start": 6862074, "end": 6888818}, {"filename": "/assets/knight/attack2.png", "start": 6888818, "end": 6915538}, {"filename": "/assets/knight/defend.png", "start": 6915538, "end": 6939562}, {"filename": "/assets/knight/hurt.png", "start": 6939562, "end": 6963025}, {"filename": "/assets/knight/idle.png", "start": 6963025, "end": 6988829}, {"filename": "/assets/knight/protect.png", "start": 6988829, "end": 7011057}, {"filename": "/assets/models/Prop_Chimney.bin", "start": 7011057, "end": 7031533}, {"filename": "/assets/models/Prop_Chimney.gltf", "start": 7031533, "end": 7035376}, {"filename": "/assets/models/Prop_Crate.bin", "start": 7035376, "end": 7051476}, {"filename": "/assets/models/Prop_Crate.gltf", "start": 7051476, "end": 7053687}, {"filename": "/assets/models/Prop_Vine1.bin", "start": 7053687, "end": 7059267}, {"filename": "/assets/models/Prop_Vine1.gltf", "start": 7059267, "end": 7061246}, {"filename": "/assets/models/Prop_Wagon.bin", "start": 7061246, "end": 7164518}, {"filename": "/assets/models/Prop_Wagon.gltf", "start": 7164518, "end": 7166940}, {"filename": "/assets/models/Prop_WoodenFence_Extension1.bin", "start": 7166940, "end": 7169180}, {"filename": "/assets/models/Prop_WoodenFence_Extension1.gltf", "start": 7169180, "end": 7171416}, {"filename": "/assets/models/Prop_WoodenFence_Single.bin", "start": 7171416, "end": 7174216}, {"filename": "/assets/models/Prop_WoodenFence_Single.gltf", "start": 7174216, "end": 7176446}, {"filename": "/assets/models/README.md", "start": 7176446, "end": 7178341}, {"filename": "/assets/models/Roof_RoundTiles_4x4.bin", "start": 7178341, "end": 7285517}, {"filename": "/assets/models/Roof_RoundTiles_4x4.gltf", "start": 7285517, "end": 7289854}, {"filename": "/assets/models/Roof_RoundTiles_4x6.bin", "start": 7289854, "end": 7419694}, {"filename": "/assets/models/Roof_RoundTiles_4x6.gltf", "start": 7419694, "end": 7424035}, {"filename": "/assets/models/T_Brick_BaseColor.png", "start": 7424035, "end": 7677572}, {"filename": "/assets/models/T_Brick_Normal.png", "start": 7677572, "end": 8035810}, {"filename": "/assets/models/T_Brick_Roughness.png", "start": 8035810, "end": 8095676}, {"filename": "/assets/models/T_Plaster_BaseColor.png", "start": 8095676, "end": 8345351}, {"filename": "/assets/models/T_Plaster_Normal.png", "start": 8345351, "end": 8633851}, {"filename": "/assets/models/T_Plaster_ORM.png", "start": 8633851, "end": 8807642}, {"filename": "/assets/models/T_RockTrim_BaseColor.png", "start": 8807642, "end": 9028510}, {"filename": "/assets/models/T_RockTrim_Normal.png", "start": 9028510, "end": 9336769}, {"filename": "/assets/models/T_RockTrim_ORM.png", "start": 9336769, "end": 9444162}, {"filename": "/assets/models/T_RoundTiles_BaseColor.png", "start": 9444162, "end": 9734812}, {"filename": "/assets/models/T_RoundTiles_Normal.png", "start": 9734812, "end": 9942773}, {"filename": "/assets/models/T_RoundTiles_Roughness.png", "start": 9942773, "end": 10044283}, {"filename": "/assets/models/T_UnevenBrick_BaseColor.png", "start": 10044283, "end": 10327347}, {"filename": "/assets/models/T_UnevenBrick_Normal.png", "start": 10327347, "end": 10636088}, {"filename": "/assets/models/T_UnevenBrick_Roughness.png", "start": 10636088, "end": 10737672}, {"filename": "/assets/models/T_VineLeaf_png.png", "start": 10737672, "end": 10852173}, {"filename": "/assets/models/T_WoodTrim_BaseColor.png", "start": 10852173, "end": 11090472}, {"filename": "/assets/models/T_WoodTrim_Normal.png", "start": 11090472, "end": 11377091}, {"filename": "/assets/models/T_WoodTrim_Roughness.png", "start": 11377091, "end": 11527900}, {"filename": "/assets/models/Wall_Plaster_Door_Flat.bin", "start": 11527900, "end": 11534692}, {"filename": "/assets/models/Wall_Plaster_Door_Flat.gltf", "start": 11534692, "end": 11540634}, {"filename": "/assets/models/Wall_Plaster_Straight.bin", "start": 11540634, "end": 11546510}, {"filename": "/assets/models/Wall_Plaster_Straight.gltf", "start": 11546510, "end": 11550679}, {"filename": "/assets/models/Wall_Plaster_Window_Wide_Flat.bin", "start": 11550679, "end": 11556055}, {"filename": "/assets/models/Wall_Plaster_Window_Wide_Flat.gltf", "start": 11556055, "end": 11562019}, {"filename": "/assets/models/Wall_UnevenBrick_Door_Flat.bin", "start": 11562019, "end": 11565535}, {"filename": "/assets/models/Wall_UnevenBrick_Door_Flat.gltf", "start": 11565535, "end": 11570941}, {"filename": "/assets/models/Wall_UnevenBrick_Straight.bin", "start": 11570941, "end": 11573709}, {"filename": "/assets/models/Wall_UnevenBrick_Straight.gltf", "start": 11573709, "end": 11579101}, {"filename": "/assets/models/Wall_UnevenBrick_Window_Wide_Flat.bin", "start": 11579101, "end": 11583709}, {"filename": "/assets/models/Wall_UnevenBrick_Window_Wide_Flat.gltf", "start": 11583709, "end": 11589713}, {"filename": "/assets/models/barrel_small.glb", "start": 11589713, "end": 11621773}, {"filename": "/assets/models/chest.glb", "start": 11621773, "end": 11703185}, {"filename": "/assets/models/plant_bush.glb", "start": 11703185, "end": 11707581}, {"filename": "/assets/models/tree_default.glb", "start": 11707581, "end": 11717009}, {"filename": "/assets/models/tree_detailed.glb", "start": 11717009, "end": 11748421}, {"filename": "/assets/models/tree_fat.glb", "start": 11748421, "end": 11753997}, {"filename": "/assets/models/tree_oak.glb", "start": 11753997, "end": 11768641}, {"filename": "/assets/models/tree_pineDefaultA.glb", "start": 11768641, "end": 11785861}, {"filename": "/assets/monsters/bat.png", "start": 11785861, "end": 11786056}, {"filename": "/assets/monsters/bloodtusk.png", "start": 11786056, "end": 11786516}, {"filename": "/assets/monsters/emberveil.png", "start": 11786516, "end": 11787019}, {"filename": "/assets/monsters/ghost.png", "start": 11787019, "end": 11787208}, {"filename": "/assets/monsters/hollowwarrens.png", "start": 11787208, "end": 11787789}, {"filename": "/assets/monsters/orc.png", "start": 11787789, "end": 11787992}, {"filename": "/assets/monsters/slime.png", "start": 11787992, "end": 11788181}, {"filename": "/assets/monsters/sunkencrypt.png", "start": 11788181, "end": 11788418}, {"filename": "/assets/monsters/wyrmscar.png", "start": 11788418, "end": 11789368}, {"filename": "/assets/monsters_boss/bloodtusk.png", "start": 11789368, "end": 11790497}, {"filename": "/assets/monsters_boss/emberveil.png", "start": 11790497, "end": 11791029}, {"filename": "/assets/monsters_boss/hollowwarrens.png", "start": 11791029, "end": 11791491}, {"filename": "/assets/monsters_boss/sunkencrypt.png", "start": 11791491, "end": 11791967}, {"filename": "/assets/monsters_boss/wyrmscar.png", "start": 11791967, "end": 11792498}, {"filename": "/assets/monsters_boss_v2/bloodtusk.png", "start": 11792498, "end": 12138036}, {"filename": "/assets/monsters_boss_v2/emberveil.png", "start": 12138036, "end": 12657467}, {"filename": "/assets/monsters_boss_v2/hollowwarrens.png", "start": 12657467, "end": 12926211}, {"filename": "/assets/monsters_boss_v2/sunkencrypt.png", "start": 12926211, "end": 13485069}, {"filename": "/assets/monsters_boss_v2/wyrmscar.png", "start": 13485069, "end": 13765621}, {"filename": "/assets/monsters_v2/bloodtusk.png", "start": 13765621, "end": 14076339}, {"filename": "/assets/monsters_v2/emberveil.png", "start": 14076339, "end": 14970616}, {"filename": "/assets/monsters_v2/hollowwarrens.png", "start": 14970616, "end": 15252764}, {"filename": "/assets/monsters_v2/sunkencrypt.png", "start": 15252764, "end": 15611559}, {"filename": "/assets/monsters_v2/wyrmscar.png", "start": 15611559, "end": 15867965}, {"filename": "/assets/npcs_v2/captain_ysolde.png", "start": 15867965, "end": 16524608}, {"filename": "/assets/npcs_v2/cobb_stableboy.png", "start": 16524608, "end": 16981815}, {"filename": "/assets/npcs_v2/dockhand_fenn.png", "start": 16981815, "end": 17430058}, {"filename": "/assets/npcs_v2/harbormaster_thane.png", "start": 17430058, "end": 17890673}, {"filename": "/assets/npcs_v2/nessa_netmender.png", "start": 17890673, "end": 18471285}, {"filename": "/assets/npcs_v2/old_corwin.png", "start": 18471285, "end": 18978318}, {"filename": "/assets/npcs_v2/old_miran.png", "start": 18978318, "end": 19595577}, {"filename": "/assets/npcs_v2/salty_bjorn.png", "start": 19595577, "end": 20134629}, {"filename": "/assets/npcs_v2/sister_meraude.png", "start": 20134629, "end": 20604690}, {"filename": "/assets/npcs_v2/widow_aelith.png", "start": 20604690, "end": 20954990}, {"filename": "/assets/npcs_v2/wystan_baker.png", "start": 20954990, "end": 21572156}, {"filename": "/assets/npcs_v2/young_petra.png", "start": 21572156, "end": 22027609}, {"filename": "/assets/paperdoll/arms/chainmail.png", "start": 22027609, "end": 22029940}, {"filename": "/assets/paperdoll/arms/leather.png", "start": 22029940, "end": 22032330}, {"filename": "/assets/paperdoll/arms/plate.png", "start": 22032330, "end": 22034884}, {"filename": "/assets/paperdoll/arms/ringmail.png", "start": 22034884, "end": 22037129}, {"filename": "/assets/paperdoll/arms/studded.png", "start": 22037129, "end": 22039580}, {"filename": "/assets/paperdoll/base/human_male.png", "start": 22039580, "end": 22049833}, {"filename": "/assets/paperdoll/body/chainmail.png", "start": 22049833, "end": 22056810}, {"filename": "/assets/paperdoll/body/leather_armor.png", "start": 22056810, "end": 22063593}, {"filename": "/assets/paperdoll/body/leather_stud.png", "start": 22063593, "end": 22070586}, {"filename": "/assets/paperdoll/body/plate.png", "start": 22070586, "end": 22077399}, {"filename": "/assets/paperdoll/body/ringmail.png", "start": 22077399, "end": 22083672}, {"filename": "/assets/paperdoll/boots/middle_brown.png", "start": 22083672, "end": 22086005}, {"filename": "/assets/paperdoll/brown_1.png", "start": 22086005, "end": 22087908}, {"filename": "/assets/paperdoll/gloves/gauntlet_blue.png", "start": 22087908, "end": 22090651}, {"filename": "/assets/paperdoll/gloves/glove_black.png", "start": 22090651, "end": 22093294}, {"filename": "/assets/paperdoll/gloves/glove_brown.png", "start": 22093294, "end": 22095879}, {"filename": "/assets/paperdoll/gloves/glove_gold.png", "start": 22095879, "end": 22098648}, {"filename": "/assets/paperdoll/gloves/glove_gray.png", "start": 22098648, "end": 22101093}, {"filename": "/assets/paperdoll/gorget/leather.png", "start": 22101093, "end": 22102412}, {"filename": "/assets/paperdoll/gorget/plate.png", "start": 22102412, "end": 22103915}, {"filename": "/assets/paperdoll/gorget/studded.png", "start": 22103915, "end": 22105328}, {"filename": "/assets/paperdoll/hair/brown_1.png", "start": 22105328, "end": 22106550}, {"filename": "/assets/paperdoll/hand_right/bow.png", "start": 22106550, "end": 22106722}, {"filename": "/assets/paperdoll/hand_right/bow_2.png", "start": 22106722, "end": 22106906}, {"filename": "/assets/paperdoll/hand_right/bow_3.png", "start": 22106906, "end": 22107106}, {"filename": "/assets/paperdoll/hand_right/broadsword.png", "start": 22107106, "end": 22107379}, {"filename": "/assets/paperdoll/hand_right/club.png", "start": 22107379, "end": 22107574}, {"filename": "/assets/paperdoll/hand_right/crossbow.png", "start": 22107574, "end": 22107869}, {"filename": "/assets/paperdoll/hand_right/crossbow_3.png", "start": 22107869, "end": 22108082}, {"filename": "/assets/paperdoll/hand_right/fork_2.png", "start": 22108082, "end": 22108268}, {"filename": "/assets/paperdoll/hand_right/glaive_new.png", "start": 22108268, "end": 22108490}, {"filename": "/assets/paperdoll/hand_right/great_mace.png", "start": 22108490, "end": 22108713}, {"filename": "/assets/paperdoll/hand_right/halberd_new.png", "start": 22108713, "end": 22108953}, {"filename": "/assets/paperdoll/hand_right/heavy_sword.png", "start": 22108953, "end": 22109181}, {"filename": "/assets/paperdoll/hand_right/katana.png", "start": 22109181, "end": 22109380}, {"filename": "/assets/paperdoll/hand_right/large_mace.png", "start": 22109380, "end": 22109593}, {"filename": "/assets/paperdoll/hand_right/long_sword.png", "start": 22109593, "end": 22109771}, {"filename": "/assets/paperdoll/hand_right/mace_new.png", "start": 22109771, "end": 22109961}, {"filename": "/assets/paperdoll/hand_right/pole_forked.png", "start": 22109961, "end": 22110204}, {"filename": "/assets/paperdoll/hand_right/quarterstaff.png", "start": 22110204, "end": 22110376}, {"filename": "/assets/paperdoll/hand_right/rapier.png", "start": 22110376, "end": 22110593}, {"filename": "/assets/paperdoll/hand_right/sabre.png", "start": 22110593, "end": 22110803}, {"filename": "/assets/paperdoll/hand_right/scimitar_new.png", "start": 22110803, "end": 22111056}, {"filename": "/assets/paperdoll/hand_right/spear.png", "start": 22111056, "end": 22111260}, {"filename": "/assets/paperdoll/hand_right/spear_1.png", "start": 22111260, "end": 22111426}, {"filename": "/assets/paperdoll/hand_right/staff_evil.png", "start": 22111426, "end": 22111721}, {"filename": "/assets/paperdoll/hand_right/staff_organic.png", "start": 22111721, "end": 22112028}, {"filename": "/assets/paperdoll/hand_right/staff_plain.png", "start": 22112028, "end": 22112216}, {"filename": "/assets/paperdoll/hand_right/war_axe_new.png", "start": 22112216, "end": 22112437}, {"filename": "/assets/paperdoll/head/cap_black_1.png", "start": 22112437, "end": 22112639}, {"filename": "/assets/paperdoll/head/chain.png", "start": 22112639, "end": 22113619}, {"filename": "/assets/paperdoll/head/hood_ybrown.png", "start": 22113619, "end": 22115421}, {"filename": "/assets/paperdoll/head/iron_1.png", "start": 22115421, "end": 22117111}, {"filename": "/assets/paperdoll/human_male.png", "start": 22117111, "end": 22130187}, {"filename": "/assets/paperdoll/legs/leg_armor_1.png", "start": 22130187, "end": 22133749}, {"filename": "/assets/paperdoll/legs/leg_armor_2.png", "start": 22133749, "end": 22136942}, {"filename": "/assets/paperdoll/legs/leg_armor_4.png", "start": 22136942, "end": 22140946}, {"filename": "/assets/paperdoll/legs/pants_black.png", "start": 22140946, "end": 22144936}, {"filename": "/assets/paperdoll/legs/pants_brown.png", "start": 22144936, "end": 22149224}, {"filename": "/assets/paperdoll/middle_brown.png", "start": 22149224, "end": 22152381}, {"filename": "/assets/player.png", "start": 22152381, "end": 22153095}, {"filename": "/assets/saltmere_buildings/alchemy.png", "start": 22153095, "end": 22370516}, {"filename": "/assets/saltmere_buildings/bank.png", "start": 22370516, "end": 22815547}, {"filename": "/assets/saltmere_buildings/carpenter.png", "start": 22815547, "end": 23015283}, {"filename": "/assets/saltmere_buildings/healer.png", "start": 23015283, "end": 23429703}, {"filename": "/assets/saltmere_buildings/house.png", "start": 23429703, "end": 23913739}, {"filename": "/assets/saltmere_buildings/provisioner.png", "start": 23913739, "end": 24292252}, {"filename": "/assets/saltmere_buildings/smith.png", "start": 24292252, "end": 24723712}, {"filename": "/assets/saltmere_buildings/stable.png", "start": 24723712, "end": 25021546}, {"filename": "/assets/saltmere_buildings/tailor.png", "start": 25021546, "end": 25417163}, {"filename": "/assets/saltmere_buildings/townhall.png", "start": 25417163, "end": 25810856}, {"filename": "/assets/shaders/shadowmap.fs", "start": 25810856, "end": 25814858}, {"filename": "/assets/shaders/shadowmap.vs", "start": 25814858, "end": 25815921}, {"filename": "/assets/skeleton/attack1.png", "start": 25815921, "end": 25841129}, {"filename": "/assets/skeleton/hurt.png", "start": 25841129, "end": 25861792}, {"filename": "/assets/skeleton/idle.png", "start": 25861792, "end": 25884684}, {"filename": "/assets/spell_icons/ArcBolt.bmp", "start": 25884684, "end": 25890546}, {"filename": "/assets/spell_icons/BlessingOfVigor.bmp", "start": 25890546, "end": 25896408}, {"filename": "/assets/spell_icons/CloudMind.bmp", "start": 25896408, "end": 25902270}, {"filename": "/assets/spell_icons/Detonation.bmp", "start": 25902270, "end": 25908132}, {"filename": "/assets/spell_icons/EmberBurst.bmp", "start": 25908132, "end": 25913994}, {"filename": "/assets/spell_icons/FumblingCurse.bmp", "start": 25913994, "end": 25919856}, {"filename": "/assets/spell_icons/GreaterMending.bmp", "start": 25919856, "end": 25925718}, {"filename": "/assets/spell_icons/InfernoStrike.bmp", "start": 25925718, "end": 25931580}, {"filename": "/assets/spell_icons/MendingWord.bmp", "start": 25931580, "end": 25937442}, {"filename": "/assets/spell_icons/PsychicShatter.bmp", "start": 25937442, "end": 25943304}, {"filename": "/assets/spell_icons/SapStrength.bmp", "start": 25943304, "end": 25949166}, {"filename": "/assets/spell_icons/SparkDart.bmp", "start": 25949166, "end": 25955028}, {"filename": "/assets/spell_icons/StormLance.bmp", "start": 25955028, "end": 25960890}, {"filename": "/assets/spell_icons/SummonFiend.bmp", "start": 25960890, "end": 25966752}, {"filename": "/assets/spell_icons/VenomSting.bmp", "start": 25966752, "end": 25972614}, {"filename": "/assets/spell_icons/WoundingTouch.bmp", "start": 25972614, "end": 25978476}, {"filename": "/assets/spellbook_icons/spell_buff.png", "start": 25978476, "end": 25982189}, {"filename": "/assets/spellbook_icons/spell_debuff.png", "start": 25982189, "end": 25986209}, {"filename": "/assets/spellbook_icons/spell_offensive.png", "start": 25986209, "end": 25990424}, {"filename": "/assets/spellbook_icons/spell_utility.png", "start": 25990424, "end": 25994892}, {"filename": "/assets/town_buildings/alchemy.png", "start": 25994892, "end": 26381624}, {"filename": "/assets/town_buildings/bank.png", "start": 26381624, "end": 26736058}, {"filename": "/assets/town_buildings/carpenter.png", "start": 26736058, "end": 27033820}, {"filename": "/assets/town_buildings/healer.png", "start": 27033820, "end": 27388870}, {"filename": "/assets/town_buildings/house.png", "start": 27388870, "end": 27509240}, {"filename": "/assets/town_buildings/provisioner.png", "start": 27509240, "end": 27895537}, {"filename": "/assets/town_buildings/smith.png", "start": 27895537, "end": 28218247}, {"filename": "/assets/town_buildings/stable.png", "start": 28218247, "end": 28498616}, {"filename": "/assets/town_buildings/tailor.png", "start": 28498616, "end": 28884847}, {"filename": "/assets/town_buildings/townhall.png", "start": 28884847, "end": 29193939}, {"filename": "/assets/village/anvil.png", "start": 29193939, "end": 29195068}, {"filename": "/assets/village/autumnbush.png", "start": 29195068, "end": 29197517}, {"filename": "/assets/village/barrel.png", "start": 29197517, "end": 29198854}, {"filename": "/assets/village/bookshelf.png", "start": 29198854, "end": 29199021}, {"filename": "/assets/village/chest.png", "start": 29199021, "end": 29199217}, {"filename": "/assets/village/chicken.png", "start": 29199217, "end": 29199439}, {"filename": "/assets/village/cow.png", "start": 29199439, "end": 29199670}, {"filename": "/assets/village/crate.png", "start": 29199670, "end": 29200759}, {"filename": "/assets/village/door_alchemy.png", "start": 29200759, "end": 29203630}, {"filename": "/assets/village/door_carpenter.png", "start": 29203630, "end": 29205695}, {"filename": "/assets/village/door_smith.png", "start": 29205695, "end": 29207598}, {"filename": "/assets/village/door_tailor.png", "start": 29207598, "end": 29210273}, {"filename": "/assets/village/farmland.png", "start": 29210273, "end": 29210735}, {"filename": "/assets/village/fencepost.png", "start": 29210735, "end": 29211132}, {"filename": "/assets/village/fountain.png", "start": 29211132, "end": 29213100}, {"filename": "/assets/village/lumberpile.png", "start": 29213100, "end": 29214256}, {"filename": "/assets/village/potion_purple.png", "start": 29214256, "end": 29214432}, {"filename": "/assets/village/potion_red.png", "start": 29214432, "end": 29214614}, {"filename": "/assets/village/sheep.png", "start": 29214614, "end": 29214838}, {"filename": "/assets/village/sign_smith.png", "start": 29214838, "end": 29215999}, {"filename": "/assets/village/stall1.png", "start": 29215999, "end": 29217797}, {"filename": "/assets/village/stall2.png", "start": 29217797, "end": 29219354}, {"filename": "/assets/village/stall3.png", "start": 29219354, "end": 29220942}, {"filename": "/assets/village/statue.png", "start": 29220942, "end": 29222588}, {"filename": "/assets/village/streetlamp.png", "start": 29222588, "end": 29223862}, {"filename": "/assets/village/well.png", "start": 29223862, "end": 29225462}, {"filename": "/assets/wilderness/bear.png", "start": 29225462, "end": 29226114}, {"filename": "/assets/wilderness/bison.png", "start": 29226114, "end": 29257359}, {"filename": "/assets/wilderness/bush1.png", "start": 29257359, "end": 29259526}, {"filename": "/assets/wilderness/bush2.png", "start": 29259526, "end": 29261822}, {"filename": "/assets/wilderness/dog.png", "start": 29261822, "end": 29262515}, {"filename": "/assets/wilderness/dragon.png", "start": 29262515, "end": 29263465}, {"filename": "/assets/wilderness/drake.png", "start": 29263465, "end": 29283857}, {"filename": "/assets/wilderness/fern1.png", "start": 29283857, "end": 29286908}, {"filename": "/assets/wilderness/griffin.png", "start": 29286908, "end": 29287580}, {"filename": "/assets/wilderness/horse.png", "start": 29287580, "end": 29304239}, {"filename": "/assets/wilderness/ore1.png", "start": 29304239, "end": 29307157}, {"filename": "/assets/wilderness/ore2.png", "start": 29307157, "end": 29310291}, {"filename": "/assets/wilderness/ore3.png", "start": 29310291, "end": 29313516}, {"filename": "/assets/wilderness/panther.png", "start": 29313516, "end": 29324949}, {"filename": "/assets/wilderness/rock.png", "start": 29324949, "end": 29325283}, {"filename": "/assets/wilderness/sabertooth.png", "start": 29325283, "end": 29345153}, {"filename": "/assets/wilderness/tree.png", "start": 29345153, "end": 29349369}, {"filename": "/assets/wilderness/wild_bandit.png", "start": 29349369, "end": 29349768}, {"filename": "/assets/wilderness/wild_bat.png", "start": 29349768, "end": 29350159}, {"filename": "/assets/wilderness/wild_goblin.png", "start": 29350159, "end": 29351221}, {"filename": "/assets/wilderness/wild_imp.png", "start": 29351221, "end": 29352062}, {"filename": "/assets/wilderness/wild_wolf.png", "start": 29352062, "end": 29353950}, {"filename": "/assets/wilderness/wolf.png", "start": 29353950, "end": 29354662}, {"filename": "/assets/wilderness/wyvern.png", "start": 29354662, "end": 29385796}, {"filename": "/assets/wilderness_entrances/bloodtusk.png", "start": 29385796, "end": 29386293}, {"filename": "/assets/wilderness_entrances/emberveil.png", "start": 29386293, "end": 29386830}, {"filename": "/assets/wilderness_entrances/hollowwarrens.png", "start": 29386830, "end": 29387603}, {"filename": "/assets/wilderness_entrances/sunkencrypt.png", "start": 29387603, "end": 29388093}, {"filename": "/assets/wilderness_entrances/wyrmscar.png", "start": 29388093, "end": 29388568}, {"filename": "/assets/wilderness_props/bush.png", "start": 29388568, "end": 29394483}, {"filename": "/assets/wilderness_props/cactus.png", "start": 29394483, "end": 29398112}, {"filename": "/assets/wilderness_props/chest.png", "start": 29398112, "end": 29406936}, {"filename": "/assets/wilderness_props/deerskull.png", "start": 29406936, "end": 29412974}, {"filename": "/assets/wilderness_props/fence.png", "start": 29412974, "end": 29419140}, {"filename": "/assets/wilderness_props/grass.png", "start": 29419140, "end": 29429126}, {"filename": "/assets/wilderness_props/haybale.png", "start": 29429126, "end": 29437539}, {"filename": "/assets/wilderness_props/plant.png", "start": 29437539, "end": 29441799}, {"filename": "/assets/wilderness_props/rocks.png", "start": 29441799, "end": 29448050}, {"filename": "/assets/wilderness_props/water.png", "start": 29448050, "end": 29454821}, {"filename": "/assets/wilderness_v2/creatures/bear.png", "start": 29454821, "end": 29949591}, {"filename": "/assets/wilderness_v2/creatures/bison.png", "start": 29949591, "end": 30478277}, {"filename": "/assets/wilderness_v2/creatures/dog.png", "start": 30478277, "end": 30905651}, {"filename": "/assets/wilderness_v2/creatures/dragon.png", "start": 30905651, "end": 31431234}, {"filename": "/assets/wilderness_v2/creatures/drake.png", "start": 31431234, "end": 31776366}, {"filename": "/assets/wilderness_v2/creatures/griffin.png", "start": 31776366, "end": 32333398}, {"filename": "/assets/wilderness_v2/creatures/horse.png", "start": 32333398, "end": 32594936}, {"filename": "/assets/wilderness_v2/creatures/panther.png", "start": 32594936, "end": 32720329}, {"filename": "/assets/wilderness_v2/creatures/sabertooth.png", "start": 32720329, "end": 32878344}, {"filename": "/assets/wilderness_v2/creatures/wolf.png", "start": 32878344, "end": 33093548}, {"filename": "/assets/wilderness_v2/creatures/wyvern.png", "start": 33093548, "end": 33415822}, {"filename": "/assets/wilderness_v2/monsters/bandit.png", "start": 33415822, "end": 33959635}, {"filename": "/assets/wilderness_v2/monsters/bat.png", "start": 33959635, "end": 34267439}, {"filename": "/assets/wilderness_v2/monsters/goblin.png", "start": 34267439, "end": 35061271}, {"filename": "/assets/wilderness_v2/monsters/imp.png", "start": 35061271, "end": 35465223}, {"filename": "/assets/wilderness_v2/monsters/wolf.png", "start": 35465223, "end": 35553713}, {"filename": "/assets/wilderness_v2/rival_adventurer.png", "start": 35553713, "end": 35851962}], "remote_package_size": 35851962});
 
   })();
 
-// end include: C:\Users\markr\AppData\Local\Temp\tmpkpescrdc.js
-// include: C:\Users\markr\AppData\Local\Temp\tmpt7tufpk6.js
+// end include: C:\Users\markr\AppData\Local\Temp\tmp5k2qehae.js
+// include: C:\Users\markr\AppData\Local\Temp\tmpjohsy47l.js
 
     // All the pre-js content up to here must remain later on, we need to run
     // it.
     if ((typeof ENVIRONMENT_IS_WASM_WORKER != 'undefined' && ENVIRONMENT_IS_WASM_WORKER) || (typeof ENVIRONMENT_IS_PTHREAD != 'undefined' && ENVIRONMENT_IS_PTHREAD) || (typeof ENVIRONMENT_IS_AUDIO_WORKLET != 'undefined' && ENVIRONMENT_IS_AUDIO_WORKLET)) Module['preRun'] = [];
     var necessaryPreJSTasks = Module['preRun'].slice();
-  // end include: C:\Users\markr\AppData\Local\Temp\tmpt7tufpk6.js
-// include: C:\Users\markr\AppData\Local\Temp\tmp0mo6orv2.js
+  // end include: C:\Users\markr\AppData\Local\Temp\tmpjohsy47l.js
+// include: C:\Users\markr\AppData\Local\Temp\tmp5g1uj9q2.js
 
     if (!Module['preRun']) throw 'Module.preRun should exist because file support used it; did a pre-js delete it?';
     necessaryPreJSTasks.forEach((task) => {
       if (Module['preRun'].indexOf(task) < 0) throw 'All preRun tasks that exist before user pre-js code should remain after; did you replace Module or modify Module.preRun?';
     });
-  // end include: C:\Users\markr\AppData\Local\Temp\tmp0mo6orv2.js
+  // end include: C:\Users\markr\AppData\Local\Temp\tmp5g1uj9q2.js
 
 
 var programArgs = [];
@@ -4297,6 +4299,19 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
         return ret;
       },
   };
+  function ___syscall_chdir(path) {
+  try {
+  
+      path = SYSCALLS.getStr(path);
+      FS.chdir(path);
+      return 0;
+    } catch (e) {
+    if (typeof FS == 'undefined' || !(e.name === 'ErrnoError')) throw e;
+    return -e.errno;
+  }
+  }
+  
+
   function ___syscall_faccessat(dirfd, path, amode, flags) {
   try {
   
@@ -8251,6 +8266,10 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
 
   var _glBindBuffer = _emscripten_glBindBuffer;
 
+  var _glBindFramebuffer = _emscripten_glBindFramebuffer;
+
+  var _glBindRenderbuffer = _emscripten_glBindRenderbuffer;
+
   var _glBindTexture = _emscripten_glBindTexture;
 
   var _glBlendFunc = _emscripten_glBlendFunc;
@@ -8258,6 +8277,8 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   var _glBufferData = _emscripten_glBufferData;
 
   var _glBufferSubData = _emscripten_glBufferSubData;
+
+  var _glCheckFramebufferStatus = _emscripten_glCheckFramebufferStatus;
 
   var _glClear = _emscripten_glClear;
 
@@ -8275,11 +8296,25 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
 
   var _glCullFace = _emscripten_glCullFace;
 
+  var _glDeleteBuffers = _emscripten_glDeleteBuffers;
+
+  var _glDeleteFramebuffers = _emscripten_glDeleteFramebuffers;
+
   var _glDeleteProgram = _emscripten_glDeleteProgram;
+
+  var _glDeleteRenderbuffers = _emscripten_glDeleteRenderbuffers;
+
+  var _glDeleteShader = _emscripten_glDeleteShader;
+
+  var _glDeleteTextures = _emscripten_glDeleteTextures;
 
   var _glDepthFunc = _emscripten_glDepthFunc;
 
+  var _glDetachShader = _emscripten_glDetachShader;
+
   var _glDisable = _emscripten_glDisable;
+
+  var _glDisableVertexAttribArray = _emscripten_glDisableVertexAttribArray;
 
   var _glDrawArrays = _emscripten_glDrawArrays;
 
@@ -8289,9 +8324,17 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
 
   var _glEnableVertexAttribArray = _emscripten_glEnableVertexAttribArray;
 
+  var _glFramebufferRenderbuffer = _emscripten_glFramebufferRenderbuffer;
+
+  var _glFramebufferTexture2D = _emscripten_glFramebufferTexture2D;
+
   var _glFrontFace = _emscripten_glFrontFace;
 
   var _glGenBuffers = _emscripten_glGenBuffers;
+
+  var _glGenFramebuffers = _emscripten_glGenFramebuffers;
+
+  var _glGenRenderbuffers = _emscripten_glGenRenderbuffers;
 
   var _glGenTextures = _emscripten_glGenTextures;
 
@@ -8300,6 +8343,8 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   var _glGetAttribLocation = _emscripten_glGetAttribLocation;
 
   var _glGetFloatv = _emscripten_glGetFloatv;
+
+  var _glGetFramebufferAttachmentParameteriv = _emscripten_glGetFramebufferAttachmentParameteriv;
 
   var _glGetProgramInfoLog = _emscripten_glGetProgramInfoLog;
 
@@ -8319,6 +8364,8 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
 
   var _glReadPixels = _emscripten_glReadPixels;
 
+  var _glRenderbufferStorage = _emscripten_glRenderbufferStorage;
+
   var _glScissor = _emscripten_glScissor;
 
   var _glShaderSource = _emscripten_glShaderSource;
@@ -8329,13 +8376,37 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
 
   var _glTexParameteri = _emscripten_glTexParameteri;
 
+  var _glUniform1fv = _emscripten_glUniform1fv;
+
   var _glUniform1i = _emscripten_glUniform1i;
 
+  var _glUniform1iv = _emscripten_glUniform1iv;
+
+  var _glUniform2fv = _emscripten_glUniform2fv;
+
+  var _glUniform2iv = _emscripten_glUniform2iv;
+
+  var _glUniform3fv = _emscripten_glUniform3fv;
+
+  var _glUniform3iv = _emscripten_glUniform3iv;
+
   var _glUniform4f = _emscripten_glUniform4f;
+
+  var _glUniform4fv = _emscripten_glUniform4fv;
+
+  var _glUniform4iv = _emscripten_glUniform4iv;
 
   var _glUniformMatrix4fv = _emscripten_glUniformMatrix4fv;
 
   var _glUseProgram = _emscripten_glUseProgram;
+
+  var _glVertexAttrib1fv = _emscripten_glVertexAttrib1fv;
+
+  var _glVertexAttrib2fv = _emscripten_glVertexAttrib2fv;
+
+  var _glVertexAttrib3fv = _emscripten_glVertexAttrib3fv;
+
+  var _glVertexAttrib4fv = _emscripten_glVertexAttrib4fv;
 
   var _glVertexAttribPointer = _emscripten_glVertexAttribPointer;
 
@@ -10191,48 +10262,48 @@ function checkIncomingModuleAPI() {
   ignoredModuleProp('wasmBinary');
 }
 var ASM_CONSTS = {
-  149946: () => { if (document.fullscreenElement) return 1; },  
- 149992: () => { return document.getElementById('canvas').width; },  
- 150044: () => { return parseInt(document.getElementById('canvas').style.width); },  
- 150112: () => { document.exitFullscreen(); },  
- 150139: () => { setTimeout(function() { Module.requestFullscreen(false, false); }, 100); },  
- 150212: () => { if (document.fullscreenElement) return 1; },  
- 150258: () => { return document.getElementById('canvas').width; },  
- 150310: () => { return screen.width; },  
- 150335: () => { document.exitFullscreen(); },  
- 150362: () => { setTimeout(function() { Module.requestFullscreen(false, true); setTimeout(function() { canvas.style.width="unset"; }, 100); }, 100); },  
- 150495: () => { return window.innerWidth; },  
- 150521: () => { return window.innerHeight; },  
- 150548: () => { if (document.fullscreenElement) return 1; },  
- 150594: () => { return document.getElementById('canvas').width; },  
- 150646: () => { return parseInt(document.getElementById('canvas').style.width); },  
- 150714: () => { if (document.fullscreenElement) return 1; },  
- 150760: () => { return document.getElementById('canvas').width; },  
- 150812: () => { return screen.width; },  
- 150837: () => { return window.innerWidth; },  
- 150863: () => { return window.innerHeight; },  
- 150890: () => { if (document.fullscreenElement) return 1; },  
- 150936: () => { return document.getElementById('canvas').width; },  
- 150988: () => { return screen.width; },  
- 151013: () => { document.exitFullscreen(); },  
- 151040: () => { if (document.fullscreenElement) return 1; },  
- 151086: () => { return document.getElementById('canvas').width; },  
- 151138: () => { return parseInt(document.getElementById('canvas').style.width); },  
- 151206: () => { document.exitFullscreen(); },  
- 151233: ($0) => { document.getElementById('canvas').style.opacity = $0; },  
- 151291: () => { return screen.width; },  
- 151316: () => { return screen.height; },  
- 151342: () => { return window.screenX; },  
- 151369: () => { return window.screenY; },  
- 151396: ($0) => { navigator.clipboard.writeText(UTF8ToString($0)); },  
- 151449: ($0) => { document.getElementById("canvas").style.cursor = UTF8ToString($0); },  
- 151520: () => { document.getElementById('canvas').style.cursor = 'none'; },  
- 151577: ($0, $1, $2, $3) => { try { navigator.getGamepads()[$0].vibrationActuator.playEffect('dual-rumble', { startDelay: 0, duration: $3, weakMagnitude: $1, strongMagnitude: $2 }); } catch (e) { try { navigator.getGamepads()[$0].hapticActuators[0].pulse($2, $3); } catch (e) { } } },  
- 151833: ($0) => { document.getElementById('canvas').style.cursor = UTF8ToString($0); },  
- 151904: () => { if (document.fullscreenElement) return 1; },  
- 151950: () => { return window.innerWidth; },  
- 151976: () => { return window.innerHeight; },  
- 152003: () => { if (document.pointerLockElement) return 1; }
+  160026: () => { if (document.fullscreenElement) return 1; },  
+ 160072: () => { return document.getElementById('canvas').width; },  
+ 160124: () => { return parseInt(document.getElementById('canvas').style.width); },  
+ 160192: () => { document.exitFullscreen(); },  
+ 160219: () => { setTimeout(function() { Module.requestFullscreen(false, false); }, 100); },  
+ 160292: () => { if (document.fullscreenElement) return 1; },  
+ 160338: () => { return document.getElementById('canvas').width; },  
+ 160390: () => { return screen.width; },  
+ 160415: () => { document.exitFullscreen(); },  
+ 160442: () => { setTimeout(function() { Module.requestFullscreen(false, true); setTimeout(function() { canvas.style.width="unset"; }, 100); }, 100); },  
+ 160575: () => { return window.innerWidth; },  
+ 160601: () => { return window.innerHeight; },  
+ 160628: () => { if (document.fullscreenElement) return 1; },  
+ 160674: () => { return document.getElementById('canvas').width; },  
+ 160726: () => { return parseInt(document.getElementById('canvas').style.width); },  
+ 160794: () => { if (document.fullscreenElement) return 1; },  
+ 160840: () => { return document.getElementById('canvas').width; },  
+ 160892: () => { return screen.width; },  
+ 160917: () => { return window.innerWidth; },  
+ 160943: () => { return window.innerHeight; },  
+ 160970: () => { if (document.fullscreenElement) return 1; },  
+ 161016: () => { return document.getElementById('canvas').width; },  
+ 161068: () => { return screen.width; },  
+ 161093: () => { document.exitFullscreen(); },  
+ 161120: () => { if (document.fullscreenElement) return 1; },  
+ 161166: () => { return document.getElementById('canvas').width; },  
+ 161218: () => { return parseInt(document.getElementById('canvas').style.width); },  
+ 161286: () => { document.exitFullscreen(); },  
+ 161313: ($0) => { document.getElementById('canvas').style.opacity = $0; },  
+ 161371: () => { return screen.width; },  
+ 161396: () => { return screen.height; },  
+ 161422: () => { return window.screenX; },  
+ 161449: () => { return window.screenY; },  
+ 161476: ($0) => { navigator.clipboard.writeText(UTF8ToString($0)); },  
+ 161529: ($0) => { document.getElementById("canvas").style.cursor = UTF8ToString($0); },  
+ 161600: () => { document.getElementById('canvas').style.cursor = 'none'; },  
+ 161657: ($0, $1, $2, $3) => { try { navigator.getGamepads()[$0].vibrationActuator.playEffect('dual-rumble', { startDelay: 0, duration: $3, weakMagnitude: $1, strongMagnitude: $2 }); } catch (e) { try { navigator.getGamepads()[$0].hapticActuators[0].pulse($2, $3); } catch (e) { } } },  
+ 161913: ($0) => { document.getElementById('canvas').style.cursor = UTF8ToString($0); },  
+ 161984: () => { if (document.fullscreenElement) return 1; },  
+ 162030: () => { return window.innerWidth; },  
+ 162056: () => { return window.innerHeight; },  
+ 162083: () => { if (document.pointerLockElement) return 1; }
 };
 function JS_InitPersistence() { try { FS.mkdir('/persist'); } catch (e) {} FS.mount(IDBFS, {}, '/persist'); FS.syncfs(true, function(err) { if (err) console.error('Town Forge: IDBFS initial load failed', err); Module._TF_persistReady = 1; }); }
 function JS_PersistReady() { return (typeof Module._TF_persistReady !== 'undefined' && Module._TF_persistReady) ? 1 : 0; }
@@ -10298,6 +10369,8 @@ var wasmImports = {
   __assert_fail: ___assert_fail,
   /** @export */
   __cxa_throw: ___cxa_throw,
+  /** @export */
+  __syscall_chdir: ___syscall_chdir,
   /** @export */
   __syscall_faccessat: ___syscall_faccessat,
   /** @export */
@@ -10713,6 +10786,10 @@ var wasmImports = {
   /** @export */
   glBindBuffer: _glBindBuffer,
   /** @export */
+  glBindFramebuffer: _glBindFramebuffer,
+  /** @export */
+  glBindRenderbuffer: _glBindRenderbuffer,
+  /** @export */
   glBindTexture: _glBindTexture,
   /** @export */
   glBlendFunc: _glBlendFunc,
@@ -10720,6 +10797,8 @@ var wasmImports = {
   glBufferData: _glBufferData,
   /** @export */
   glBufferSubData: _glBufferSubData,
+  /** @export */
+  glCheckFramebufferStatus: _glCheckFramebufferStatus,
   /** @export */
   glClear: _glClear,
   /** @export */
@@ -10737,11 +10816,25 @@ var wasmImports = {
   /** @export */
   glCullFace: _glCullFace,
   /** @export */
+  glDeleteBuffers: _glDeleteBuffers,
+  /** @export */
+  glDeleteFramebuffers: _glDeleteFramebuffers,
+  /** @export */
   glDeleteProgram: _glDeleteProgram,
+  /** @export */
+  glDeleteRenderbuffers: _glDeleteRenderbuffers,
+  /** @export */
+  glDeleteShader: _glDeleteShader,
+  /** @export */
+  glDeleteTextures: _glDeleteTextures,
   /** @export */
   glDepthFunc: _glDepthFunc,
   /** @export */
+  glDetachShader: _glDetachShader,
+  /** @export */
   glDisable: _glDisable,
+  /** @export */
+  glDisableVertexAttribArray: _glDisableVertexAttribArray,
   /** @export */
   glDrawArrays: _glDrawArrays,
   /** @export */
@@ -10751,9 +10844,17 @@ var wasmImports = {
   /** @export */
   glEnableVertexAttribArray: _glEnableVertexAttribArray,
   /** @export */
+  glFramebufferRenderbuffer: _glFramebufferRenderbuffer,
+  /** @export */
+  glFramebufferTexture2D: _glFramebufferTexture2D,
+  /** @export */
   glFrontFace: _glFrontFace,
   /** @export */
   glGenBuffers: _glGenBuffers,
+  /** @export */
+  glGenFramebuffers: _glGenFramebuffers,
+  /** @export */
+  glGenRenderbuffers: _glGenRenderbuffers,
   /** @export */
   glGenTextures: _glGenTextures,
   /** @export */
@@ -10762,6 +10863,8 @@ var wasmImports = {
   glGetAttribLocation: _glGetAttribLocation,
   /** @export */
   glGetFloatv: _glGetFloatv,
+  /** @export */
+  glGetFramebufferAttachmentParameteriv: _glGetFramebufferAttachmentParameteriv,
   /** @export */
   glGetProgramInfoLog: _glGetProgramInfoLog,
   /** @export */
@@ -10781,6 +10884,8 @@ var wasmImports = {
   /** @export */
   glReadPixels: _glReadPixels,
   /** @export */
+  glRenderbufferStorage: _glRenderbufferStorage,
+  /** @export */
   glScissor: _glScissor,
   /** @export */
   glShaderSource: _glShaderSource,
@@ -10791,13 +10896,37 @@ var wasmImports = {
   /** @export */
   glTexParameteri: _glTexParameteri,
   /** @export */
+  glUniform1fv: _glUniform1fv,
+  /** @export */
   glUniform1i: _glUniform1i,
   /** @export */
+  glUniform1iv: _glUniform1iv,
+  /** @export */
+  glUniform2fv: _glUniform2fv,
+  /** @export */
+  glUniform2iv: _glUniform2iv,
+  /** @export */
+  glUniform3fv: _glUniform3fv,
+  /** @export */
+  glUniform3iv: _glUniform3iv,
+  /** @export */
   glUniform4f: _glUniform4f,
+  /** @export */
+  glUniform4fv: _glUniform4fv,
+  /** @export */
+  glUniform4iv: _glUniform4iv,
   /** @export */
   glUniformMatrix4fv: _glUniformMatrix4fv,
   /** @export */
   glUseProgram: _glUseProgram,
+  /** @export */
+  glVertexAttrib1fv: _glVertexAttrib1fv,
+  /** @export */
+  glVertexAttrib2fv: _glVertexAttrib2fv,
+  /** @export */
+  glVertexAttrib3fv: _glVertexAttrib3fv,
+  /** @export */
+  glVertexAttrib4fv: _glVertexAttrib4fv,
   /** @export */
   glVertexAttribPointer: _glVertexAttribPointer,
   /** @export */
