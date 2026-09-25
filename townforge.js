@@ -29,7 +29,7 @@ var ENVIRONMENT_IS_SHELL = !ENVIRONMENT_IS_WEB && !ENVIRONMENT_IS_NODE && !ENVIR
 
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
-// include: C:\Users\markr\AppData\Local\Temp\tmpd06cph3v.js
+// include: C:\Users\markr\AppData\Local\Temp\tmp7hotclvw.js
 
   if (!Module['expectedDataFileDownloads']) Module['expectedDataFileDownloads'] = 0;
   Module['expectedDataFileDownloads']++;
@@ -208,7 +208,7 @@ Module['FS_createPath']("/assets/wilderness_v2", "monsters", true, true);
 
   })();
 
-// end include: C:\Users\markr\AppData\Local\Temp\tmpd06cph3v.js
+// end include: C:\Users\markr\AppData\Local\Temp\tmp7hotclvw.js
 
 
 var programArgs = [];
