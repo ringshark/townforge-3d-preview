@@ -1,52 +1,5 @@
 // include: shell.js
 // include: minimum_runtime_check.js
-(function() {
-  // "30.0.0" -> 300000
-  function humanReadableVersionToPacked(str) {
-    str = str.split('-')[0]; // Remove any trailing part from e.g. "12.53.3-alpha"
-    var vers = str.split('.').slice(0, 3);
-    while(vers.length < 3) vers.push('00');
-    vers = vers.map((n, i, arr) => n.padStart(2, '0'));
-    return vers.join('');
-  }
-  // 300000 -> "30.0.0"
-  var packedVersionToHumanReadable = n => [n / 10000 | 0, (n / 100 | 0) % 100, n % 100].join('.');
-
-  var TARGET_NOT_SUPPORTED = 2147483647;
-
-  // Note: We use a typeof check here instead of optional chaining using
-  // globalThis because older browsers might not have globalThis defined.
-
-  // We skip the node version checking when running on Bun/Deno since the node
-  // version they report doesn't seem to be useful.
-  if (typeof process !== 'undefined' && !process.versions?.bun && typeof Deno == "undefined") {
-    var currentNodeVersion = process.versions?.node ? humanReadableVersionToPacked(process.versions.node) : TARGET_NOT_SUPPORTED;
-    if (currentNodeVersion < 180300) {
-      throw new Error(`This emscripten-generated code requires node v${ packedVersionToHumanReadable(180300) } (detected v${packedVersionToHumanReadable(currentNodeVersion)})`);
-    }
-  }
-
-  var userAgent = typeof navigator !== 'undefined' && navigator.userAgent;
-  if (!userAgent) {
-    return;
-  }
-
-  var currentSafariVersion = userAgent.includes("Safari/") && !userAgent.includes("Chrome/") && userAgent.match(/Version\/(\d+\.?\d*\.?\d*)/) ? humanReadableVersionToPacked(userAgent.match(/Version\/(\d+\.?\d*\.?\d*)/)[1]) : TARGET_NOT_SUPPORTED;
-  if (currentSafariVersion < 150000) {
-    throw new Error(`This emscripten-generated code requires Safari v${ packedVersionToHumanReadable(150000) } (detected v${currentSafariVersion})`);
-  }
-
-  var currentFirefoxVersion = userAgent.match(/Firefox\/(\d+(?:\.\d+)?)/) ? parseFloat(userAgent.match(/Firefox\/(\d+(?:\.\d+)?)/)[1]) : TARGET_NOT_SUPPORTED;
-  if (currentFirefoxVersion < 79) {
-    throw new Error(`This emscripten-generated code requires Firefox v79 (detected v${currentFirefoxVersion})`);
-  }
-
-  var currentChromeVersion = userAgent.match(/Chrome\/(\d+(?:\.\d+)?)/) ? parseFloat(userAgent.match(/Chrome\/(\d+(?:\.\d+)?)/)[1]) : TARGET_NOT_SUPPORTED;
-  if (currentChromeVersion < 85) {
-    throw new Error(`This emscripten-generated code requires Chrome v85 (detected v${currentChromeVersion})`);
-  }
-})();
-
 // end include: minimum_runtime_check.js
 // The Module object: Our interface to the outside world. We import
 // and export values on it. There are various ways Module can be used:
@@ -76,7 +29,7 @@ var ENVIRONMENT_IS_SHELL = !ENVIRONMENT_IS_WEB && !ENVIRONMENT_IS_NODE && !ENVIR
 
 // --pre-jses are emitted after the Module integration code, so that they can
 // refer to Module (if they choose; they can also define Module)
-// include: C:\Users\markr\AppData\Local\Temp\tmpf_dqsul2.js
+// include: C:\Users\markr\AppData\Local\Temp\tmp3mxsoxj1.js
 
   if (!Module['expectedDataFileDownloads']) Module['expectedDataFileDownloads'] = 0;
   Module['expectedDataFileDownloads']++;
@@ -250,25 +203,11 @@ Module['FS_createPath']("/assets/wilderness_v2", "monsters", true, true);
     }
 
     }
-    loadPackage({"files": [{"filename": "/assets/buildings/alchemy.png", "start": 0, "end": 758}, {"filename": "/assets/buildings/bank.png", "start": 758, "end": 1605}, {"filename": "/assets/buildings/carpenter.png", "start": 1605, "end": 1996}, {"filename": "/assets/buildings/door.png", "start": 1996, "end": 3954}, {"filename": "/assets/buildings/healer.png", "start": 3954, "end": 4136}, {"filename": "/assets/buildings/provisioner.png", "start": 4136, "end": 4744}, {"filename": "/assets/buildings/smith.png", "start": 4744, "end": 5360}, {"filename": "/assets/buildings/stable.png", "start": 5360, "end": 6012}, {"filename": "/assets/buildings/tailor.png", "start": 6012, "end": 6668}, {"filename": "/assets/buildings/townhall.png", "start": 6668, "end": 7262}, {"filename": "/assets/dungeon/floor.png", "start": 7262, "end": 9622}, {"filename": "/assets/dungeon/wall.png", "start": 9622, "end": 9783}, {"filename": "/assets/dungeon_themed/alchemy_floor.png", "start": 9783, "end": 10921}, {"filename": "/assets/dungeon_themed/alchemy_wall.png", "start": 10921, "end": 11374}, {"filename": "/assets/dungeon_themed/bloodtusk_floor.png", "start": 11374, "end": 11944}, {"filename": "/assets/dungeon_themed/bloodtusk_wall.png", "start": 11944, "end": 12724}, {"filename": "/assets/dungeon_themed/carpenter_floor.png", "start": 12724, "end": 13865}, {"filename": "/assets/dungeon_themed/carpenter_wall.png", "start": 13865, "end": 14790}, {"filename": "/assets/dungeon_themed/emberveil_brazier.png", "start": 14790, "end": 15396}, {"filename": "/assets/dungeon_themed/emberveil_floor.png", "start": 15396, "end": 16515}, {"filename": "/assets/dungeon_themed/emberveil_wall.png", "start": 16515, "end": 17824}, {"filename": "/assets/dungeon_themed/hollowwarrens_floor.png", "start": 17824, "end": 17985}, {"filename": "/assets/dungeon_themed/hollowwarrens_rug.png", "start": 17985, "end": 20005}, {"filename": "/assets/dungeon_themed/hollowwarrens_torch.png", "start": 20005, "end": 20315}, {"filename": "/assets/dungeon_themed/hollowwarrens_wall.png", "start": 20315, "end": 20450}, {"filename": "/assets/dungeon_themed/provisioner_floor.png", "start": 20450, "end": 21600}, {"filename": "/assets/dungeon_themed/provisioner_wall.png", "start": 21600, "end": 22402}, {"filename": "/assets/dungeon_themed/smith_floor.png", "start": 22402, "end": 22849}, {"filename": "/assets/dungeon_themed/smith_wall.png", "start": 22849, "end": 23974}, {"filename": "/assets/dungeon_themed/sunkencrypt_floor.png", "start": 23974, "end": 24883}, {"filename": "/assets/dungeon_themed/sunkencrypt_wall.png", "start": 24883, "end": 25925}, {"filename": "/assets/dungeon_themed/sunkencrypt_water.png", "start": 25925, "end": 26342}, {"filename": "/assets/dungeon_themed/tailor_floor.png", "start": 26342, "end": 27221}, {"filename": "/assets/dungeon_themed/tailor_wall.png", "start": 27221, "end": 28034}, {"filename": "/assets/dungeon_themed/wyrmscar_floor.png", "start": 28034, "end": 29262}, {"filename": "/assets/dungeon_themed/wyrmscar_wall.png", "start": 29262, "end": 29743}, {"filename": "/assets/fonts/Nunito.ttf", "start": 29743, "end": 306675}, {"filename": "/assets/gear_icons/amulet.png", "start": 306675, "end": 310535}, {"filename": "/assets/gear_icons/gauntlet.png", "start": 310535, "end": 315392}, {"filename": "/assets/gear_icons/helmet.png", "start": 315392, "end": 323876}, {"filename": "/assets/gear_icons/shield.png", "start": 323876, "end": 335299}, {"filename": "/assets/gear_icons/shield2.png", "start": 335299, "end": 346531}, {"filename": "/assets/gear_icons/sword.png", "start": 346531, "end": 349634}, {"filename": "/assets/ground/dirt.png", "start": 349634, "end": 350096}, {"filename": "/assets/ground/foliage.png", "start": 350096, "end": 351338}, {"filename": "/assets/ground/grass.png", "start": 351338, "end": 352513}, {"filename": "/assets/hero/hero_v2.png", "start": 352513, "end": 1560959}, {"filename": "/assets/hero/hero_v3.png", "start": 1560959, "end": 3111015}, {"filename": "/assets/hero/walk.png", "start": 3111015, "end": 3179238}, {"filename": "/assets/interiors/alchemy/Bottle_1.bin", "start": 3179238, "end": 3193190}, {"filename": "/assets/interiors/alchemy/Bottle_1.gltf", "start": 3193190, "end": 3194698}, {"filename": "/assets/interiors/alchemy/Cauldron.bin", "start": 3194698, "end": 3257410}, {"filename": "/assets/interiors/alchemy/Cauldron.gltf", "start": 3257410, "end": 3259725}, {"filename": "/assets/interiors/alchemy/Potion_1.bin", "start": 3259725, "end": 3277925}, {"filename": "/assets/interiors/alchemy/Potion_1.gltf", "start": 3277925, "end": 3279438}, {"filename": "/assets/interiors/alchemy/Potion_2.bin", "start": 3279438, "end": 3299110}, {"filename": "/assets/interiors/alchemy/Potion_2.gltf", "start": 3299110, "end": 3300623}, {"filename": "/assets/interiors/alchemy/Potion_4.bin", "start": 3300623, "end": 3323159}, {"filename": "/assets/interiors/alchemy/Potion_4.gltf", "start": 3323159, "end": 3324672}, {"filename": "/assets/interiors/alchemy/Shelf_Small_Bottles.bin", "start": 3324672, "end": 3554156}, {"filename": "/assets/interiors/alchemy/Shelf_Small_Bottles.gltf", "start": 3554156, "end": 3557965}, {"filename": "/assets/interiors/alchemy/SmallBottle.bin", "start": 3557965, "end": 3563665}, {"filename": "/assets/interiors/alchemy/SmallBottle.gltf", "start": 3563665, "end": 3565152}, {"filename": "/assets/interiors/alchemy/SmallBottles_1.bin", "start": 3565152, "end": 3585708}, {"filename": "/assets/interiors/alchemy/SmallBottles_1.gltf", "start": 3585708, "end": 3587226}, {"filename": "/assets/interiors/alchemy/Table_RoundSmall.mtl", "start": 3587226, "end": 3587468}, {"filename": "/assets/interiors/alchemy/Table_RoundSmall.obj", "start": 3587468, "end": 3614004}, {"filename": "/assets/interiors/alchemy/Torch_Metal.bin", "start": 3614004, "end": 3653104}, {"filename": "/assets/interiors/alchemy/Torch_Metal.gltf", "start": 3653104, "end": 3655427}, {"filename": "/assets/interiors/bank/Coin.bin", "start": 3655427, "end": 3669891}, {"filename": "/assets/interiors/bank/Coin.gltf", "start": 3669891, "end": 3671394}, {"filename": "/assets/interiors/bank/Coin_Pile.bin", "start": 3671394, "end": 3718914}, {"filename": "/assets/interiors/bank/Coin_Pile.gltf", "start": 3718914, "end": 3720433}, {"filename": "/assets/interiors/bank/Coin_Pile_2.bin", "start": 3720433, "end": 3773045}, {"filename": "/assets/interiors/bank/Coin_Pile_2.gltf", "start": 3773045, "end": 3774569}, {"filename": "/assets/interiors/bank/Table_Large.bin", "start": 3774569, "end": 3830965}, {"filename": "/assets/interiors/bank/Table_Large.gltf", "start": 3830965, "end": 3833592}, {"filename": "/assets/interiors/bank/VaultDoor.bin", "start": 3833592, "end": 3863880}, {"filename": "/assets/interiors/bank/VaultDoor.gltf", "start": 3863880, "end": 3866061}, {"filename": "/assets/interiors/carpenter/Crate_Wooden.bin", "start": 3866061, "end": 3932557}, {"filename": "/assets/interiors/carpenter/Crate_Wooden.gltf", "start": 3932557, "end": 3935257}, {"filename": "/assets/interiors/carpenter/LumberPile.bin", "start": 3935257, "end": 3942385}, {"filename": "/assets/interiors/carpenter/LumberPile.gltf", "start": 3942385, "end": 3944134}, {"filename": "/assets/interiors/carpenter/Peg_Rack.bin", "start": 3944134, "end": 3970806}, {"filename": "/assets/interiors/carpenter/Peg_Rack.gltf", "start": 3970806, "end": 3974799}, {"filename": "/assets/interiors/carpenter/Sawhorse.bin", "start": 3974799, "end": 3978687}, {"filename": "/assets/interiors/carpenter/Sawhorse.gltf", "start": 3978687, "end": 3980129}, {"filename": "/assets/interiors/carpenter/Workbench.bin", "start": 3980129, "end": 4043537}, {"filename": "/assets/interiors/carpenter/Workbench.gltf", "start": 4043537, "end": 4048071}, {"filename": "/assets/interiors/healer/Bed_Single.mtl", "start": 4048071, "end": 4049018}, {"filename": "/assets/interiors/healer/Bed_Single.obj", "start": 4049018, "end": 4072731}, {"filename": "/assets/interiors/healer/HerbBundle.bin", "start": 4072731, "end": 4082619}, {"filename": "/assets/interiors/healer/HerbBundle.gltf", "start": 4082619, "end": 4084757}, {"filename": "/assets/interiors/healer/MortarPestle.bin", "start": 4084757, "end": 4093205}, {"filename": "/assets/interiors/healer/MortarPestle.gltf", "start": 4093205, "end": 4094555}, {"filename": "/assets/interiors/healer/Potion_1.bin", "start": 4094555, "end": 4112755}, {"filename": "/assets/interiors/healer/Potion_1.gltf", "start": 4112755, "end": 4114268}, {"filename": "/assets/interiors/healer/Shelf_Small1.mtl", "start": 4114268, "end": 4114507}, {"filename": "/assets/interiors/healer/Shelf_Small1.obj", "start": 4114507, "end": 4119024}, {"filename": "/assets/interiors/healer/SmallBottle.bin", "start": 4119024, "end": 4124724}, {"filename": "/assets/interiors/healer/SmallBottle.gltf", "start": 4124724, "end": 4126211}, {"filename": "/assets/interiors/house/Bed_Single.mtl", "start": 4126211, "end": 4127158}, {"filename": "/assets/interiors/house/Bed_Single.obj", "start": 4127158, "end": 4150871}, {"filename": "/assets/interiors/house/Chair_1.mtl", "start": 4150871, "end": 4151104}, {"filename": "/assets/interiors/house/Chair_1.obj", "start": 4151104, "end": 4159372}, {"filename": "/assets/interiors/house/Shelf_1.mtl", "start": 4159372, "end": 4159606}, {"filename": "/assets/interiors/house/Shelf_1.obj", "start": 4159606, "end": 4163022}, {"filename": "/assets/interiors/house/Table_RoundSmall.mtl", "start": 4163022, "end": 4163264}, {"filename": "/assets/interiors/house/Table_RoundSmall.obj", "start": 4163264, "end": 4189800}, {"filename": "/assets/interiors/provisioner/Bag.bin", "start": 4189800, "end": 4216988}, {"filename": "/assets/interiors/provisioner/Bag.gltf", "start": 4216988, "end": 4219617}, {"filename": "/assets/interiors/provisioner/Barrel.bin", "start": 4219617, "end": 4276761}, {"filename": "/assets/interiors/provisioner/Barrel.gltf", "start": 4276761, "end": 4281288}, {"filename": "/assets/interiors/provisioner/Barrel_Apples.bin", "start": 4281288, "end": 4385888}, {"filename": "/assets/interiors/provisioner/Barrel_Apples.gltf", "start": 4385888, "end": 4389672}, {"filename": "/assets/interiors/provisioner/Crate_Wooden.bin", "start": 4389672, "end": 4456168}, {"filename": "/assets/interiors/provisioner/Crate_Wooden.gltf", "start": 4456168, "end": 4458868}, {"filename": "/assets/interiors/provisioner/Pouch_Large.bin", "start": 4458868, "end": 4490448}, {"filename": "/assets/interiors/provisioner/Pouch_Large.gltf", "start": 4490448, "end": 4493081}, {"filename": "/assets/interiors/provisioner/Shelf_1.mtl", "start": 4493081, "end": 4493315}, {"filename": "/assets/interiors/provisioner/Shelf_1.obj", "start": 4493315, "end": 4496731}, {"filename": "/assets/interiors/provisioner/Stall_Cart_Empty.bin", "start": 4496731, "end": 4733995}, {"filename": "/assets/interiors/provisioner/Stall_Cart_Empty.gltf", "start": 4733995, "end": 4738242}, {"filename": "/assets/interiors/smith/Anvil.bin", "start": 4738242, "end": 4762262}, {"filename": "/assets/interiors/smith/Anvil.gltf", "start": 4762262, "end": 4765821}, {"filename": "/assets/interiors/smith/Barrel.bin", "start": 4765821, "end": 4822965}, {"filename": "/assets/interiors/smith/Barrel.gltf", "start": 4822965, "end": 4827492}, {"filename": "/assets/interiors/smith/Bellows.bin", "start": 4827492, "end": 4832028}, {"filename": "/assets/interiors/smith/Bellows.gltf", "start": 4832028, "end": 4835434}, {"filename": "/assets/interiors/smith/Bucket_Metal.bin", "start": 4835434, "end": 4854258}, {"filename": "/assets/interiors/smith/Bucket_Metal.gltf", "start": 4854258, "end": 4856584}, {"filename": "/assets/interiors/smith/Cauldron.bin", "start": 4856584, "end": 4919296}, {"filename": "/assets/interiors/smith/Cauldron.gltf", "start": 4919296, "end": 4921611}, {"filename": "/assets/interiors/smith/Forge.bin", "start": 4921611, "end": 4933275}, {"filename": "/assets/interiors/smith/Forge.gltf", "start": 4933275, "end": 4935845}, {"filename": "/assets/interiors/smith/Peg_Rack.bin", "start": 4935845, "end": 4962517}, {"filename": "/assets/interiors/smith/Peg_Rack.gltf", "start": 4962517, "end": 4966510}, {"filename": "/assets/interiors/smith/Torch_Metal.bin", "start": 4966510, "end": 5005610}, {"filename": "/assets/interiors/smith/Torch_Metal.gltf", "start": 5005610, "end": 5007933}, {"filename": "/assets/interiors/smith/WeaponStand.bin", "start": 5007933, "end": 5084245}, {"filename": "/assets/interiors/smith/WeaponStand.gltf", "start": 5084245, "end": 5088262}, {"filename": "/assets/interiors/smith/Whetstone.bin", "start": 5088262, "end": 5147542}, {"filename": "/assets/interiors/smith/Whetstone.gltf", "start": 5147542, "end": 5154031}, {"filename": "/assets/interiors/smith/Workbench.bin", "start": 5154031, "end": 5217439}, {"filename": "/assets/interiors/smith/Workbench.gltf", "start": 5217439, "end": 5221973}, {"filename": "/assets/interiors/stable/Bucket_Wooden_1.bin", "start": 5221973, "end": 5254517}, {"filename": "/assets/interiors/stable/Bucket_Wooden_1.gltf", "start": 5254517, "end": 5256849}, {"filename": "/assets/interiors/stable/HayBale.bin", "start": 5256849, "end": 5260089}, {"filename": "/assets/interiors/stable/HayBale.gltf", "start": 5260089, "end": 5261463}, {"filename": "/assets/interiors/stable/StallDivider.bin", "start": 5261463, "end": 5264703}, {"filename": "/assets/interiors/stable/StallDivider.gltf", "start": 5264703, "end": 5266061}, {"filename": "/assets/interiors/stable/WaterTrough.bin", "start": 5266061, "end": 5268653}, {"filename": "/assets/interiors/stable/WaterTrough.gltf", "start": 5268653, "end": 5270033}, {"filename": "/assets/interiors/tailor/Banner_1_Cloth.bin", "start": 5270033, "end": 5276669}, {"filename": "/assets/interiors/tailor/Banner_1_Cloth.gltf", "start": 5276669, "end": 5279564}, {"filename": "/assets/interiors/tailor/ClothBolt.bin", "start": 5279564, "end": 5282156}, {"filename": "/assets/interiors/tailor/ClothBolt.gltf", "start": 5282156, "end": 5283713}, {"filename": "/assets/interiors/tailor/Mannequin.bin", "start": 5283713, "end": 5294921}, {"filename": "/assets/interiors/tailor/Mannequin.gltf", "start": 5294921, "end": 5296396}, {"filename": "/assets/interiors/tailor/Shelf_Small1.mtl", "start": 5296396, "end": 5296635}, {"filename": "/assets/interiors/tailor/Shelf_Small1.obj", "start": 5296635, "end": 5301152}, {"filename": "/assets/interiors/townhall/Banner_1_Cloth.bin", "start": 5301152, "end": 5307788}, {"filename": "/assets/interiors/townhall/Banner_1_Cloth.gltf", "start": 5307788, "end": 5310683}, {"filename": "/assets/interiors/townhall/Banner_2_Cloth.bin", "start": 5310683, "end": 5315623}, {"filename": "/assets/interiors/townhall/Banner_2_Cloth.gltf", "start": 5315623, "end": 5318519}, {"filename": "/assets/interiors/townhall/Chair_1.mtl", "start": 5318519, "end": 5318752}, {"filename": "/assets/interiors/townhall/Chair_1.obj", "start": 5318752, "end": 5327020}, {"filename": "/assets/interiors/townhall/Table_RoundLarge.mtl", "start": 5327020, "end": 5327262}, {"filename": "/assets/interiors/townhall/Table_RoundLarge.obj", "start": 5327262, "end": 5350350}, {"filename": "/assets/interiors/townhall/Torch_Metal.bin", "start": 5350350, "end": 5389450}, {"filename": "/assets/interiors/townhall/Torch_Metal.gltf", "start": 5389450, "end": 5391773}, {"filename": "/assets/item_icons/Bardiche.bmp", "start": 5391773, "end": 5404987}, {"filename": "/assets/item_icons/BlackStaff.bmp", "start": 5404987, "end": 5428433}, {"filename": "/assets/item_icons/Bow.bmp", "start": 5428433, "end": 5436231}, {"filename": "/assets/item_icons/Broadsword.bmp", "start": 5436231, "end": 5440509}, {"filename": "/assets/item_icons/ChainTunic.bmp", "start": 5440509, "end": 5628567}, {"filename": "/assets/item_icons/ChainmailGloves.bmp", "start": 5628567, "end": 5813481}, {"filename": "/assets/item_icons/ChainmailLeggings.bmp", "start": 5813481, "end": 6001539}, {"filename": "/assets/item_icons/Club.bmp", "start": 6001539, "end": 6007225}, {"filename": "/assets/item_icons/CompositeBow.bmp", "start": 6007225, "end": 6015023}, {"filename": "/assets/item_icons/Crossbow.bmp", "start": 6015023, "end": 6020885}, {"filename": "/assets/item_icons/Cutlass.bmp", "start": 6020885, "end": 6025295}, {"filename": "/assets/item_icons/GnarledStaff.bmp", "start": 6025295, "end": 6048741}, {"filename": "/assets/item_icons/Halberd.bmp", "start": 6048741, "end": 6061955}, {"filename": "/assets/item_icons/HeavyCrossbow.bmp", "start": 6061955, "end": 6068345}, {"filename": "/assets/item_icons/Katana.bmp", "start": 6068345, "end": 6073283}, {"filename": "/assets/item_icons/Kryss.bmp", "start": 6073283, "end": 6078221}, {"filename": "/assets/item_icons/LeatherGloves.bmp", "start": 6078221, "end": 6263135}, {"filename": "/assets/item_icons/LeatherLeggings.bmp", "start": 6263135, "end": 6451193}, {"filename": "/assets/item_icons/LeatherSleeves.bmp", "start": 6451193, "end": 6639251}, {"filename": "/assets/item_icons/LeatherTunic.bmp", "start": 6639251, "end": 6827309}, {"filename": "/assets/item_icons/Longsword.bmp", "start": 6827309, "end": 6832247}, {"filename": "/assets/item_icons/Mace.bmp", "start": 6832247, "end": 6838989}, {"filename": "/assets/item_icons/Maul.bmp", "start": 6838989, "end": 6846435}, {"filename": "/assets/item_icons/Pitchfork.bmp", "start": 6846435, "end": 6863429}, {"filename": "/assets/item_icons/PlateArms.bmp", "start": 6863429, "end": 7051487}, {"filename": "/assets/item_icons/PlateChest.bmp", "start": 7051487, "end": 7239545}, {"filename": "/assets/item_icons/PlateGloves.bmp", "start": 7239545, "end": 7424459}, {"filename": "/assets/item_icons/PlateLegs.bmp", "start": 7424459, "end": 7612517}, {"filename": "/assets/item_icons/PotionDamage.bmp", "start": 7612517, "end": 7620599}, {"filename": "/assets/item_icons/PotionHeal.bmp", "start": 7620599, "end": 7628681}, {"filename": "/assets/item_icons/PotionPoison.bmp", "start": 7628681, "end": 7636763}, {"filename": "/assets/item_icons/PotionStamina.bmp", "start": 7636763, "end": 7644845}, {"filename": "/assets/item_icons/Quarterstaff.bmp", "start": 7644845, "end": 7668291}, {"filename": "/assets/item_icons/RingMailLeggings.bmp", "start": 7668291, "end": 7856349}, {"filename": "/assets/item_icons/RingMailSleeves.bmp", "start": 7856349, "end": 8044407}, {"filename": "/assets/item_icons/RingMailTunic.bmp", "start": 8044407, "end": 8232465}, {"filename": "/assets/item_icons/Scimitar.bmp", "start": 8232465, "end": 8237799}, {"filename": "/assets/item_icons/ShepherdsCrook.bmp", "start": 8237799, "end": 8266189}, {"filename": "/assets/item_icons/ShortSpear.bmp", "start": 8266189, "end": 8276243}, {"filename": "/assets/item_icons/Spear.bmp", "start": 8276243, "end": 8302557}, {"filename": "/assets/item_icons/StuddedGloves.bmp", "start": 8302557, "end": 8487471}, {"filename": "/assets/item_icons/StuddedLeggings.bmp", "start": 8487471, "end": 8675529}, {"filename": "/assets/item_icons/StuddedSleeves.bmp", "start": 8675529, "end": 8863587}, {"filename": "/assets/item_icons/StuddedTunic.bmp", "start": 8863587, "end": 9051645}, {"filename": "/assets/item_icons/VikingSword.bmp", "start": 9051645, "end": 9056847}, {"filename": "/assets/item_icons/WarAxe.bmp", "start": 9056847, "end": 9062577}, {"filename": "/assets/item_icons/WarFork.bmp", "start": 9062577, "end": 9070199}, {"filename": "/assets/item_icons/WarHammer.bmp", "start": 9070199, "end": 9074609}, {"filename": "/assets/knight/attack1.png", "start": 9074609, "end": 9101353}, {"filename": "/assets/knight/attack2.png", "start": 9101353, "end": 9128073}, {"filename": "/assets/knight/defend.png", "start": 9128073, "end": 9152097}, {"filename": "/assets/knight/hurt.png", "start": 9152097, "end": 9175560}, {"filename": "/assets/knight/idle.png", "start": 9175560, "end": 9201364}, {"filename": "/assets/knight/protect.png", "start": 9201364, "end": 9223592}, {"filename": "/assets/models/Prop_Chimney.bin", "start": 9223592, "end": 9244068}, {"filename": "/assets/models/Prop_Chimney.gltf", "start": 9244068, "end": 9247911}, {"filename": "/assets/models/Prop_Crate.bin", "start": 9247911, "end": 9264011}, {"filename": "/assets/models/Prop_Crate.gltf", "start": 9264011, "end": 9266222}, {"filename": "/assets/models/Prop_Vine1.bin", "start": 9266222, "end": 9271802}, {"filename": "/assets/models/Prop_Vine1.gltf", "start": 9271802, "end": 9273781}, {"filename": "/assets/models/Prop_Wagon.bin", "start": 9273781, "end": 9377053}, {"filename": "/assets/models/Prop_Wagon.gltf", "start": 9377053, "end": 9379475}, {"filename": "/assets/models/Prop_WoodenFence_Extension1.bin", "start": 9379475, "end": 9381715}, {"filename": "/assets/models/Prop_WoodenFence_Extension1.gltf", "start": 9381715, "end": 9383951}, {"filename": "/assets/models/Prop_WoodenFence_Single.bin", "start": 9383951, "end": 9386751}, {"filename": "/assets/models/Prop_WoodenFence_Single.gltf", "start": 9386751, "end": 9388981}, {"filename": "/assets/models/README.md", "start": 9388981, "end": 9394151}, {"filename": "/assets/models/Roof_RoundTiles_4x4.bin", "start": 9394151, "end": 9501327}, {"filename": "/assets/models/Roof_RoundTiles_4x4.gltf", "start": 9501327, "end": 9505664}, {"filename": "/assets/models/Roof_RoundTiles_4x6.bin", "start": 9505664, "end": 9635504}, {"filename": "/assets/models/Roof_RoundTiles_4x6.gltf", "start": 9635504, "end": 9639845}, {"filename": "/assets/models/T_Brick_BaseColor.png", "start": 9639845, "end": 9893382}, {"filename": "/assets/models/T_Brick_Normal.png", "start": 9893382, "end": 10251620}, {"filename": "/assets/models/T_Brick_Roughness.png", "start": 10251620, "end": 10311486}, {"filename": "/assets/models/T_Plaster_BaseColor.png", "start": 10311486, "end": 10561161}, {"filename": "/assets/models/T_Plaster_Normal.png", "start": 10561161, "end": 10849661}, {"filename": "/assets/models/T_Plaster_ORM.png", "start": 10849661, "end": 11023452}, {"filename": "/assets/models/T_RockTrim_BaseColor.png", "start": 11023452, "end": 11244320}, {"filename": "/assets/models/T_RockTrim_Normal.png", "start": 11244320, "end": 11552579}, {"filename": "/assets/models/T_RockTrim_ORM.png", "start": 11552579, "end": 11659972}, {"filename": "/assets/models/T_RoundTiles_BaseColor.png", "start": 11659972, "end": 11950622}, {"filename": "/assets/models/T_RoundTiles_Normal.png", "start": 11950622, "end": 12158583}, {"filename": "/assets/models/T_RoundTiles_Roughness.png", "start": 12158583, "end": 12260093}, {"filename": "/assets/models/T_UnevenBrick_BaseColor.png", "start": 12260093, "end": 12543157}, {"filename": "/assets/models/T_UnevenBrick_Normal.png", "start": 12543157, "end": 12851898}, {"filename": "/assets/models/T_UnevenBrick_Roughness.png", "start": 12851898, "end": 12953482}, {"filename": "/assets/models/T_VineLeaf_png.png", "start": 12953482, "end": 13067983}, {"filename": "/assets/models/T_WoodTrim_BaseColor.png", "start": 13067983, "end": 13306282}, {"filename": "/assets/models/T_WoodTrim_Normal.png", "start": 13306282, "end": 13592901}, {"filename": "/assets/models/T_WoodTrim_Roughness.png", "start": 13592901, "end": 13743710}, {"filename": "/assets/models/Wall_Plaster_Door_Flat.bin", "start": 13743710, "end": 13750502}, {"filename": "/assets/models/Wall_Plaster_Door_Flat.gltf", "start": 13750502, "end": 13756444}, {"filename": "/assets/models/Wall_Plaster_Straight.bin", "start": 13756444, "end": 13762320}, {"filename": "/assets/models/Wall_Plaster_Straight.gltf", "start": 13762320, "end": 13766489}, {"filename": "/assets/models/Wall_Plaster_Window_Wide_Flat.bin", "start": 13766489, "end": 13771865}, {"filename": "/assets/models/Wall_Plaster_Window_Wide_Flat.gltf", "start": 13771865, "end": 13777829}, {"filename": "/assets/models/Wall_UnevenBrick_Door_Flat.bin", "start": 13777829, "end": 13781345}, {"filename": "/assets/models/Wall_UnevenBrick_Door_Flat.gltf", "start": 13781345, "end": 13786751}, {"filename": "/assets/models/Wall_UnevenBrick_Straight.bin", "start": 13786751, "end": 13789519}, {"filename": "/assets/models/Wall_UnevenBrick_Straight.gltf", "start": 13789519, "end": 13794911}, {"filename": "/assets/models/Wall_UnevenBrick_Window_Wide_Flat.bin", "start": 13794911, "end": 13799519}, {"filename": "/assets/models/Wall_UnevenBrick_Window_Wide_Flat.gltf", "start": 13799519, "end": 13805523}, {"filename": "/assets/models/barrel_small.glb", "start": 13805523, "end": 13837583}, {"filename": "/assets/models/chest.glb", "start": 13837583, "end": 13918995}, {"filename": "/assets/models/plant_bush.glb", "start": 13918995, "end": 13923391}, {"filename": "/assets/models/rock_largeA.glb", "start": 13923391, "end": 13930943}, {"filename": "/assets/models/rock_largeB.glb", "start": 13930943, "end": 13939503}, {"filename": "/assets/models/rock_largeC.glb", "start": 13939503, "end": 13946507}, {"filename": "/assets/models/rock_smallA.glb", "start": 13946507, "end": 13949551}, {"filename": "/assets/models/rock_smallB.glb", "start": 13949551, "end": 13953079}, {"filename": "/assets/models/rock_smallC.glb", "start": 13953079, "end": 13956123}, {"filename": "/assets/models/stump_roundDetailed.glb", "start": 13956123, "end": 13964311}, {"filename": "/assets/models/tree_default.glb", "start": 13964311, "end": 13973739}, {"filename": "/assets/models/tree_detailed.glb", "start": 13973739, "end": 14005151}, {"filename": "/assets/models/tree_fat.glb", "start": 14005151, "end": 14010727}, {"filename": "/assets/models/tree_oak.glb", "start": 14010727, "end": 14025371}, {"filename": "/assets/models/tree_pineDefaultA.glb", "start": 14025371, "end": 14042591}, {"filename": "/assets/monsters/bat.png", "start": 14042591, "end": 14042786}, {"filename": "/assets/monsters/bloodtusk.png", "start": 14042786, "end": 14043246}, {"filename": "/assets/monsters/emberveil.png", "start": 14043246, "end": 14043749}, {"filename": "/assets/monsters/ghost.png", "start": 14043749, "end": 14043938}, {"filename": "/assets/monsters/hollowwarrens.png", "start": 14043938, "end": 14044519}, {"filename": "/assets/monsters/orc.png", "start": 14044519, "end": 14044722}, {"filename": "/assets/monsters/slime.png", "start": 14044722, "end": 14044911}, {"filename": "/assets/monsters/sunkencrypt.png", "start": 14044911, "end": 14045148}, {"filename": "/assets/monsters/wyrmscar.png", "start": 14045148, "end": 14046098}, {"filename": "/assets/monsters_boss/bloodtusk.png", "start": 14046098, "end": 14047227}, {"filename": "/assets/monsters_boss/emberveil.png", "start": 14047227, "end": 14047759}, {"filename": "/assets/monsters_boss/hollowwarrens.png", "start": 14047759, "end": 14048221}, {"filename": "/assets/monsters_boss/sunkencrypt.png", "start": 14048221, "end": 14048697}, {"filename": "/assets/monsters_boss/wyrmscar.png", "start": 14048697, "end": 14049228}, {"filename": "/assets/monsters_boss_v2/bloodtusk.png", "start": 14049228, "end": 14394766}, {"filename": "/assets/monsters_boss_v2/emberveil.png", "start": 14394766, "end": 14914197}, {"filename": "/assets/monsters_boss_v2/hollowwarrens.png", "start": 14914197, "end": 15182941}, {"filename": "/assets/monsters_boss_v2/sunkencrypt.png", "start": 15182941, "end": 15741799}, {"filename": "/assets/monsters_boss_v2/wyrmscar.png", "start": 15741799, "end": 16022351}, {"filename": "/assets/monsters_v2/bloodtusk.png", "start": 16022351, "end": 16333069}, {"filename": "/assets/monsters_v2/emberveil.png", "start": 16333069, "end": 17227346}, {"filename": "/assets/monsters_v2/hollowwarrens.png", "start": 17227346, "end": 17509494}, {"filename": "/assets/monsters_v2/sunkencrypt.png", "start": 17509494, "end": 17868289}, {"filename": "/assets/monsters_v2/wyrmscar.png", "start": 17868289, "end": 18124695}, {"filename": "/assets/npcs_v2/captain_ysolde.png", "start": 18124695, "end": 18781338}, {"filename": "/assets/npcs_v2/cobb_stableboy.png", "start": 18781338, "end": 19238545}, {"filename": "/assets/npcs_v2/dockhand_fenn.png", "start": 19238545, "end": 19686788}, {"filename": "/assets/npcs_v2/harbormaster_thane.png", "start": 19686788, "end": 20147403}, {"filename": "/assets/npcs_v2/nessa_netmender.png", "start": 20147403, "end": 20728015}, {"filename": "/assets/npcs_v2/old_corwin.png", "start": 20728015, "end": 21235048}, {"filename": "/assets/npcs_v2/old_miran.png", "start": 21235048, "end": 21852307}, {"filename": "/assets/npcs_v2/salty_bjorn.png", "start": 21852307, "end": 22391359}, {"filename": "/assets/npcs_v2/sister_meraude.png", "start": 22391359, "end": 22861420}, {"filename": "/assets/npcs_v2/widow_aelith.png", "start": 22861420, "end": 23211720}, {"filename": "/assets/npcs_v2/wystan_baker.png", "start": 23211720, "end": 23828886}, {"filename": "/assets/npcs_v2/young_petra.png", "start": 23828886, "end": 24284339}, {"filename": "/assets/paperdoll/arms/chainmail.png", "start": 24284339, "end": 24286670}, {"filename": "/assets/paperdoll/arms/leather.png", "start": 24286670, "end": 24289060}, {"filename": "/assets/paperdoll/arms/plate.png", "start": 24289060, "end": 24291614}, {"filename": "/assets/paperdoll/arms/ringmail.png", "start": 24291614, "end": 24293859}, {"filename": "/assets/paperdoll/arms/studded.png", "start": 24293859, "end": 24296310}, {"filename": "/assets/paperdoll/base/human_male.png", "start": 24296310, "end": 24306563}, {"filename": "/assets/paperdoll/body/chainmail.png", "start": 24306563, "end": 24313540}, {"filename": "/assets/paperdoll/body/leather_armor.png", "start": 24313540, "end": 24320323}, {"filename": "/assets/paperdoll/body/leather_stud.png", "start": 24320323, "end": 24327316}, {"filename": "/assets/paperdoll/body/plate.png", "start": 24327316, "end": 24334129}, {"filename": "/assets/paperdoll/body/ringmail.png", "start": 24334129, "end": 24340402}, {"filename": "/assets/paperdoll/boots/middle_brown.png", "start": 24340402, "end": 24342735}, {"filename": "/assets/paperdoll/brown_1.png", "start": 24342735, "end": 24344638}, {"filename": "/assets/paperdoll/gloves/gauntlet_blue.png", "start": 24344638, "end": 24347381}, {"filename": "/assets/paperdoll/gloves/glove_black.png", "start": 24347381, "end": 24350024}, {"filename": "/assets/paperdoll/gloves/glove_brown.png", "start": 24350024, "end": 24352609}, {"filename": "/assets/paperdoll/gloves/glove_gold.png", "start": 24352609, "end": 24355378}, {"filename": "/assets/paperdoll/gloves/glove_gray.png", "start": 24355378, "end": 24357823}, {"filename": "/assets/paperdoll/gorget/leather.png", "start": 24357823, "end": 24359142}, {"filename": "/assets/paperdoll/gorget/plate.png", "start": 24359142, "end": 24360645}, {"filename": "/assets/paperdoll/gorget/studded.png", "start": 24360645, "end": 24362058}, {"filename": "/assets/paperdoll/hair/brown_1.png", "start": 24362058, "end": 24363280}, {"filename": "/assets/paperdoll/hand_right/bow.png", "start": 24363280, "end": 24363452}, {"filename": "/assets/paperdoll/hand_right/bow_2.png", "start": 24363452, "end": 24363636}, {"filename": "/assets/paperdoll/hand_right/bow_3.png", "start": 24363636, "end": 24363836}, {"filename": "/assets/paperdoll/hand_right/broadsword.png", "start": 24363836, "end": 24364109}, {"filename": "/assets/paperdoll/hand_right/club.png", "start": 24364109, "end": 24364304}, {"filename": "/assets/paperdoll/hand_right/crossbow.png", "start": 24364304, "end": 24364599}, {"filename": "/assets/paperdoll/hand_right/crossbow_3.png", "start": 24364599, "end": 24364812}, {"filename": "/assets/paperdoll/hand_right/fork_2.png", "start": 24364812, "end": 24364998}, {"filename": "/assets/paperdoll/hand_right/glaive_new.png", "start": 24364998, "end": 24365220}, {"filename": "/assets/paperdoll/hand_right/great_mace.png", "start": 24365220, "end": 24365443}, {"filename": "/assets/paperdoll/hand_right/halberd_new.png", "start": 24365443, "end": 24365683}, {"filename": "/assets/paperdoll/hand_right/heavy_sword.png", "start": 24365683, "end": 24365911}, {"filename": "/assets/paperdoll/hand_right/katana.png", "start": 24365911, "end": 24366110}, {"filename": "/assets/paperdoll/hand_right/large_mace.png", "start": 24366110, "end": 24366323}, {"filename": "/assets/paperdoll/hand_right/long_sword.png", "start": 24366323, "end": 24366501}, {"filename": "/assets/paperdoll/hand_right/mace_new.png", "start": 24366501, "end": 24366691}, {"filename": "/assets/paperdoll/hand_right/pole_forked.png", "start": 24366691, "end": 24366934}, {"filename": "/assets/paperdoll/hand_right/quarterstaff.png", "start": 24366934, "end": 24367106}, {"filename": "/assets/paperdoll/hand_right/rapier.png", "start": 24367106, "end": 24367323}, {"filename": "/assets/paperdoll/hand_right/sabre.png", "start": 24367323, "end": 24367533}, {"filename": "/assets/paperdoll/hand_right/scimitar_new.png", "start": 24367533, "end": 24367786}, {"filename": "/assets/paperdoll/hand_right/spear.png", "start": 24367786, "end": 24367990}, {"filename": "/assets/paperdoll/hand_right/spear_1.png", "start": 24367990, "end": 24368156}, {"filename": "/assets/paperdoll/hand_right/staff_evil.png", "start": 24368156, "end": 24368451}, {"filename": "/assets/paperdoll/hand_right/staff_organic.png", "start": 24368451, "end": 24368758}, {"filename": "/assets/paperdoll/hand_right/staff_plain.png", "start": 24368758, "end": 24368946}, {"filename": "/assets/paperdoll/hand_right/war_axe_new.png", "start": 24368946, "end": 24369167}, {"filename": "/assets/paperdoll/head/cap_black_1.png", "start": 24369167, "end": 24369369}, {"filename": "/assets/paperdoll/head/chain.png", "start": 24369369, "end": 24370349}, {"filename": "/assets/paperdoll/head/hood_ybrown.png", "start": 24370349, "end": 24372151}, {"filename": "/assets/paperdoll/head/iron_1.png", "start": 24372151, "end": 24373841}, {"filename": "/assets/paperdoll/human_male.png", "start": 24373841, "end": 24386917}, {"filename": "/assets/paperdoll/legs/leg_armor_1.png", "start": 24386917, "end": 24390479}, {"filename": "/assets/paperdoll/legs/leg_armor_2.png", "start": 24390479, "end": 24393672}, {"filename": "/assets/paperdoll/legs/leg_armor_4.png", "start": 24393672, "end": 24397676}, {"filename": "/assets/paperdoll/legs/pants_black.png", "start": 24397676, "end": 24401666}, {"filename": "/assets/paperdoll/legs/pants_brown.png", "start": 24401666, "end": 24405954}, {"filename": "/assets/paperdoll/middle_brown.png", "start": 24405954, "end": 24409111}, {"filename": "/assets/player.png", "start": 24409111, "end": 24409825}, {"filename": "/assets/saltmere_buildings/alchemy.png", "start": 24409825, "end": 24627246}, {"filename": "/assets/saltmere_buildings/bank.png", "start": 24627246, "end": 25072277}, {"filename": "/assets/saltmere_buildings/carpenter.png", "start": 25072277, "end": 25272013}, {"filename": "/assets/saltmere_buildings/healer.png", "start": 25272013, "end": 25686433}, {"filename": "/assets/saltmere_buildings/house.png", "start": 25686433, "end": 26170469}, {"filename": "/assets/saltmere_buildings/provisioner.png", "start": 26170469, "end": 26548982}, {"filename": "/assets/saltmere_buildings/smith.png", "start": 26548982, "end": 26980442}, {"filename": "/assets/saltmere_buildings/stable.png", "start": 26980442, "end": 27278276}, {"filename": "/assets/saltmere_buildings/tailor.png", "start": 27278276, "end": 27673893}, {"filename": "/assets/saltmere_buildings/townhall.png", "start": 27673893, "end": 28067586}, {"filename": "/assets/shaders/grass.vs", "start": 28067586, "end": 28069333}, {"filename": "/assets/shaders/shadowmap.fs", "start": 28069333, "end": 28073335}, {"filename": "/assets/shaders/shadowmap.vs", "start": 28073335, "end": 28074398}, {"filename": "/assets/shaders/torchlight.fs", "start": 28074398, "end": 28076959}, {"filename": "/assets/shaders/torchlight.vs", "start": 28076959, "end": 28077958}, {"filename": "/assets/skeleton/attack1.png", "start": 28077958, "end": 28103166}, {"filename": "/assets/skeleton/hurt.png", "start": 28103166, "end": 28123829}, {"filename": "/assets/skeleton/idle.png", "start": 28123829, "end": 28146721}, {"filename": "/assets/spell_icons/ArcBolt.bmp", "start": 28146721, "end": 28152583}, {"filename": "/assets/spell_icons/BlessingOfVigor.bmp", "start": 28152583, "end": 28158445}, {"filename": "/assets/spell_icons/CloudMind.bmp", "start": 28158445, "end": 28164307}, {"filename": "/assets/spell_icons/Detonation.bmp", "start": 28164307, "end": 28170169}, {"filename": "/assets/spell_icons/EmberBurst.bmp", "start": 28170169, "end": 28176031}, {"filename": "/assets/spell_icons/FumblingCurse.bmp", "start": 28176031, "end": 28181893}, {"filename": "/assets/spell_icons/GreaterMending.bmp", "start": 28181893, "end": 28187755}, {"filename": "/assets/spell_icons/InfernoStrike.bmp", "start": 28187755, "end": 28193617}, {"filename": "/assets/spell_icons/MendingWord.bmp", "start": 28193617, "end": 28199479}, {"filename": "/assets/spell_icons/PsychicShatter.bmp", "start": 28199479, "end": 28205341}, {"filename": "/assets/spell_icons/SapStrength.bmp", "start": 28205341, "end": 28211203}, {"filename": "/assets/spell_icons/SparkDart.bmp", "start": 28211203, "end": 28217065}, {"filename": "/assets/spell_icons/StormLance.bmp", "start": 28217065, "end": 28222927}, {"filename": "/assets/spell_icons/SummonFiend.bmp", "start": 28222927, "end": 28228789}, {"filename": "/assets/spell_icons/VenomSting.bmp", "start": 28228789, "end": 28234651}, {"filename": "/assets/spell_icons/WoundingTouch.bmp", "start": 28234651, "end": 28240513}, {"filename": "/assets/spellbook_icons/spell_buff.png", "start": 28240513, "end": 28244226}, {"filename": "/assets/spellbook_icons/spell_debuff.png", "start": 28244226, "end": 28248246}, {"filename": "/assets/spellbook_icons/spell_offensive.png", "start": 28248246, "end": 28252461}, {"filename": "/assets/spellbook_icons/spell_utility.png", "start": 28252461, "end": 28256929}, {"filename": "/assets/town_buildings/alchemy.png", "start": 28256929, "end": 28643661}, {"filename": "/assets/town_buildings/bank.png", "start": 28643661, "end": 28998095}, {"filename": "/assets/town_buildings/carpenter.png", "start": 28998095, "end": 29295857}, {"filename": "/assets/town_buildings/healer.png", "start": 29295857, "end": 29650907}, {"filename": "/assets/town_buildings/house.png", "start": 29650907, "end": 29771277}, {"filename": "/assets/town_buildings/provisioner.png", "start": 29771277, "end": 30157574}, {"filename": "/assets/town_buildings/smith.png", "start": 30157574, "end": 30480284}, {"filename": "/assets/town_buildings/stable.png", "start": 30480284, "end": 30760653}, {"filename": "/assets/town_buildings/tailor.png", "start": 30760653, "end": 31146884}, {"filename": "/assets/town_buildings/townhall.png", "start": 31146884, "end": 31455976}, {"filename": "/assets/village/anvil.png", "start": 31455976, "end": 31457105}, {"filename": "/assets/village/autumnbush.png", "start": 31457105, "end": 31459554}, {"filename": "/assets/village/barrel.png", "start": 31459554, "end": 31460891}, {"filename": "/assets/village/bookshelf.png", "start": 31460891, "end": 31461058}, {"filename": "/assets/village/chest.png", "start": 31461058, "end": 31461254}, {"filename": "/assets/village/chicken.png", "start": 31461254, "end": 31461476}, {"filename": "/assets/village/cow.png", "start": 31461476, "end": 31461707}, {"filename": "/assets/village/crate.png", "start": 31461707, "end": 31462796}, {"filename": "/assets/village/door_alchemy.png", "start": 31462796, "end": 31465667}, {"filename": "/assets/village/door_carpenter.png", "start": 31465667, "end": 31467732}, {"filename": "/assets/village/door_smith.png", "start": 31467732, "end": 31469635}, {"filename": "/assets/village/door_tailor.png", "start": 31469635, "end": 31472310}, {"filename": "/assets/village/farmland.png", "start": 31472310, "end": 31472772}, {"filename": "/assets/village/fencepost.png", "start": 31472772, "end": 31473169}, {"filename": "/assets/village/fountain.png", "start": 31473169, "end": 31475137}, {"filename": "/assets/village/lumberpile.png", "start": 31475137, "end": 31476293}, {"filename": "/assets/village/potion_purple.png", "start": 31476293, "end": 31476469}, {"filename": "/assets/village/potion_red.png", "start": 31476469, "end": 31476651}, {"filename": "/assets/village/sheep.png", "start": 31476651, "end": 31476875}, {"filename": "/assets/village/sign_smith.png", "start": 31476875, "end": 31478036}, {"filename": "/assets/village/stall1.png", "start": 31478036, "end": 31479834}, {"filename": "/assets/village/stall2.png", "start": 31479834, "end": 31481391}, {"filename": "/assets/village/stall3.png", "start": 31481391, "end": 31482979}, {"filename": "/assets/village/statue.png", "start": 31482979, "end": 31484625}, {"filename": "/assets/village/streetlamp.png", "start": 31484625, "end": 31485899}, {"filename": "/assets/village/well.png", "start": 31485899, "end": 31487499}, {"filename": "/assets/wilderness/bear.png", "start": 31487499, "end": 31488151}, {"filename": "/assets/wilderness/bison.png", "start": 31488151, "end": 31519396}, {"filename": "/assets/wilderness/bush1.png", "start": 31519396, "end": 31521563}, {"filename": "/assets/wilderness/bush2.png", "start": 31521563, "end": 31523859}, {"filename": "/assets/wilderness/dog.png", "start": 31523859, "end": 31524552}, {"filename": "/assets/wilderness/dragon.png", "start": 31524552, "end": 31525502}, {"filename": "/assets/wilderness/drake.png", "start": 31525502, "end": 31545894}, {"filename": "/assets/wilderness/fern1.png", "start": 31545894, "end": 31548945}, {"filename": "/assets/wilderness/griffin.png", "start": 31548945, "end": 31549617}, {"filename": "/assets/wilderness/horse.png", "start": 31549617, "end": 31566276}, {"filename": "/assets/wilderness/ore1.png", "start": 31566276, "end": 31569194}, {"filename": "/assets/wilderness/ore2.png", "start": 31569194, "end": 31572328}, {"filename": "/assets/wilderness/ore3.png", "start": 31572328, "end": 31575553}, {"filename": "/assets/wilderness/panther.png", "start": 31575553, "end": 31586986}, {"filename": "/assets/wilderness/rock.png", "start": 31586986, "end": 31587320}, {"filename": "/assets/wilderness/sabertooth.png", "start": 31587320, "end": 31607190}, {"filename": "/assets/wilderness/tree.png", "start": 31607190, "end": 31611406}, {"filename": "/assets/wilderness/wild_bandit.png", "start": 31611406, "end": 31611805}, {"filename": "/assets/wilderness/wild_bat.png", "start": 31611805, "end": 31612196}, {"filename": "/assets/wilderness/wild_goblin.png", "start": 31612196, "end": 31613258}, {"filename": "/assets/wilderness/wild_imp.png", "start": 31613258, "end": 31614099}, {"filename": "/assets/wilderness/wild_wolf.png", "start": 31614099, "end": 31615987}, {"filename": "/assets/wilderness/wolf.png", "start": 31615987, "end": 31616699}, {"filename": "/assets/wilderness/wyvern.png", "start": 31616699, "end": 31647833}, {"filename": "/assets/wilderness_entrances/bloodtusk.png", "start": 31647833, "end": 31648330}, {"filename": "/assets/wilderness_entrances/emberveil.png", "start": 31648330, "end": 31648867}, {"filename": "/assets/wilderness_entrances/hollowwarrens.png", "start": 31648867, "end": 31649640}, {"filename": "/assets/wilderness_entrances/sunkencrypt.png", "start": 31649640, "end": 31650130}, {"filename": "/assets/wilderness_entrances/wyrmscar.png", "start": 31650130, "end": 31650605}, {"filename": "/assets/wilderness_props/bush.png", "start": 31650605, "end": 31656520}, {"filename": "/assets/wilderness_props/cactus.png", "start": 31656520, "end": 31660149}, {"filename": "/assets/wilderness_props/chest.png", "start": 31660149, "end": 31668973}, {"filename": "/assets/wilderness_props/deerskull.png", "start": 31668973, "end": 31675011}, {"filename": "/assets/wilderness_props/fence.png", "start": 31675011, "end": 31681177}, {"filename": "/assets/wilderness_props/grass.png", "start": 31681177, "end": 31691163}, {"filename": "/assets/wilderness_props/haybale.png", "start": 31691163, "end": 31699576}, {"filename": "/assets/wilderness_props/plant.png", "start": 31699576, "end": 31703836}, {"filename": "/assets/wilderness_props/rocks.png", "start": 31703836, "end": 31710087}, {"filename": "/assets/wilderness_props/water.png", "start": 31710087, "end": 31716858}, {"filename": "/assets/wilderness_v2/creatures/bear.png", "start": 31716858, "end": 32211628}, {"filename": "/assets/wilderness_v2/creatures/bison.png", "start": 32211628, "end": 32740314}, {"filename": "/assets/wilderness_v2/creatures/dog.png", "start": 32740314, "end": 33167688}, {"filename": "/assets/wilderness_v2/creatures/dragon.png", "start": 33167688, "end": 33693271}, {"filename": "/assets/wilderness_v2/creatures/drake.png", "start": 33693271, "end": 34038403}, {"filename": "/assets/wilderness_v2/creatures/griffin.png", "start": 34038403, "end": 34595435}, {"filename": "/assets/wilderness_v2/creatures/horse.png", "start": 34595435, "end": 34856973}, {"filename": "/assets/wilderness_v2/creatures/panther.png", "start": 34856973, "end": 34982366}, {"filename": "/assets/wilderness_v2/creatures/sabertooth.png", "start": 34982366, "end": 35140381}, {"filename": "/assets/wilderness_v2/creatures/wolf.png", "start": 35140381, "end": 35355585}, {"filename": "/assets/wilderness_v2/creatures/wyvern.png", "start": 35355585, "end": 35677859}, {"filename": "/assets/wilderness_v2/monsters/bandit.png", "start": 35677859, "end": 36221672}, {"filename": "/assets/wilderness_v2/monsters/bat.png", "start": 36221672, "end": 36529476}, {"filename": "/assets/wilderness_v2/monsters/goblin.png", "start": 36529476, "end": 37323308}, {"filename": "/assets/wilderness_v2/monsters/imp.png", "start": 37323308, "end": 37727260}, {"filename": "/assets/wilderness_v2/monsters/wolf.png", "start": 37727260, "end": 37815750}, {"filename": "/assets/wilderness_v2/rival_adventurer.png", "start": 37815750, "end": 38113999}], "remote_package_size": 38113999});
+    loadPackage({"files": [{"filename": "/assets/buildings/alchemy.png", "start": 0, "end": 758}, {"filename": "/assets/buildings/bank.png", "start": 758, "end": 1605}, {"filename": "/assets/buildings/carpenter.png", "start": 1605, "end": 1996}, {"filename": "/assets/buildings/door.png", "start": 1996, "end": 3954}, {"filename": "/assets/buildings/healer.png", "start": 3954, "end": 4136}, {"filename": "/assets/buildings/provisioner.png", "start": 4136, "end": 4744}, {"filename": "/assets/buildings/smith.png", "start": 4744, "end": 5360}, {"filename": "/assets/buildings/stable.png", "start": 5360, "end": 6012}, {"filename": "/assets/buildings/tailor.png", "start": 6012, "end": 6668}, {"filename": "/assets/buildings/townhall.png", "start": 6668, "end": 7262}, {"filename": "/assets/dungeon/floor.png", "start": 7262, "end": 9622}, {"filename": "/assets/dungeon/wall.png", "start": 9622, "end": 9783}, {"filename": "/assets/dungeon_themed/alchemy_floor.png", "start": 9783, "end": 10921}, {"filename": "/assets/dungeon_themed/alchemy_wall.png", "start": 10921, "end": 11374}, {"filename": "/assets/dungeon_themed/bloodtusk_floor.png", "start": 11374, "end": 11944}, {"filename": "/assets/dungeon_themed/bloodtusk_wall.png", "start": 11944, "end": 12724}, {"filename": "/assets/dungeon_themed/carpenter_floor.png", "start": 12724, "end": 13865}, {"filename": "/assets/dungeon_themed/carpenter_wall.png", "start": 13865, "end": 14790}, {"filename": "/assets/dungeon_themed/emberveil_brazier.png", "start": 14790, "end": 15396}, {"filename": "/assets/dungeon_themed/emberveil_floor.png", "start": 15396, "end": 16515}, {"filename": "/assets/dungeon_themed/emberveil_wall.png", "start": 16515, "end": 17824}, {"filename": "/assets/dungeon_themed/hollowwarrens_floor.png", "start": 17824, "end": 17985}, {"filename": "/assets/dungeon_themed/hollowwarrens_rug.png", "start": 17985, "end": 20005}, {"filename": "/assets/dungeon_themed/hollowwarrens_torch.png", "start": 20005, "end": 20315}, {"filename": "/assets/dungeon_themed/hollowwarrens_wall.png", "start": 20315, "end": 20450}, {"filename": "/assets/dungeon_themed/provisioner_floor.png", "start": 20450, "end": 21600}, {"filename": "/assets/dungeon_themed/provisioner_wall.png", "start": 21600, "end": 22402}, {"filename": "/assets/dungeon_themed/smith_floor.png", "start": 22402, "end": 22849}, {"filename": "/assets/dungeon_themed/smith_wall.png", "start": 22849, "end": 23974}, {"filename": "/assets/dungeon_themed/sunkencrypt_floor.png", "start": 23974, "end": 24883}, {"filename": "/assets/dungeon_themed/sunkencrypt_wall.png", "start": 24883, "end": 25925}, {"filename": "/assets/dungeon_themed/sunkencrypt_water.png", "start": 25925, "end": 26342}, {"filename": "/assets/dungeon_themed/tailor_floor.png", "start": 26342, "end": 27221}, {"filename": "/assets/dungeon_themed/tailor_wall.png", "start": 27221, "end": 28034}, {"filename": "/assets/dungeon_themed/wyrmscar_floor.png", "start": 28034, "end": 29262}, {"filename": "/assets/dungeon_themed/wyrmscar_wall.png", "start": 29262, "end": 29743}, {"filename": "/assets/fonts/Nunito.ttf", "start": 29743, "end": 306675}, {"filename": "/assets/gear_icons/amulet.png", "start": 306675, "end": 310535}, {"filename": "/assets/gear_icons/gauntlet.png", "start": 310535, "end": 315392}, {"filename": "/assets/gear_icons/helmet.png", "start": 315392, "end": 323876}, {"filename": "/assets/gear_icons/shield.png", "start": 323876, "end": 335299}, {"filename": "/assets/gear_icons/shield2.png", "start": 335299, "end": 346531}, {"filename": "/assets/gear_icons/sword.png", "start": 346531, "end": 349634}, {"filename": "/assets/ground/dirt.png", "start": 349634, "end": 350096}, {"filename": "/assets/ground/foliage.png", "start": 350096, "end": 351338}, {"filename": "/assets/ground/grass.png", "start": 351338, "end": 352513}, {"filename": "/assets/hero/hero_v2.png", "start": 352513, "end": 1560959}, {"filename": "/assets/hero/hero_v3.png", "start": 1560959, "end": 3111015}, {"filename": "/assets/hero/walk.png", "start": 3111015, "end": 3179238}, {"filename": "/assets/interiors/alchemy/Bottle_1.bin", "start": 3179238, "end": 3193190}, {"filename": "/assets/interiors/alchemy/Bottle_1.gltf", "start": 3193190, "end": 3194698}, {"filename": "/assets/interiors/alchemy/Cauldron.bin", "start": 3194698, "end": 3257410}, {"filename": "/assets/interiors/alchemy/Cauldron.gltf", "start": 3257410, "end": 3259725}, {"filename": "/assets/interiors/alchemy/Potion_1.bin", "start": 3259725, "end": 3277925}, {"filename": "/assets/interiors/alchemy/Potion_1.gltf", "start": 3277925, "end": 3279438}, {"filename": "/assets/interiors/alchemy/Potion_2.bin", "start": 3279438, "end": 3299110}, {"filename": "/assets/interiors/alchemy/Potion_2.gltf", "start": 3299110, "end": 3300623}, {"filename": "/assets/interiors/alchemy/Potion_4.bin", "start": 3300623, "end": 3323159}, {"filename": "/assets/interiors/alchemy/Potion_4.gltf", "start": 3323159, "end": 3324672}, {"filename": "/assets/interiors/alchemy/Shelf_Small_Bottles.bin", "start": 3324672, "end": 3554156}, {"filename": "/assets/interiors/alchemy/Shelf_Small_Bottles.gltf", "start": 3554156, "end": 3557965}, {"filename": "/assets/interiors/alchemy/SmallBottle.bin", "start": 3557965, "end": 3563665}, {"filename": "/assets/interiors/alchemy/SmallBottle.gltf", "start": 3563665, "end": 3565152}, {"filename": "/assets/interiors/alchemy/SmallBottles_1.bin", "start": 3565152, "end": 3585708}, {"filename": "/assets/interiors/alchemy/SmallBottles_1.gltf", "start": 3585708, "end": 3587226}, {"filename": "/assets/interiors/alchemy/Table_RoundSmall.mtl", "start": 3587226, "end": 3587468}, {"filename": "/assets/interiors/alchemy/Table_RoundSmall.obj", "start": 3587468, "end": 3614004}, {"filename": "/assets/interiors/alchemy/Torch_Metal.bin", "start": 3614004, "end": 3653104}, {"filename": "/assets/interiors/alchemy/Torch_Metal.gltf", "start": 3653104, "end": 3655427}, {"filename": "/assets/interiors/bank/Coin.bin", "start": 3655427, "end": 3669891}, {"filename": "/assets/interiors/bank/Coin.gltf", "start": 3669891, "end": 3671394}, {"filename": "/assets/interiors/bank/Coin_Pile.bin", "start": 3671394, "end": 3718914}, {"filename": "/assets/interiors/bank/Coin_Pile.gltf", "start": 3718914, "end": 3720433}, {"filename": "/assets/interiors/bank/Coin_Pile_2.bin", "start": 3720433, "end": 3773045}, {"filename": "/assets/interiors/bank/Coin_Pile_2.gltf", "start": 3773045, "end": 3774569}, {"filename": "/assets/interiors/bank/Table_Large.bin", "start": 3774569, "end": 3830965}, {"filename": "/assets/interiors/bank/Table_Large.gltf", "start": 3830965, "end": 3833592}, {"filename": "/assets/interiors/bank/VaultDoor.bin", "start": 3833592, "end": 3863880}, {"filename": "/assets/interiors/bank/VaultDoor.gltf", "start": 3863880, "end": 3866061}, {"filename": "/assets/interiors/carpenter/Crate_Wooden.bin", "start": 3866061, "end": 3932557}, {"filename": "/assets/interiors/carpenter/Crate_Wooden.gltf", "start": 3932557, "end": 3935257}, {"filename": "/assets/interiors/carpenter/LumberPile.bin", "start": 3935257, "end": 3942385}, {"filename": "/assets/interiors/carpenter/LumberPile.gltf", "start": 3942385, "end": 3944134}, {"filename": "/assets/interiors/carpenter/Peg_Rack.bin", "start": 3944134, "end": 3970806}, {"filename": "/assets/interiors/carpenter/Peg_Rack.gltf", "start": 3970806, "end": 3974799}, {"filename": "/assets/interiors/carpenter/Sawhorse.bin", "start": 3974799, "end": 3978687}, {"filename": "/assets/interiors/carpenter/Sawhorse.gltf", "start": 3978687, "end": 3980129}, {"filename": "/assets/interiors/carpenter/Workbench.bin", "start": 3980129, "end": 4043537}, {"filename": "/assets/interiors/carpenter/Workbench.gltf", "start": 4043537, "end": 4048071}, {"filename": "/assets/interiors/healer/Bed_Single.mtl", "start": 4048071, "end": 4049018}, {"filename": "/assets/interiors/healer/Bed_Single.obj", "start": 4049018, "end": 4072731}, {"filename": "/assets/interiors/healer/HerbBundle.bin", "start": 4072731, "end": 4082619}, {"filename": "/assets/interiors/healer/HerbBundle.gltf", "start": 4082619, "end": 4084757}, {"filename": "/assets/interiors/healer/MortarPestle.bin", "start": 4084757, "end": 4093205}, {"filename": "/assets/interiors/healer/MortarPestle.gltf", "start": 4093205, "end": 4094555}, {"filename": "/assets/interiors/healer/Potion_1.bin", "start": 4094555, "end": 4112755}, {"filename": "/assets/interiors/healer/Potion_1.gltf", "start": 4112755, "end": 4114268}, {"filename": "/assets/interiors/healer/Shelf_Small1.mtl", "start": 4114268, "end": 4114507}, {"filename": "/assets/interiors/healer/Shelf_Small1.obj", "start": 4114507, "end": 4119024}, {"filename": "/assets/interiors/healer/SmallBottle.bin", "start": 4119024, "end": 4124724}, {"filename": "/assets/interiors/healer/SmallBottle.gltf", "start": 4124724, "end": 4126211}, {"filename": "/assets/interiors/house/Bed_Single.mtl", "start": 4126211, "end": 4127158}, {"filename": "/assets/interiors/house/Bed_Single.obj", "start": 4127158, "end": 4150871}, {"filename": "/assets/interiors/house/Chair_1.mtl", "start": 4150871, "end": 4151104}, {"filename": "/assets/interiors/house/Chair_1.obj", "start": 4151104, "end": 4159372}, {"filename": "/assets/interiors/house/Shelf_1.mtl", "start": 4159372, "end": 4159606}, {"filename": "/assets/interiors/house/Shelf_1.obj", "start": 4159606, "end": 4163022}, {"filename": "/assets/interiors/house/Table_RoundSmall.mtl", "start": 4163022, "end": 4163264}, {"filename": "/assets/interiors/house/Table_RoundSmall.obj", "start": 4163264, "end": 4189800}, {"filename": "/assets/interiors/provisioner/Bag.bin", "start": 4189800, "end": 4216988}, {"filename": "/assets/interiors/provisioner/Bag.gltf", "start": 4216988, "end": 4219617}, {"filename": "/assets/interiors/provisioner/Barrel.bin", "start": 4219617, "end": 4276761}, {"filename": "/assets/interiors/provisioner/Barrel.gltf", "start": 4276761, "end": 4281288}, {"filename": "/assets/interiors/provisioner/Barrel_Apples.bin", "start": 4281288, "end": 4385888}, {"filename": "/assets/interiors/provisioner/Barrel_Apples.gltf", "start": 4385888, "end": 4389672}, {"filename": "/assets/interiors/provisioner/Crate_Wooden.bin", "start": 4389672, "end": 4456168}, {"filename": "/assets/interiors/provisioner/Crate_Wooden.gltf", "start": 4456168, "end": 4458868}, {"filename": "/assets/interiors/provisioner/Pouch_Large.bin", "start": 4458868, "end": 4490448}, {"filename": "/assets/interiors/provisioner/Pouch_Large.gltf", "start": 4490448, "end": 4493081}, {"filename": "/assets/interiors/provisioner/Shelf_1.mtl", "start": 4493081, "end": 4493315}, {"filename": "/assets/interiors/provisioner/Shelf_1.obj", "start": 4493315, "end": 4496731}, {"filename": "/assets/interiors/provisioner/Stall_Cart_Empty.bin", "start": 4496731, "end": 4733995}, {"filename": "/assets/interiors/provisioner/Stall_Cart_Empty.gltf", "start": 4733995, "end": 4738242}, {"filename": "/assets/interiors/smith/Anvil.bin", "start": 4738242, "end": 4762262}, {"filename": "/assets/interiors/smith/Anvil.gltf", "start": 4762262, "end": 4765821}, {"filename": "/assets/interiors/smith/Barrel.bin", "start": 4765821, "end": 4822965}, {"filename": "/assets/interiors/smith/Barrel.gltf", "start": 4822965, "end": 4827492}, {"filename": "/assets/interiors/smith/Bellows.bin", "start": 4827492, "end": 4832028}, {"filename": "/assets/interiors/smith/Bellows.gltf", "start": 4832028, "end": 4835434}, {"filename": "/assets/interiors/smith/Bucket_Metal.bin", "start": 4835434, "end": 4854258}, {"filename": "/assets/interiors/smith/Bucket_Metal.gltf", "start": 4854258, "end": 4856584}, {"filename": "/assets/interiors/smith/Cauldron.bin", "start": 4856584, "end": 4919296}, {"filename": "/assets/interiors/smith/Cauldron.gltf", "start": 4919296, "end": 4921611}, {"filename": "/assets/interiors/smith/Forge.bin", "start": 4921611, "end": 4933275}, {"filename": "/assets/interiors/smith/Forge.gltf", "start": 4933275, "end": 4935845}, {"filename": "/assets/interiors/smith/Peg_Rack.bin", "start": 4935845, "end": 4962517}, {"filename": "/assets/interiors/smith/Peg_Rack.gltf", "start": 4962517, "end": 4966510}, {"filename": "/assets/interiors/smith/Torch_Metal.bin", "start": 4966510, "end": 5005610}, {"filename": "/assets/interiors/smith/Torch_Metal.gltf", "start": 5005610, "end": 5007933}, {"filename": "/assets/interiors/smith/WeaponStand.bin", "start": 5007933, "end": 5084245}, {"filename": "/assets/interiors/smith/WeaponStand.gltf", "start": 5084245, "end": 5088262}, {"filename": "/assets/interiors/smith/Whetstone.bin", "start": 5088262, "end": 5147542}, {"filename": "/assets/interiors/smith/Whetstone.gltf", "start": 5147542, "end": 5154031}, {"filename": "/assets/interiors/smith/Workbench.bin", "start": 5154031, "end": 5217439}, {"filename": "/assets/interiors/smith/Workbench.gltf", "start": 5217439, "end": 5221973}, {"filename": "/assets/interiors/stable/Bucket_Wooden_1.bin", "start": 5221973, "end": 5254517}, {"filename": "/assets/interiors/stable/Bucket_Wooden_1.gltf", "start": 5254517, "end": 5256849}, {"filename": "/assets/interiors/stable/HayBale.bin", "start": 5256849, "end": 5260089}, {"filename": "/assets/interiors/stable/HayBale.gltf", "start": 5260089, "end": 5261463}, {"filename": "/assets/interiors/stable/StallDivider.bin", "start": 5261463, "end": 5264703}, {"filename": "/assets/interiors/stable/StallDivider.gltf", "start": 5264703, "end": 5266061}, {"filename": "/assets/interiors/stable/WaterTrough.bin", "start": 5266061, "end": 5268653}, {"filename": "/assets/interiors/stable/WaterTrough.gltf", "start": 5268653, "end": 5270033}, {"filename": "/assets/interiors/tailor/Banner_1_Cloth.bin", "start": 5270033, "end": 5276669}, {"filename": "/assets/interiors/tailor/Banner_1_Cloth.gltf", "start": 5276669, "end": 5279564}, {"filename": "/assets/interiors/tailor/ClothBolt.bin", "start": 5279564, "end": 5282156}, {"filename": "/assets/interiors/tailor/ClothBolt.gltf", "start": 5282156, "end": 5283713}, {"filename": "/assets/interiors/tailor/Mannequin.bin", "start": 5283713, "end": 5294921}, {"filename": "/assets/interiors/tailor/Mannequin.gltf", "start": 5294921, "end": 5296396}, {"filename": "/assets/interiors/tailor/Shelf_Small1.mtl", "start": 5296396, "end": 5296635}, {"filename": "/assets/interiors/tailor/Shelf_Small1.obj", "start": 5296635, "end": 5301152}, {"filename": "/assets/interiors/townhall/Banner_1_Cloth.bin", "start": 5301152, "end": 5307788}, {"filename": "/assets/interiors/townhall/Banner_1_Cloth.gltf", "start": 5307788, "end": 5310683}, {"filename": "/assets/interiors/townhall/Banner_2_Cloth.bin", "start": 5310683, "end": 5315623}, {"filename": "/assets/interiors/townhall/Banner_2_Cloth.gltf", "start": 5315623, "end": 5318519}, {"filename": "/assets/interiors/townhall/Chair_1.mtl", "start": 5318519, "end": 5318752}, {"filename": "/assets/interiors/townhall/Chair_1.obj", "start": 5318752, "end": 5327020}, {"filename": "/assets/interiors/townhall/Table_RoundLarge.mtl", "start": 5327020, "end": 5327262}, {"filename": "/assets/interiors/townhall/Table_RoundLarge.obj", "start": 5327262, "end": 5350350}, {"filename": "/assets/interiors/townhall/Torch_Metal.bin", "start": 5350350, "end": 5389450}, {"filename": "/assets/interiors/townhall/Torch_Metal.gltf", "start": 5389450, "end": 5391773}, {"filename": "/assets/item_icons/Bardiche.bmp", "start": 5391773, "end": 5404987}, {"filename": "/assets/item_icons/BlackStaff.bmp", "start": 5404987, "end": 5428433}, {"filename": "/assets/item_icons/Bow.bmp", "start": 5428433, "end": 5436231}, {"filename": "/assets/item_icons/Broadsword.bmp", "start": 5436231, "end": 5440509}, {"filename": "/assets/item_icons/ChainTunic.bmp", "start": 5440509, "end": 5628567}, {"filename": "/assets/item_icons/ChainmailGloves.bmp", "start": 5628567, "end": 5813481}, {"filename": "/assets/item_icons/ChainmailLeggings.bmp", "start": 5813481, "end": 6001539}, {"filename": "/assets/item_icons/Club.bmp", "start": 6001539, "end": 6007225}, {"filename": "/assets/item_icons/CompositeBow.bmp", "start": 6007225, "end": 6015023}, {"filename": "/assets/item_icons/Crossbow.bmp", "start": 6015023, "end": 6020885}, {"filename": "/assets/item_icons/Cutlass.bmp", "start": 6020885, "end": 6025295}, {"filename": "/assets/item_icons/GnarledStaff.bmp", "start": 6025295, "end": 6048741}, {"filename": "/assets/item_icons/Halberd.bmp", "start": 6048741, "end": 6061955}, {"filename": "/assets/item_icons/HeavyCrossbow.bmp", "start": 6061955, "end": 6068345}, {"filename": "/assets/item_icons/Katana.bmp", "start": 6068345, "end": 6073283}, {"filename": "/assets/item_icons/Kryss.bmp", "start": 6073283, "end": 6078221}, {"filename": "/assets/item_icons/LeatherGloves.bmp", "start": 6078221, "end": 6263135}, {"filename": "/assets/item_icons/LeatherLeggings.bmp", "start": 6263135, "end": 6451193}, {"filename": "/assets/item_icons/LeatherSleeves.bmp", "start": 6451193, "end": 6639251}, {"filename": "/assets/item_icons/LeatherTunic.bmp", "start": 6639251, "end": 6827309}, {"filename": "/assets/item_icons/Longsword.bmp", "start": 6827309, "end": 6832247}, {"filename": "/assets/item_icons/Mace.bmp", "start": 6832247, "end": 6838989}, {"filename": "/assets/item_icons/Maul.bmp", "start": 6838989, "end": 6846435}, {"filename": "/assets/item_icons/Pitchfork.bmp", "start": 6846435, "end": 6863429}, {"filename": "/assets/item_icons/PlateArms.bmp", "start": 6863429, "end": 7051487}, {"filename": "/assets/item_icons/PlateChest.bmp", "start": 7051487, "end": 7239545}, {"filename": "/assets/item_icons/PlateGloves.bmp", "start": 7239545, "end": 7424459}, {"filename": "/assets/item_icons/PlateLegs.bmp", "start": 7424459, "end": 7612517}, {"filename": "/assets/item_icons/PotionDamage.bmp", "start": 7612517, "end": 7620599}, {"filename": "/assets/item_icons/PotionHeal.bmp", "start": 7620599, "end": 7628681}, {"filename": "/assets/item_icons/PotionPoison.bmp", "start": 7628681, "end": 7636763}, {"filename": "/assets/item_icons/PotionStamina.bmp", "start": 7636763, "end": 7644845}, {"filename": "/assets/item_icons/Quarterstaff.bmp", "start": 7644845, "end": 7668291}, {"filename": "/assets/item_icons/RingMailLeggings.bmp", "start": 7668291, "end": 7856349}, {"filename": "/assets/item_icons/RingMailSleeves.bmp", "start": 7856349, "end": 8044407}, {"filename": "/assets/item_icons/RingMailTunic.bmp", "start": 8044407, "end": 8232465}, {"filename": "/assets/item_icons/Scimitar.bmp", "start": 8232465, "end": 8237799}, {"filename": "/assets/item_icons/ShepherdsCrook.bmp", "start": 8237799, "end": 8266189}, {"filename": "/assets/item_icons/ShortSpear.bmp", "start": 8266189, "end": 8276243}, {"filename": "/assets/item_icons/Spear.bmp", "start": 8276243, "end": 8302557}, {"filename": "/assets/item_icons/StuddedGloves.bmp", "start": 8302557, "end": 8487471}, {"filename": "/assets/item_icons/StuddedLeggings.bmp", "start": 8487471, "end": 8675529}, {"filename": "/assets/item_icons/StuddedSleeves.bmp", "start": 8675529, "end": 8863587}, {"filename": "/assets/item_icons/StuddedTunic.bmp", "start": 8863587, "end": 9051645}, {"filename": "/assets/item_icons/VikingSword.bmp", "start": 9051645, "end": 9056847}, {"filename": "/assets/item_icons/WarAxe.bmp", "start": 9056847, "end": 9062577}, {"filename": "/assets/item_icons/WarFork.bmp", "start": 9062577, "end": 9070199}, {"filename": "/assets/item_icons/WarHammer.bmp", "start": 9070199, "end": 9074609}, {"filename": "/assets/knight/attack1.png", "start": 9074609, "end": 9101353}, {"filename": "/assets/knight/attack2.png", "start": 9101353, "end": 9128073}, {"filename": "/assets/knight/defend.png", "start": 9128073, "end": 9152097}, {"filename": "/assets/knight/hurt.png", "start": 9152097, "end": 9175560}, {"filename": "/assets/knight/idle.png", "start": 9175560, "end": 9201364}, {"filename": "/assets/knight/protect.png", "start": 9201364, "end": 9223592}, {"filename": "/assets/models/Prop_Chimney.bin", "start": 9223592, "end": 9244068}, {"filename": "/assets/models/Prop_Chimney.gltf", "start": 9244068, "end": 9247911}, {"filename": "/assets/models/Prop_Crate.bin", "start": 9247911, "end": 9264011}, {"filename": "/assets/models/Prop_Crate.gltf", "start": 9264011, "end": 9266222}, {"filename": "/assets/models/Prop_Vine1.bin", "start": 9266222, "end": 9271802}, {"filename": "/assets/models/Prop_Vine1.gltf", "start": 9271802, "end": 9273781}, {"filename": "/assets/models/Prop_Wagon.bin", "start": 9273781, "end": 9377053}, {"filename": "/assets/models/Prop_Wagon.gltf", "start": 9377053, "end": 9379475}, {"filename": "/assets/models/Prop_WoodenFence_Extension1.bin", "start": 9379475, "end": 9381715}, {"filename": "/assets/models/Prop_WoodenFence_Extension1.gltf", "start": 9381715, "end": 9383951}, {"filename": "/assets/models/Prop_WoodenFence_Single.bin", "start": 9383951, "end": 9386751}, {"filename": "/assets/models/Prop_WoodenFence_Single.gltf", "start": 9386751, "end": 9388981}, {"filename": "/assets/models/README.md", "start": 9388981, "end": 9394151}, {"filename": "/assets/models/Roof_RoundTiles_4x4.bin", "start": 9394151, "end": 9501327}, {"filename": "/assets/models/Roof_RoundTiles_4x4.gltf", "start": 9501327, "end": 9505664}, {"filename": "/assets/models/Roof_RoundTiles_4x6.bin", "start": 9505664, "end": 9635504}, {"filename": "/assets/models/Roof_RoundTiles_4x6.gltf", "start": 9635504, "end": 9639845}, {"filename": "/assets/models/T_Brick_BaseColor.png", "start": 9639845, "end": 9893382}, {"filename": "/assets/models/T_Brick_Normal.png", "start": 9893382, "end": 10251620}, {"filename": "/assets/models/T_Brick_Roughness.png", "start": 10251620, "end": 10311486}, {"filename": "/assets/models/T_Plaster_BaseColor.png", "start": 10311486, "end": 10561161}, {"filename": "/assets/models/T_Plaster_Normal.png", "start": 10561161, "end": 10849661}, {"filename": "/assets/models/T_Plaster_ORM.png", "start": 10849661, "end": 11023452}, {"filename": "/assets/models/T_RockTrim_BaseColor.png", "start": 11023452, "end": 11244320}, {"filename": "/assets/models/T_RockTrim_Normal.png", "start": 11244320, "end": 11552579}, {"filename": "/assets/models/T_RockTrim_ORM.png", "start": 11552579, "end": 11659972}, {"filename": "/assets/models/T_RoundTiles_BaseColor.png", "start": 11659972, "end": 11950622}, {"filename": "/assets/models/T_RoundTiles_Normal.png", "start": 11950622, "end": 12158583}, {"filename": "/assets/models/T_RoundTiles_Roughness.png", "start": 12158583, "end": 12260093}, {"filename": "/assets/models/T_UnevenBrick_BaseColor.png", "start": 12260093, "end": 12543157}, {"filename": "/assets/models/T_UnevenBrick_Normal.png", "start": 12543157, "end": 12851898}, {"filename": "/assets/models/T_UnevenBrick_Roughness.png", "start": 12851898, "end": 12953482}, {"filename": "/assets/models/T_VineLeaf_png.png", "start": 12953482, "end": 13067983}, {"filename": "/assets/models/T_WoodTrim_BaseColor.png", "start": 13067983, "end": 13306282}, {"filename": "/assets/models/T_WoodTrim_Normal.png", "start": 13306282, "end": 13592901}, {"filename": "/assets/models/T_WoodTrim_Roughness.png", "start": 13592901, "end": 13743710}, {"filename": "/assets/models/Wall_Plaster_Door_Flat.bin", "start": 13743710, "end": 13750502}, {"filename": "/assets/models/Wall_Plaster_Door_Flat.gltf", "start": 13750502, "end": 13756444}, {"filename": "/assets/models/Wall_Plaster_Straight.bin", "start": 13756444, "end": 13762320}, {"filename": "/assets/models/Wall_Plaster_Straight.gltf", "start": 13762320, "end": 13766489}, {"filename": "/assets/models/Wall_Plaster_Window_Wide_Flat.bin", "start": 13766489, "end": 13771865}, {"filename": "/assets/models/Wall_Plaster_Window_Wide_Flat.gltf", "start": 13771865, "end": 13777829}, {"filename": "/assets/models/Wall_UnevenBrick_Door_Flat.bin", "start": 13777829, "end": 13781345}, {"filename": "/assets/models/Wall_UnevenBrick_Door_Flat.gltf", "start": 13781345, "end": 13786751}, {"filename": "/assets/models/Wall_UnevenBrick_Straight.bin", "start": 13786751, "end": 13789519}, {"filename": "/assets/models/Wall_UnevenBrick_Straight.gltf", "start": 13789519, "end": 13794911}, {"filename": "/assets/models/Wall_UnevenBrick_Window_Wide_Flat.bin", "start": 13794911, "end": 13799519}, {"filename": "/assets/models/Wall_UnevenBrick_Window_Wide_Flat.gltf", "start": 13799519, "end": 13805523}, {"filename": "/assets/models/barrel_small.glb", "start": 13805523, "end": 13837583}, {"filename": "/assets/models/chest.glb", "start": 13837583, "end": 13918995}, {"filename": "/assets/models/plant_bush.glb", "start": 13918995, "end": 13923391}, {"filename": "/assets/models/rock_largeA.glb", "start": 13923391, "end": 13930943}, {"filename": "/assets/models/rock_largeB.glb", "start": 13930943, "end": 13939503}, {"filename": "/assets/models/rock_largeC.glb", "start": 13939503, "end": 13946507}, {"filename": "/assets/models/rock_smallA.glb", "start": 13946507, "end": 13949551}, {"filename": "/assets/models/rock_smallB.glb", "start": 13949551, "end": 13953079}, {"filename": "/assets/models/rock_smallC.glb", "start": 13953079, "end": 13956123}, {"filename": "/assets/models/stump_roundDetailed.glb", "start": 13956123, "end": 13964311}, {"filename": "/assets/models/tree_default.glb", "start": 13964311, "end": 13973739}, {"filename": "/assets/models/tree_detailed.glb", "start": 13973739, "end": 14005151}, {"filename": "/assets/models/tree_fat.glb", "start": 14005151, "end": 14010727}, {"filename": "/assets/models/tree_oak.glb", "start": 14010727, "end": 14025371}, {"filename": "/assets/models/tree_pineDefaultA.glb", "start": 14025371, "end": 14042591}, {"filename": "/assets/monsters/bat.png", "start": 14042591, "end": 14042786}, {"filename": "/assets/monsters/bloodtusk.png", "start": 14042786, "end": 14043246}, {"filename": "/assets/monsters/emberveil.png", "start": 14043246, "end": 14043749}, {"filename": "/assets/monsters/ghost.png", "start": 14043749, "end": 14043938}, {"filename": "/assets/monsters/hollowwarrens.png", "start": 14043938, "end": 14044519}, {"filename": "/assets/monsters/orc.png", "start": 14044519, "end": 14044722}, {"filename": "/assets/monsters/slime.png", "start": 14044722, "end": 14044911}, {"filename": "/assets/monsters/sunkencrypt.png", "start": 14044911, "end": 14045148}, {"filename": "/assets/monsters/wyrmscar.png", "start": 14045148, "end": 14046098}, {"filename": "/assets/monsters_boss/bloodtusk.png", "start": 14046098, "end": 14047227}, {"filename": "/assets/monsters_boss/emberveil.png", "start": 14047227, "end": 14047759}, {"filename": "/assets/monsters_boss/hollowwarrens.png", "start": 14047759, "end": 14048221}, {"filename": "/assets/monsters_boss/sunkencrypt.png", "start": 14048221, "end": 14048697}, {"filename": "/assets/monsters_boss/wyrmscar.png", "start": 14048697, "end": 14049228}, {"filename": "/assets/monsters_boss_v2/bloodtusk.png", "start": 14049228, "end": 14394766}, {"filename": "/assets/monsters_boss_v2/emberveil.png", "start": 14394766, "end": 14914197}, {"filename": "/assets/monsters_boss_v2/hollowwarrens.png", "start": 14914197, "end": 15182941}, {"filename": "/assets/monsters_boss_v2/sunkencrypt.png", "start": 15182941, "end": 15741799}, {"filename": "/assets/monsters_boss_v2/wyrmscar.png", "start": 15741799, "end": 16022351}, {"filename": "/assets/monsters_v2/bloodtusk.png", "start": 16022351, "end": 16333069}, {"filename": "/assets/monsters_v2/emberveil.png", "start": 16333069, "end": 17227346}, {"filename": "/assets/monsters_v2/hollowwarrens.png", "start": 17227346, "end": 17509494}, {"filename": "/assets/monsters_v2/sunkencrypt.png", "start": 17509494, "end": 17868289}, {"filename": "/assets/monsters_v2/wyrmscar.png", "start": 17868289, "end": 18124695}, {"filename": "/assets/npcs_v2/captain_ysolde.png", "start": 18124695, "end": 18781338}, {"filename": "/assets/npcs_v2/cobb_stableboy.png", "start": 18781338, "end": 19238545}, {"filename": "/assets/npcs_v2/dockhand_fenn.png", "start": 19238545, "end": 19686788}, {"filename": "/assets/npcs_v2/harbormaster_thane.png", "start": 19686788, "end": 20147403}, {"filename": "/assets/npcs_v2/nessa_netmender.png", "start": 20147403, "end": 20728015}, {"filename": "/assets/npcs_v2/old_corwin.png", "start": 20728015, "end": 21235048}, {"filename": "/assets/npcs_v2/old_miran.png", "start": 21235048, "end": 21852307}, {"filename": "/assets/npcs_v2/salty_bjorn.png", "start": 21852307, "end": 22391359}, {"filename": "/assets/npcs_v2/sister_meraude.png", "start": 22391359, "end": 22861420}, {"filename": "/assets/npcs_v2/widow_aelith.png", "start": 22861420, "end": 23211720}, {"filename": "/assets/npcs_v2/wystan_baker.png", "start": 23211720, "end": 23828886}, {"filename": "/assets/npcs_v2/young_petra.png", "start": 23828886, "end": 24284339}, {"filename": "/assets/paperdoll/arms/chainmail.png", "start": 24284339, "end": 24286670}, {"filename": "/assets/paperdoll/arms/leather.png", "start": 24286670, "end": 24289060}, {"filename": "/assets/paperdoll/arms/plate.png", "start": 24289060, "end": 24291614}, {"filename": "/assets/paperdoll/arms/ringmail.png", "start": 24291614, "end": 24293859}, {"filename": "/assets/paperdoll/arms/studded.png", "start": 24293859, "end": 24296310}, {"filename": "/assets/paperdoll/base/human_male.png", "start": 24296310, "end": 24306563}, {"filename": "/assets/paperdoll/body/chainmail.png", "start": 24306563, "end": 24313540}, {"filename": "/assets/paperdoll/body/leather_armor.png", "start": 24313540, "end": 24320323}, {"filename": "/assets/paperdoll/body/leather_stud.png", "start": 24320323, "end": 24327316}, {"filename": "/assets/paperdoll/body/plate.png", "start": 24327316, "end": 24334129}, {"filename": "/assets/paperdoll/body/ringmail.png", "start": 24334129, "end": 24340402}, {"filename": "/assets/paperdoll/boots/middle_brown.png", "start": 24340402, "end": 24342735}, {"filename": "/assets/paperdoll/brown_1.png", "start": 24342735, "end": 24344638}, {"filename": "/assets/paperdoll/gloves/gauntlet_blue.png", "start": 24344638, "end": 24347381}, {"filename": "/assets/paperdoll/gloves/glove_black.png", "start": 24347381, "end": 24350024}, {"filename": "/assets/paperdoll/gloves/glove_brown.png", "start": 24350024, "end": 24352609}, {"filename": "/assets/paperdoll/gloves/glove_gold.png", "start": 24352609, "end": 24355378}, {"filename": "/assets/paperdoll/gloves/glove_gray.png", "start": 24355378, "end": 24357823}, {"filename": "/assets/paperdoll/gorget/leather.png", "start": 24357823, "end": 24359142}, {"filename": "/assets/paperdoll/gorget/plate.png", "start": 24359142, "end": 24360645}, {"filename": "/assets/paperdoll/gorget/studded.png", "start": 24360645, "end": 24362058}, {"filename": "/assets/paperdoll/hair/brown_1.png", "start": 24362058, "end": 24363280}, {"filename": "/assets/paperdoll/hand_right/bow.png", "start": 24363280, "end": 24363452}, {"filename": "/assets/paperdoll/hand_right/bow_2.png", "start": 24363452, "end": 24363636}, {"filename": "/assets/paperdoll/hand_right/bow_3.png", "start": 24363636, "end": 24363836}, {"filename": "/assets/paperdoll/hand_right/broadsword.png", "start": 24363836, "end": 24364109}, {"filename": "/assets/paperdoll/hand_right/club.png", "start": 24364109, "end": 24364304}, {"filename": "/assets/paperdoll/hand_right/crossbow.png", "start": 24364304, "end": 24364599}, {"filename": "/assets/paperdoll/hand_right/crossbow_3.png", "start": 24364599, "end": 24364812}, {"filename": "/assets/paperdoll/hand_right/fork_2.png", "start": 24364812, "end": 24364998}, {"filename": "/assets/paperdoll/hand_right/glaive_new.png", "start": 24364998, "end": 24365220}, {"filename": "/assets/paperdoll/hand_right/great_mace.png", "start": 24365220, "end": 24365443}, {"filename": "/assets/paperdoll/hand_right/halberd_new.png", "start": 24365443, "end": 24365683}, {"filename": "/assets/paperdoll/hand_right/heavy_sword.png", "start": 24365683, "end": 24365911}, {"filename": "/assets/paperdoll/hand_right/katana.png", "start": 24365911, "end": 24366110}, {"filename": "/assets/paperdoll/hand_right/large_mace.png", "start": 24366110, "end": 24366323}, {"filename": "/assets/paperdoll/hand_right/long_sword.png", "start": 24366323, "end": 24366501}, {"filename": "/assets/paperdoll/hand_right/mace_new.png", "start": 24366501, "end": 24366691}, {"filename": "/assets/paperdoll/hand_right/pole_forked.png", "start": 24366691, "end": 24366934}, {"filename": "/assets/paperdoll/hand_right/quarterstaff.png", "start": 24366934, "end": 24367106}, {"filename": "/assets/paperdoll/hand_right/rapier.png", "start": 24367106, "end": 24367323}, {"filename": "/assets/paperdoll/hand_right/sabre.png", "start": 24367323, "end": 24367533}, {"filename": "/assets/paperdoll/hand_right/scimitar_new.png", "start": 24367533, "end": 24367786}, {"filename": "/assets/paperdoll/hand_right/spear.png", "start": 24367786, "end": 24367990}, {"filename": "/assets/paperdoll/hand_right/spear_1.png", "start": 24367990, "end": 24368156}, {"filename": "/assets/paperdoll/hand_right/staff_evil.png", "start": 24368156, "end": 24368451}, {"filename": "/assets/paperdoll/hand_right/staff_organic.png", "start": 24368451, "end": 24368758}, {"filename": "/assets/paperdoll/hand_right/staff_plain.png", "start": 24368758, "end": 24368946}, {"filename": "/assets/paperdoll/hand_right/war_axe_new.png", "start": 24368946, "end": 24369167}, {"filename": "/assets/paperdoll/head/cap_black_1.png", "start": 24369167, "end": 24369369}, {"filename": "/assets/paperdoll/head/chain.png", "start": 24369369, "end": 24370349}, {"filename": "/assets/paperdoll/head/hood_ybrown.png", "start": 24370349, "end": 24372151}, {"filename": "/assets/paperdoll/head/iron_1.png", "start": 24372151, "end": 24373841}, {"filename": "/assets/paperdoll/human_male.png", "start": 24373841, "end": 24386917}, {"filename": "/assets/paperdoll/legs/leg_armor_1.png", "start": 24386917, "end": 24390479}, {"filename": "/assets/paperdoll/legs/leg_armor_2.png", "start": 24390479, "end": 24393672}, {"filename": "/assets/paperdoll/legs/leg_armor_4.png", "start": 24393672, "end": 24397676}, {"filename": "/assets/paperdoll/legs/pants_black.png", "start": 24397676, "end": 24401666}, {"filename": "/assets/paperdoll/legs/pants_brown.png", "start": 24401666, "end": 24405954}, {"filename": "/assets/paperdoll/middle_brown.png", "start": 24405954, "end": 24409111}, {"filename": "/assets/player.png", "start": 24409111, "end": 24409825}, {"filename": "/assets/saltmere_buildings/alchemy.png", "start": 24409825, "end": 24627246}, {"filename": "/assets/saltmere_buildings/bank.png", "start": 24627246, "end": 25072277}, {"filename": "/assets/saltmere_buildings/carpenter.png", "start": 25072277, "end": 25272013}, {"filename": "/assets/saltmere_buildings/healer.png", "start": 25272013, "end": 25686433}, {"filename": "/assets/saltmere_buildings/house.png", "start": 25686433, "end": 26170469}, {"filename": "/assets/saltmere_buildings/provisioner.png", "start": 26170469, "end": 26548982}, {"filename": "/assets/saltmere_buildings/smith.png", "start": 26548982, "end": 26980442}, {"filename": "/assets/saltmere_buildings/stable.png", "start": 26980442, "end": 27278276}, {"filename": "/assets/saltmere_buildings/tailor.png", "start": 27278276, "end": 27673893}, {"filename": "/assets/saltmere_buildings/townhall.png", "start": 27673893, "end": 28067586}, {"filename": "/assets/shaders/grass.vs", "start": 28067586, "end": 28069333}, {"filename": "/assets/shaders/lit.fs", "start": 28069333, "end": 28071845}, {"filename": "/assets/shaders/lit.vs", "start": 28071845, "end": 28072990}, {"filename": "/assets/shaders/shadowmap.fs", "start": 28072990, "end": 28076992}, {"filename": "/assets/shaders/shadowmap.vs", "start": 28076992, "end": 28078055}, {"filename": "/assets/shaders/torchlight.fs", "start": 28078055, "end": 28080616}, {"filename": "/assets/shaders/torchlight.vs", "start": 28080616, "end": 28081615}, {"filename": "/assets/skeleton/attack1.png", "start": 28081615, "end": 28106823}, {"filename": "/assets/skeleton/hurt.png", "start": 28106823, "end": 28127486}, {"filename": "/assets/skeleton/idle.png", "start": 28127486, "end": 28150378}, {"filename": "/assets/spell_icons/ArcBolt.bmp", "start": 28150378, "end": 28156240}, {"filename": "/assets/spell_icons/BlessingOfVigor.bmp", "start": 28156240, "end": 28162102}, {"filename": "/assets/spell_icons/CloudMind.bmp", "start": 28162102, "end": 28167964}, {"filename": "/assets/spell_icons/Detonation.bmp", "start": 28167964, "end": 28173826}, {"filename": "/assets/spell_icons/EmberBurst.bmp", "start": 28173826, "end": 28179688}, {"filename": "/assets/spell_icons/FumblingCurse.bmp", "start": 28179688, "end": 28185550}, {"filename": "/assets/spell_icons/GreaterMending.bmp", "start": 28185550, "end": 28191412}, {"filename": "/assets/spell_icons/InfernoStrike.bmp", "start": 28191412, "end": 28197274}, {"filename": "/assets/spell_icons/MendingWord.bmp", "start": 28197274, "end": 28203136}, {"filename": "/assets/spell_icons/PsychicShatter.bmp", "start": 28203136, "end": 28208998}, {"filename": "/assets/spell_icons/SapStrength.bmp", "start": 28208998, "end": 28214860}, {"filename": "/assets/spell_icons/SparkDart.bmp", "start": 28214860, "end": 28220722}, {"filename": "/assets/spell_icons/StormLance.bmp", "start": 28220722, "end": 28226584}, {"filename": "/assets/spell_icons/SummonFiend.bmp", "start": 28226584, "end": 28232446}, {"filename": "/assets/spell_icons/VenomSting.bmp", "start": 28232446, "end": 28238308}, {"filename": "/assets/spell_icons/WoundingTouch.bmp", "start": 28238308, "end": 28244170}, {"filename": "/assets/spellbook_icons/spell_buff.png", "start": 28244170, "end": 28247883}, {"filename": "/assets/spellbook_icons/spell_debuff.png", "start": 28247883, "end": 28251903}, {"filename": "/assets/spellbook_icons/spell_offensive.png", "start": 28251903, "end": 28256118}, {"filename": "/assets/spellbook_icons/spell_utility.png", "start": 28256118, "end": 28260586}, {"filename": "/assets/town_buildings/alchemy.png", "start": 28260586, "end": 28647318}, {"filename": "/assets/town_buildings/bank.png", "start": 28647318, "end": 29001752}, {"filename": "/assets/town_buildings/carpenter.png", "start": 29001752, "end": 29299514}, {"filename": "/assets/town_buildings/healer.png", "start": 29299514, "end": 29654564}, {"filename": "/assets/town_buildings/house.png", "start": 29654564, "end": 29774934}, {"filename": "/assets/town_buildings/provisioner.png", "start": 29774934, "end": 30161231}, {"filename": "/assets/town_buildings/smith.png", "start": 30161231, "end": 30483941}, {"filename": "/assets/town_buildings/stable.png", "start": 30483941, "end": 30764310}, {"filename": "/assets/town_buildings/tailor.png", "start": 30764310, "end": 31150541}, {"filename": "/assets/town_buildings/townhall.png", "start": 31150541, "end": 31459633}, {"filename": "/assets/village/anvil.png", "start": 31459633, "end": 31460762}, {"filename": "/assets/village/autumnbush.png", "start": 31460762, "end": 31463211}, {"filename": "/assets/village/barrel.png", "start": 31463211, "end": 31464548}, {"filename": "/assets/village/bookshelf.png", "start": 31464548, "end": 31464715}, {"filename": "/assets/village/chest.png", "start": 31464715, "end": 31464911}, {"filename": "/assets/village/chicken.png", "start": 31464911, "end": 31465133}, {"filename": "/assets/village/cow.png", "start": 31465133, "end": 31465364}, {"filename": "/assets/village/crate.png", "start": 31465364, "end": 31466453}, {"filename": "/assets/village/door_alchemy.png", "start": 31466453, "end": 31469324}, {"filename": "/assets/village/door_carpenter.png", "start": 31469324, "end": 31471389}, {"filename": "/assets/village/door_smith.png", "start": 31471389, "end": 31473292}, {"filename": "/assets/village/door_tailor.png", "start": 31473292, "end": 31475967}, {"filename": "/assets/village/farmland.png", "start": 31475967, "end": 31476429}, {"filename": "/assets/village/fencepost.png", "start": 31476429, "end": 31476826}, {"filename": "/assets/village/fountain.png", "start": 31476826, "end": 31478794}, {"filename": "/assets/village/lumberpile.png", "start": 31478794, "end": 31479950}, {"filename": "/assets/village/potion_purple.png", "start": 31479950, "end": 31480126}, {"filename": "/assets/village/potion_red.png", "start": 31480126, "end": 31480308}, {"filename": "/assets/village/sheep.png", "start": 31480308, "end": 31480532}, {"filename": "/assets/village/sign_smith.png", "start": 31480532, "end": 31481693}, {"filename": "/assets/village/stall1.png", "start": 31481693, "end": 31483491}, {"filename": "/assets/village/stall2.png", "start": 31483491, "end": 31485048}, {"filename": "/assets/village/stall3.png", "start": 31485048, "end": 31486636}, {"filename": "/assets/village/statue.png", "start": 31486636, "end": 31488282}, {"filename": "/assets/village/streetlamp.png", "start": 31488282, "end": 31489556}, {"filename": "/assets/village/well.png", "start": 31489556, "end": 31491156}, {"filename": "/assets/wilderness/bear.png", "start": 31491156, "end": 31491808}, {"filename": "/assets/wilderness/bison.png", "start": 31491808, "end": 31523053}, {"filename": "/assets/wilderness/bush1.png", "start": 31523053, "end": 31525220}, {"filename": "/assets/wilderness/bush2.png", "start": 31525220, "end": 31527516}, {"filename": "/assets/wilderness/dog.png", "start": 31527516, "end": 31528209}, {"filename": "/assets/wilderness/dragon.png", "start": 31528209, "end": 31529159}, {"filename": "/assets/wilderness/drake.png", "start": 31529159, "end": 31549551}, {"filename": "/assets/wilderness/fern1.png", "start": 31549551, "end": 31552602}, {"filename": "/assets/wilderness/griffin.png", "start": 31552602, "end": 31553274}, {"filename": "/assets/wilderness/horse.png", "start": 31553274, "end": 31569933}, {"filename": "/assets/wilderness/ore1.png", "start": 31569933, "end": 31572851}, {"filename": "/assets/wilderness/ore2.png", "start": 31572851, "end": 31575985}, {"filename": "/assets/wilderness/ore3.png", "start": 31575985, "end": 31579210}, {"filename": "/assets/wilderness/panther.png", "start": 31579210, "end": 31590643}, {"filename": "/assets/wilderness/rock.png", "start": 31590643, "end": 31590977}, {"filename": "/assets/wilderness/sabertooth.png", "start": 31590977, "end": 31610847}, {"filename": "/assets/wilderness/tree.png", "start": 31610847, "end": 31615063}, {"filename": "/assets/wilderness/wild_bandit.png", "start": 31615063, "end": 31615462}, {"filename": "/assets/wilderness/wild_bat.png", "start": 31615462, "end": 31615853}, {"filename": "/assets/wilderness/wild_goblin.png", "start": 31615853, "end": 31616915}, {"filename": "/assets/wilderness/wild_imp.png", "start": 31616915, "end": 31617756}, {"filename": "/assets/wilderness/wild_wolf.png", "start": 31617756, "end": 31619644}, {"filename": "/assets/wilderness/wolf.png", "start": 31619644, "end": 31620356}, {"filename": "/assets/wilderness/wyvern.png", "start": 31620356, "end": 31651490}, {"filename": "/assets/wilderness_entrances/bloodtusk.png", "start": 31651490, "end": 31651987}, {"filename": "/assets/wilderness_entrances/emberveil.png", "start": 31651987, "end": 31652524}, {"filename": "/assets/wilderness_entrances/hollowwarrens.png", "start": 31652524, "end": 31653297}, {"filename": "/assets/wilderness_entrances/sunkencrypt.png", "start": 31653297, "end": 31653787}, {"filename": "/assets/wilderness_entrances/wyrmscar.png", "start": 31653787, "end": 31654262}, {"filename": "/assets/wilderness_props/bush.png", "start": 31654262, "end": 31660177}, {"filename": "/assets/wilderness_props/cactus.png", "start": 31660177, "end": 31663806}, {"filename": "/assets/wilderness_props/chest.png", "start": 31663806, "end": 31672630}, {"filename": "/assets/wilderness_props/deerskull.png", "start": 31672630, "end": 31678668}, {"filename": "/assets/wilderness_props/fence.png", "start": 31678668, "end": 31684834}, {"filename": "/assets/wilderness_props/grass.png", "start": 31684834, "end": 31694820}, {"filename": "/assets/wilderness_props/haybale.png", "start": 31694820, "end": 31703233}, {"filename": "/assets/wilderness_props/plant.png", "start": 31703233, "end": 31707493}, {"filename": "/assets/wilderness_props/rocks.png", "start": 31707493, "end": 31713744}, {"filename": "/assets/wilderness_props/water.png", "start": 31713744, "end": 31720515}, {"filename": "/assets/wilderness_v2/creatures/bear.png", "start": 31720515, "end": 32215285}, {"filename": "/assets/wilderness_v2/creatures/bison.png", "start": 32215285, "end": 32743971}, {"filename": "/assets/wilderness_v2/creatures/dog.png", "start": 32743971, "end": 33171345}, {"filename": "/assets/wilderness_v2/creatures/dragon.png", "start": 33171345, "end": 33696928}, {"filename": "/assets/wilderness_v2/creatures/drake.png", "start": 33696928, "end": 34042060}, {"filename": "/assets/wilderness_v2/creatures/griffin.png", "start": 34042060, "end": 34599092}, {"filename": "/assets/wilderness_v2/creatures/horse.png", "start": 34599092, "end": 34860630}, {"filename": "/assets/wilderness_v2/creatures/panther.png", "start": 34860630, "end": 34986023}, {"filename": "/assets/wilderness_v2/creatures/sabertooth.png", "start": 34986023, "end": 35144038}, {"filename": "/assets/wilderness_v2/creatures/wolf.png", "start": 35144038, "end": 35359242}, {"filename": "/assets/wilderness_v2/creatures/wyvern.png", "start": 35359242, "end": 35681516}, {"filename": "/assets/wilderness_v2/monsters/bandit.png", "start": 35681516, "end": 36225329}, {"filename": "/assets/wilderness_v2/monsters/bat.png", "start": 36225329, "end": 36533133}, {"filename": "/assets/wilderness_v2/monsters/goblin.png", "start": 36533133, "end": 37326965}, {"filename": "/assets/wilderness_v2/monsters/imp.png", "start": 37326965, "end": 37730917}, {"filename": "/assets/wilderness_v2/monsters/wolf.png", "start": 37730917, "end": 37819407}, {"filename": "/assets/wilderness_v2/rival_adventurer.png", "start": 37819407, "end": 38117656}], "remote_package_size": 38117656});
 
   })();
 
-// end include: C:\Users\markr\AppData\Local\Temp\tmpf_dqsul2.js
-// include: C:\Users\markr\AppData\Local\Temp\tmpu6zhmbdl.js
-
-    // All the pre-js content up to here must remain later on, we need to run
-    // it.
-    if ((typeof ENVIRONMENT_IS_WASM_WORKER != 'undefined' && ENVIRONMENT_IS_WASM_WORKER) || (typeof ENVIRONMENT_IS_PTHREAD != 'undefined' && ENVIRONMENT_IS_PTHREAD) || (typeof ENVIRONMENT_IS_AUDIO_WORKLET != 'undefined' && ENVIRONMENT_IS_AUDIO_WORKLET)) Module['preRun'] = [];
-    var necessaryPreJSTasks = Module['preRun'].slice();
-  // end include: C:\Users\markr\AppData\Local\Temp\tmpu6zhmbdl.js
-// include: C:\Users\markr\AppData\Local\Temp\tmpf34yqv_5.js
-
-    if (!Module['preRun']) throw 'Module.preRun should exist because file support used it; did a pre-js delete it?';
-    necessaryPreJSTasks.forEach((task) => {
-      if (Module['preRun'].indexOf(task) < 0) throw 'All preRun tasks that exist before user pre-js code should remain after; did you replace Module or modify Module.preRun?';
-    });
-  // end include: C:\Users\markr\AppData\Local\Temp\tmpf34yqv_5.js
+// end include: C:\Users\markr\AppData\Local\Temp\tmp3mxsoxj1.js
 
 
 var programArgs = [];
@@ -301,8 +240,6 @@ function locateFile(path) {
 var readAsync, readBinary;
 
 if (ENVIRONMENT_IS_NODE) {
-  const isNode = globalThis.process?.versions?.node && globalThis.process?.type != 'renderer';
-  if (!isNode) throw new Error('not compiled for this environment (did you build to HTML and try to run it not on the web, or set ENVIRONMENT to something - like node - and run it someplace else - like on the web?)');
 
   // These modules will usually be used on Node.js. Load them eagerly to avoid
   // the complexity of lazy-loading.
@@ -315,7 +252,6 @@ readBinary = (filename) => {
   // We need to re-wrap `file://` strings to URLs.
   filename = isFileURI(filename) ? new URL(filename) : filename;
   var ret = fs.readFileSync(filename);
-  assert(Buffer.isBuffer(ret));
   return ret;
 };
 
@@ -323,7 +259,6 @@ readAsync = async (filename, binary = true) => {
   // See the comment in the `readBinary` function.
   filename = isFileURI(filename) ? new URL(filename) : filename;
   var ret = fs.readFileSync(filename, binary ? undefined : 'utf8');
-  assert(binary ? Buffer.isBuffer(ret) : typeof ret == 'string');
   return ret;
 };
 // end include: node_shell_read.js
@@ -344,9 +279,6 @@ readAsync = async (filename, binary = true) => {
   };
 
 } else
-if (ENVIRONMENT_IS_SHELL) {
-
-} else
 
 // Note that this includes Node.js workers when relevant (pthreads is enabled).
 // Node.js workers are detected as a combination of ENVIRONMENT_IS_WORKER and
@@ -358,8 +290,6 @@ if (ENVIRONMENT_IS_WEB || ENVIRONMENT_IS_WORKER) {
     // Must be a `blob:` or `data:` URL (e.g. `blob:http://site.com/etc/etc`), we cannot
     // infer anything from them.
   }
-
-  if (!(globalThis.window || globalThis.WorkerGlobalScope)) throw new Error('not compiled for this environment (did you build to HTML and try to run it not on the web, or set ENVIRONMENT to something - like node - and run it someplace else - like on the web?)');
 
   {
 // include: web_or_worker_shell_read.js
@@ -404,26 +334,10 @@ if (ENVIRONMENT_IS_WORKER) {
   }
 } else
 {
-  throw new Error('environment detection error');
 }
 
 var out = console.log.bind(console);
 var err = console.error.bind(console);
-
-
-var PROXYFS = 'PROXYFS is no longer included by default; build with -lproxyfs.js';
-var WORKERFS = 'WORKERFS is no longer included by default; build with -lworkerfs.js';
-var FETCHFS = 'FETCHFS is no longer included by default; build with -lfetchfs.js';
-var ICASEFS = 'ICASEFS is no longer included by default; build with -licasefs.js';
-var JSFILEFS = 'JSFILEFS is no longer included by default; build with -ljsfilefs.js';
-var OPFS = 'OPFS is no longer included by default; build with -lopfs.js';
-
-var NODEFS = 'NODEFS is no longer included by default; build with -lnodefs.js';
-
-// perform assertions in shell.js after we set up out() and err(), as otherwise
-// if an assertion fails it cannot print the message
-
-assert(!ENVIRONMENT_IS_SHELL, 'shell environment detected but not enabled at build time (add `shell` to `-sENVIRONMENT` to enable)');
 
 // end include: shell.js
 
@@ -439,10 +353,6 @@ assert(!ENVIRONMENT_IS_SHELL, 'shell environment detected but not enabled at bui
 //    is up at http://kripken.github.io/emscripten-site/docs/api_reference/preamble.js.html
 
 var wasmBinary;
-
-if (!globalThis.WebAssembly) {
-  err('no native wasm support detected');
-}
 
 // Wasm globals
 
@@ -466,12 +376,12 @@ var EXITSTATUS;
 /** @type {function(*, string=)} */
 function assert(condition, text) {
   if (!condition) {
-    abort('Assertion failed' + (text ? ': ' + text : ''));
+    // This build was created without ASSERTIONS defined.  `assert()` should not
+    // ever be called in this configuration but in case there are callers in
+    // the wild leave this simple abort() implementation here for now.
+    abort(text);
   }
 }
-
-// We used to include malloc/free by default in the past. Show a helpful error in
-// builds with assertions.
 
 /**
  * Indicates whether filename is delivered via file protocol (as opposed to http/https)
@@ -488,208 +398,15 @@ class EmscriptenSjLj extends EmscriptenEH {}
 
 // end include: runtime_exceptions.js
 // include: runtime_debug.js
-var runtimeDebug = true; // Switch to false at runtime to disable logging at the right times
-
-// Used by XXXXX_DEBUG settings to output debug messages.
-function dbg(...args) {
-  if (!runtimeDebug && typeof runtimeDebug != 'undefined') return;
-  // TODO(sbc): Make this configurable somehow.  Its not always convenient for
-  // logging to show up as warnings.
-  console.warn(...args);
-}
-
-// Endianness check
-(() => {
-  var h16 = new Int16Array(1);
-  var h8 = new Int8Array(h16.buffer);
-  h16[0] = 0x6373;
-  if (h8[0] !== 0x73 || h8[1] !== 0x63) abort('Runtime error: expected the system to be little-endian! (Run with -sSUPPORT_BIG_ENDIAN to bypass)');
-})();
-
-function consumedModuleProp(prop) {
-  var value = Module[prop];
-  var msg = `Attempt to modify \`Module.${prop}\` after it has already been processed.  This can happen, for example, when code is injected via '--post-js' rather than '--pre-js'`;
-  if (Array.isArray(value)) {
-    value = new Proxy(value, {
-      set(target, key, val) {
-        abort(msg);
-        return false;
-      },
-      defineProperty(target, key, descriptor) {
-        abort(msg);
-        return false;
-      },
-      deleteProperty(target, key) {
-        abort(msg);
-        return false;
-      }
-    });
-  }
-  Object.defineProperty(Module, prop, {
-    configurable: true,
-    get() { return value; },
-    set() {
-      abort(msg);
-    }
-  });
-}
-
-function makeInvalidEarlyAccess(name) {
-  return () => assert(false, `call to '${name}' via reference taken before Wasm module initialization`);
-
-}
-
-function ignoredModuleProp(prop) {
-  if (Object.getOwnPropertyDescriptor(Module, prop)) {
-    abort(`\`Module.${prop}\` was supplied but \`${prop}\` not included in INCOMING_MODULE_JS_API`);
-  }
-}
-
-// forcing the filesystem exports a few things by default
-function isExportedByForceFilesystem(name) {
-  return name === 'FS_createPath' ||
-         name === 'FS_createDataFile' ||
-         name === 'FS_createPreloadedFile' ||
-         name === 'FS_preloadFile' ||
-         name === 'FS_unlink' ||
-         name === 'addRunDependency' ||
-         // The old FS has some functionality that WasmFS lacks.
-         name === 'FS_createLazyFile' ||
-         name === 'FS_createDevice' ||
-         name === 'removeRunDependency';
-}
-
-/**
- * Intercept access to a symbols in the global symbol.  This enables us to give
- * informative warnings/errors when folks attempt to use symbols they did not
- * include in their build, or no symbols that no longer exist.
- *
- * We don't define this in MODULARIZE mode since in that mode emscripten symbols
- * are never placed in the global scope.
- */
-function hookGlobalSymbolAccess(sym, func) {
-  if (!Object.getOwnPropertyDescriptor(globalThis, sym)) {
-    Object.defineProperty(globalThis, sym, {
-      configurable: true,
-      get() {
-        func();
-        return undefined;
-      }
-    });
-  }
-}
-
-function missingGlobal(sym, msg) {
-  hookGlobalSymbolAccess(sym, () => {
-    warnOnce(`\`${sym}\` is no longer defined by emscripten. ${msg}`);
-  });
-}
-
-missingGlobal('buffer', 'Please use HEAP8.buffer or wasmMemory.buffer');
-missingGlobal('asm', 'Please use wasmExports instead');
-
-function missingLibrarySymbol(sym) {
-  hookGlobalSymbolAccess(sym, () => {
-    // Can't `abort()` here because it would break code that does runtime
-    // checks.  e.g. `if (typeof SDL === 'undefined')`.
-    var msg = `\`${sym}\` is a library symbol and not included by default; add it to your library.js __deps or to DEFAULT_LIBRARY_FUNCS_TO_INCLUDE on the command line`;
-    // DEFAULT_LIBRARY_FUNCS_TO_INCLUDE requires the name as it appears in
-    // library.js, which means $name for a JS name with no prefix, or name
-    // for a JS name like _name.
-    var librarySymbol = sym;
-    if (!librarySymbol.startsWith('_')) {
-      librarySymbol = '$' + sym;
-    }
-    msg += ` (e.g. -sDEFAULT_LIBRARY_FUNCS_TO_INCLUDE='${librarySymbol}')`;
-    if (isExportedByForceFilesystem(sym)) {
-      msg += '. Alternatively, forcing filesystem support (-sFORCE_FILESYSTEM) can export this for you';
-    }
-    warnOnce(msg);
-  });
-
-  // Any symbol that is not included from the JS library is also (by definition)
-  // not exported on the Module object.
-  unexportedRuntimeSymbol(sym);
-}
-
-function unexportedRuntimeSymbol(sym) {
-  if (!Object.getOwnPropertyDescriptor(Module, sym)) {
-    Object.defineProperty(Module, sym, {
-      configurable: true,
-      get() {
-        var msg = `'${sym}' was not exported. add it to EXPORTED_RUNTIME_METHODS (see the Emscripten FAQ)`;
-        if (isExportedByForceFilesystem(sym)) {
-          msg += '. Alternatively, forcing filesystem support (-sFORCE_FILESYSTEM) can export this for you';
-        }
-        abort(msg);
-      },
-    });
-  }
-}
-
 // end include: runtime_debug.js
-// include: runtime_stack_check.js
-const stackCookie1 = 0x02135467;
-const stackCookie2 = 0x89BACDFE;
-
-// Initializes the stack cookie. Called at the startup of main and at the startup of each thread in pthreads mode.
-function writeStackCookie() {
-  var max = _emscripten_stack_get_end();
-  assert((max & 3) == 0);
-  // If the stack ends at address zero we write our cookies 4 bytes into the
-  // stack.  This prevents interference with SAFE_HEAP and ASAN which also
-  // monitor writes to address zero.
-  if (max == 0) {
-    max += 4;
-  }
-  // The stack grow downwards towards _emscripten_stack_get_end.
-  // We write cookies to the final two words in the stack and detect if they are
-  // ever overwritten.
-  HEAPU32[((max)>>2)] = stackCookie1;
-  HEAPU32[(((max)+(4))>>2)] = stackCookie2;
-  // Also test the global address 0 for integrity.
-  HEAPU32[((0)>>2)] = 1668509029;
-}
-
-function u32ToHexString(num) {
-  return '0x' + (num >>> 0).toString(16).padStart(8, '0');
-}
-
-function checkStackCookie() {
-  if (ABORT) return;
-  var max = _emscripten_stack_get_end();
-  // See writeStackCookie().
-  if (max == 0) {
-    max += 4;
-  }
-  var val1 = HEAPU32[((max)>>2)];
-  var val2 = HEAPU32[(((max)+(4))>>2)];
-  if (val1 != stackCookie1 || val2 != stackCookie2) {
-    abort(`Stack overflow! Stack cookie has been overwritten at ${ptrToString(max)}, expected hex dwords ${u32ToHexString(stackCookie2)} and ${u32ToHexString(stackCookie1)}, but received ${u32ToHexString(val2)} ${u32ToHexString(val1)}`);
-  }
-  // Also test the global address 0 for integrity.
-  if (HEAPU32[((0)>>2)] != 0x63736d65 /* 'emsc' */) {
-    abort('Runtime error: The application has corrupted its heap memory area (address zero)!');
-  }
-}
-// end include: runtime_stack_check.js
 // Memory management
 
 var runtimeInitialized = false;
 
 
 
-// When ALLOW_MEMORY_GROWTH is enabled, the conversion from Wasm
-// memory to ArrayBuffer requires some additional logic.
-function getMemoryBuffer() {
-  return wasmMemory.buffer;
-}
-
 function updateMemoryViews() {
-  // If we already have a heap that is resizeable/growable buffer we don't
-  // need to do anything in updateMemoryViews.
-  if (HEAP8?.buffer?.resizable) return;
-  var b = getMemoryBuffer();
+  var b = wasmMemory.buffer;
   HEAP8 = new Int8Array(b);
   HEAP16 = new Int16Array(b);
   HEAPU8 = new Uint8Array(b);
@@ -705,26 +422,19 @@ function updateMemoryViews() {
 // include: memoryprofiler.js
 // end include: memoryprofiler.js
 // end include: runtime_common.js
-assert(globalThis.Int32Array && globalThis.Float64Array && Int32Array.prototype.subarray && Int32Array.prototype.set,
-       'JS engine does not provide full typed array support');
-
 function preRun() {
   var preRun = Module['preRun'];
   if (preRun) {
     if (typeof preRun == 'function') preRun = [preRun];
     onPreRuns.push(...preRun);
   }
-  consumedModuleProp('preRun');
   // Begin ATPRERUNS hooks
   callRuntimeCallbacks(onPreRuns);
   // End ATPRERUNS hooks
 }
 
 function initRuntime() {
-  assert(!runtimeInitialized);
   runtimeInitialized = true;
-
-  checkStackCookie();
 
   // Begin ATINITS hooks
   if (!Module['noFSInit'] && !FS.initialized) FS.init();
@@ -737,18 +447,15 @@ TTY.init();
   FS.ignorePermissions = false;
   // End ATPOSTCTORS hooks
 
-  checkStackCookie();
 }
 
 function postRun() {
-  checkStackCookie();
 
   var postRun = Module['postRun'];
   if (postRun) {
     if (typeof postRun == 'function') postRun = [postRun];
     onPostRuns.push(...postRun);
   }
-  consumedModuleProp('postRun');
 
   // Begin ATPOSTRUNS hooks
   callRuntimeCallbacks(onPostRuns);
@@ -767,6 +474,8 @@ function abort(what) {
   err(what);
 
   ABORT = true;
+
+  what += '. Build with -sASSERTIONS for more info.';
 
   // Use a wasm runtime error, because a JS error might be seen as a foreign
   // exception, which means we'd run destructors on it. We need the error to
@@ -788,16 +497,6 @@ function abort(what) {
   // in code paths apart from instantiation where an exception is expected
   // to be thrown when abort is called.
   throw e;
-}
-
-function createExportWrapper(name, func, nargs) {
-  assert(func);
-  return (...args) => {
-    assert(runtimeInitialized, `native function \`${name}\` called before runtime initialization`);
-    // Only assert for too many arguments. Too few can be valid since the missing arguments will be zero filled.
-    assert(args.length <= nargs, `native function \`${name}\` called with ${args.length} args but expects ${nargs}`);
-    return func(...args);
-  };
 }
 
 var wasmBinaryFile;
@@ -839,10 +538,6 @@ async function instantiateArrayBuffer(binaryFile, imports) {
   } catch (reason) {
     err(`failed to asynchronously prepare wasm: ${reason}`);
 
-    // Warn on some common problems.
-    if (isFileURI(binaryFile)) {
-      err(`warning: Loading from a file URI (${binaryFile}) is not supported in most browsers. See https://emscripten.org/docs/getting_started/FAQ.html#how-do-i-run-a-local-webserver-for-testing-why-does-my-program-stall-in-downloading-or-preparing`);
-    }
     abort(reason);
   }
 }
@@ -897,15 +592,9 @@ async function createWasm() {
   }
 
   // Prefer streaming instantiation if available.
-  // Async compilation can be confusing when an error on the page overwrites Module
-  // (for example, if the order of elements is wrong, and the one defining Module is
-  // later), so we save Module and check it later.
-  var trueModule = Module;
   function receiveInstantiationResult(result) {
     // 'result' is a ResultObject object which has both the module and instance.
     // receiveInstance() will swap in the exports (to Module.asm) so they can be called
-    assert(Module === trueModule, 'the Module object should not be replaced during async compilation - perhaps the order of HTML elements is wrong?');
-    trueModule = null;
     // TODO: Due to Closure regression https://github.com/google/closure-compiler/issues/3193, the above line no longer optimizes out down to the following line.
     // When the regression is fixed, can restore the above PTHREADS-enabled path.
     return receiveInstance(result['instance']);
@@ -922,12 +611,7 @@ async function createWasm() {
   var instantiateWasm = Module['instantiateWasm'];
   if (instantiateWasm) {
     return new Promise((resolve) => {
-      try {
         instantiateWasm(info, (inst) => resolve(receiveInstance(inst)));
-      } catch(e) {
-        err(`Module.instantiateWasm callback failed with error: ${e}`);
-        throw e;
-      }
     });
   }
 
@@ -950,15 +634,6 @@ async function createWasm() {
       }
     }
 
-  /** @type {!Int32Array} */
-  var HEAP32;
-
-  /** @type {!Int8Array} */
-  var HEAP8;
-
-  /** @type {!Uint32Array} */
-  var HEAPU32;
-
   var callRuntimeCallbacks = (callbacks) => {
       while (callbacks.length > 0) {
         // Pass the module as the first argument.
@@ -974,25 +649,9 @@ async function createWasm() {
 
   var noExitRuntime = true;
 
-  function ptrToString(ptr) {
-      assert(typeof ptr === 'number', `ptrToString expects a number, got ${typeof ptr}`);
-      // Convert to 32-bit unsigned value
-      ptr >>>= 0;
-      return '0x' + ptr.toString(16).padStart(8, '0');
-    }
-
   var stackRestore = (val) => __emscripten_stack_restore(val);
 
   var stackSave = () => _emscripten_stack_get_current();
-
-  var warnOnce = (text) => {
-      warnOnce.shown ||= {};
-      if (!warnOnce.shown[text]) {
-        warnOnce.shown[text] = 1;
-        if (ENVIRONMENT_IS_NODE) text = 'warning: ' + text;
-        err(text);
-      }
-    };
 
   
 
@@ -1016,7 +675,6 @@ async function createWasm() {
       while (heapOrArray[idx] && !(idx >= maxIdx)) ++idx;
       return idx;
     };
-  
   
     /**
    * Given a pointer 'idx' to a null-terminated UTF8-encoded string in the given
@@ -1050,7 +708,6 @@ async function createWasm() {
         if ((u0 & 0xF0) == 0xE0) {
           u0 = ((u0 & 15) << 12) | (u1 << 6) | u2;
         } else {
-          if ((u0 & 0xF8) != 0xF0) warnOnce(`Invalid UTF-8 leading byte ${ptrToString(u0)} encountered when deserializing a UTF-8 string in wasm memory to a JS string!`);
           u0 = ((u0 & 7) << 18) | (u1 << 12) | (u2 << 6) | (heapOrArray[idx++] & 63);
         }
   
@@ -1081,13 +738,16 @@ async function createWasm() {
    * @return {string}
    */
   var UTF8ToString = (ptr, maxBytesToRead, ignoreNul) => {
-      assert(typeof ptr == 'number', `UTF8ToString expects a number (got ${typeof ptr})`);
       return ptr ? UTF8ArrayToString(HEAPU8, ptr, maxBytesToRead, ignoreNul) : '';
     };
   var ___assert_fail = (condition, filename, line, func) =>
       abort(`Assertion failed: ${UTF8ToString(condition)}, at: ` + [filename ? UTF8ToString(filename) : 'unknown filename', line, func ? UTF8ToString(func) : 'unknown function']);
 
+  /** @type {!Int8Array} */
+  var HEAP8;
   
+  /** @type {!Uint32Array} */
+  var HEAPU32;
   class ExceptionInfo {
       // excPtr - Thrown object pointer to wrap. Metadata pointer is calculated from it.
       constructor(excPtr) {
@@ -1148,7 +808,7 @@ async function createWasm() {
   var uncaughtExceptionCount = 0;
   
   var __Unwind_RaiseException = (ex) => {
-      assert(false, 'Exception thrown, but exception catching is not enabled. Compile with -sNO_DISABLE_EXCEPTION_CATCHING or -sEXCEPTION_CATCHING_ALLOWED=[..] to catch.');
+      abort()
     };
   var ___cxa_throw = (ptr, type, destructor) => {
       var info = new ExceptionInfo(ptr);
@@ -1312,7 +972,6 @@ var lengthBytesUTF8 = (str) => {
   };
 
 var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
-    assert(typeof str === 'string', `stringToUTF8Array expects a string (got ${typeof str})`);
     // Parameter maxBytesToWrite is not optional. Negative values, 0, null,
     // undefined and false each don't write out any bytes.
     if (!(maxBytesToWrite > 0))
@@ -1339,7 +998,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
         heap[outIdx++] = 0x80 | (u & 63);
       } else {
         if (outIdx + 3 >= endIdx) break;
-        if (u > 0x10FFFF) warnOnce(`Invalid Unicode code point ${ptrToString(u)} encountered when serializing a JS string to a UTF-8 string in wasm memory! (Valid unicode code points should be in range 0-0x10FFFF).`);
         heap[outIdx++] = 0xF0 | (u >> 18);
         heap[outIdx++] = 0x80 | ((u >> 12) & 63);
         heap[outIdx++] = 0x80 | ((u >> 6) & 63);
@@ -1555,7 +1213,7 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   
   
   var mmapAlloc = (size) => {
-      abort('internal error: mmapAlloc called but `emscripten_builtin_memalign` native symbol not exported');
+      abort();
     };
   
   var MEMFS = {
@@ -1646,7 +1304,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
         return node;
       },
   getFileDataAsTypedArray(node) {
-        assert(FS.isFile(node.mode), 'getFileDataAsTypedArray called on non-file');
         return node.contents.subarray(0, node.usedBytes); // Make sure to not return excess unused bytes.
       },
   expandFileStorage(node, newCapacity) {
@@ -1711,7 +1368,14 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
           }
         },
   lookup(parent, name) {
-          throw new FS.ErrnoError(44);
+          // This error may happen quite a bit. To avoid overhead we reuse it (and
+          // suffer a lack of stack info).
+          if (!MEMFS.doesNotExistError) {
+            MEMFS.doesNotExistError = new FS.ErrnoError(44);
+            /** @suppress {checkTypes} */
+            MEMFS.doesNotExistError.stack = '<generic error, no stack>';
+          }
+          throw MEMFS.doesNotExistError;
         },
   mknod(parent, name, mode, dev) {
           return MEMFS.createNode(parent, name, mode, dev);
@@ -1768,26 +1432,16 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
           var contents = stream.node.contents;
           if (position >= stream.node.usedBytes) return 0;
           var size = Math.min(stream.node.usedBytes - position, length);
-          assert(size >= 0);
           buffer.set(contents.subarray(position, position + size), offset);
           return size;
         },
   write(stream, buffer, offset, length, position, canOwn) {
-          assert(buffer.subarray, 'FS.write expects a TypedArray');
-          // If the buffer is located in main memory (HEAP), and if
-          // memory can grow, we can't hold on to references of the
-          // memory buffer, as they may get invalidated. That means we
-          // need to copy its contents.
-          if (buffer.buffer === HEAP8.buffer) {
-            canOwn = false;
-          }
   
           if (!length) return 0;
           var node = stream.node;
           node.mtime = node.ctime = Date.now();
   
           if (canOwn) {
-            assert(!position, 'canOwn must imply no weird position inside the file');
             node.contents = buffer.subarray(offset, offset + length);
             node.usedBytes = length;
           } else if (!node.usedBytes && !position) { // If this is a simple first write to an empty file, do a fast set since we don't need to care about old data.
@@ -1891,518 +1545,8 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
     };
   
   
-  
-  
-  var IDBFS = {
-  dbs:{
-  },
-  indexedDB:() => {
-        assert(typeof indexedDB != 'undefined', 'IDBFS used, but indexedDB not supported');
-        return indexedDB;
-      },
-  DB_VERSION:21,
-  DB_STORE_NAME:"FILE_DATA",
-  queuePersist:(mount) => {
-        function onPersistComplete() {
-          if (mount.idbPersistState === 'again') startPersist(); // If a new sync request has appeared in between, kick off a new sync
-          else {
-            mount.idbPersistState = 0; // Otherwise reset sync state back to idle to wait for a new sync later
-            IDBFS.onAutoPersistStateChanged?.(false);
-          }
-        }
-        function startPersist() {
-          mount.idbPersistState = 'idb'; // Mark that we are currently running a sync operation
-          IDBFS.onAutoPersistStateChanged?.(true);
-          IDBFS.syncfs(mount, /*populate:*/false, onPersistComplete);
-        }
-  
-        if (!mount.idbPersistState) {
-          // Programs typically write/copy/move multiple files in the in-memory
-          // filesystem within a single app frame, so when a filesystem sync
-          // command is triggered, do not start it immediately, but only after
-          // the current frame is finished. This way all the modified files
-          // inside the main loop tick will be batched up to the same sync.
-          mount.idbPersistState = setTimeout(startPersist, 0);
-        } else if (mount.idbPersistState === 'idb') {
-          // There is an active IndexedDB sync operation in-flight, but we now
-          // have accumulated more files to sync. We should therefore queue up
-          // a new sync after the current one finishes so that all writes
-          // will be properly persisted.
-          mount.idbPersistState = 'again';
-        }
-      },
-  mount:(mount) => {
-        // reuse core MEMFS functionality
-        var mnt = MEMFS.mount(mount);
-        // If the automatic IDBFS persistence option has been selected, then automatically persist
-        // all modifications to the filesystem as they occur.
-        if (mount?.opts?.autoPersist) {
-          mount.idbPersistState = 0; // IndexedDB sync starts in idle state
-          var memfs_node_ops = mnt.node_ops;
-          mnt.node_ops = {...mnt.node_ops}; // Clone node_ops to inject write tracking
-          mnt.node_ops.mknod = (parent, name, mode, dev) => {
-            var node = memfs_node_ops.mknod(parent, name, mode, dev);
-            // Propagate injected node_ops to the newly created child node
-            node.node_ops = mnt.node_ops;
-            // Remember for each IDBFS node which IDBFS mount point they came from so we know which mount to persist on modification.
-            node.idbfs_mount = mnt.mount;
-            // Remember original MEMFS stream_ops for this node
-            node.memfs_stream_ops = node.stream_ops;
-            // Clone stream_ops to inject write tracking
-            node.stream_ops = {...node.stream_ops};
-  
-            // Track all file writes
-            node.stream_ops.write = (stream, buffer, offset, length, position, canOwn) => {
-              // This file has been modified, we must persist IndexedDB when this file closes
-              stream.node.isModified = true;
-              return node.memfs_stream_ops.write(stream, buffer, offset, length, position, canOwn);
-            };
-  
-            // Persist IndexedDB on file close
-            node.stream_ops.close = (stream) => {
-              var n = stream.node;
-              if (n.isModified) {
-                IDBFS.queuePersist(n.idbfs_mount);
-                n.isModified = false;
-              }
-              if (n.memfs_stream_ops.close) return n.memfs_stream_ops.close(stream);
-            };
-  
-            // Persist the node we just created to IndexedDB
-            IDBFS.queuePersist(mnt.mount);
-  
-            return node;
-          };
-          // Also kick off persisting the filesystem on other operations that modify the filesystem.
-          mnt.node_ops.rmdir   = (...args) => (IDBFS.queuePersist(mnt.mount), memfs_node_ops.rmdir(...args));
-          mnt.node_ops.symlink = (...args) => (IDBFS.queuePersist(mnt.mount), memfs_node_ops.symlink(...args));
-          mnt.node_ops.unlink  = (...args) => (IDBFS.queuePersist(mnt.mount), memfs_node_ops.unlink(...args));
-          mnt.node_ops.rename  = (...args) => (IDBFS.queuePersist(mnt.mount), memfs_node_ops.rename(...args));
-        }
-        return mnt;
-      },
-  syncfs:(mount, populate, callback) => {
-        IDBFS.getLocalSet(mount, (err, local) => {
-          if (err) return callback(err);
-  
-          IDBFS.getRemoteSet(mount, (err, remote) => {
-            if (err) return callback(err);
-  
-            var src = populate ? remote : local;
-            var dst = populate ? local : remote;
-  
-            IDBFS.reconcile(src, dst, callback);
-          });
-        });
-      },
-  quit:() => {
-        for (var value of Object.values(IDBFS.dbs)) {
-          value.close()
-        }
-        IDBFS.dbs = {};
-      },
-  getDB:(name, callback) => {
-        // check the cache first
-        var db = IDBFS.dbs[name];
-        if (db) {
-          return callback(null, db);
-        }
-  
-        var req;
-        try {
-          req = IDBFS.indexedDB().open(name, IDBFS.DB_VERSION);
-        } catch (e) {
-          return callback(e);
-        }
-        if (!req) {
-          return callback('Unable to connect to IndexedDB');
-        }
-        req.onupgradeneeded = (e) => {
-          var db = /** @type {IDBDatabase} */ (e.target.result);
-          var transaction = e.target.transaction;
-  
-          var fileStore;
-  
-          if (db.objectStoreNames.contains(IDBFS.DB_STORE_NAME)) {
-            fileStore = transaction.objectStore(IDBFS.DB_STORE_NAME);
-          } else {
-            fileStore = db.createObjectStore(IDBFS.DB_STORE_NAME);
-          }
-  
-          if (!fileStore.indexNames.contains('timestamp')) {
-            fileStore.createIndex('timestamp', 'timestamp', { unique: false });
-          }
-        };
-        req.onsuccess = () => {
-          db = /** @type {IDBDatabase} */ (req.result);
-  
-          // add to the cache
-          IDBFS.dbs[name] = db;
-          callback(null, db);
-        };
-        req.onerror = (e) => {
-          callback(e.target.error);
-          e.preventDefault();
-        };
-      },
-  getLocalSet:(mount, callback) => {
-        var entries = {};
-  
-        function isRealDir(p) {
-          return p !== '.' && p !== '..';
-        };
-        function toAbsolute(root) {
-          return (p) => PATH.join2(root, p);
-        };
-  
-        var check = FS.readdir(mount.mountpoint).filter(isRealDir).map(toAbsolute(mount.mountpoint));
-  
-        while (check.length) {
-          var path = check.pop();
-          var stat;
-  
-          try {
-            stat = FS.lstat(path);
-          } catch (e) {
-            return callback(e);
-          }
-  
-          if (FS.isDir(stat.mode)) {
-            check.push(...FS.readdir(path).filter(isRealDir).map(toAbsolute(path)));
-          }
-  
-          entries[path] = { 'timestamp': stat.mtime };
-        }
-  
-        return callback(null, { type: 'local', entries: entries });
-      },
-  getRemoteSet:(mount, callback) => {
-        var entries = {};
-  
-        IDBFS.getDB(mount.mountpoint, (err, db) => {
-          if (err) return callback(err);
-  
-          try {
-            var transaction = db.transaction([IDBFS.DB_STORE_NAME], 'readonly');
-            transaction.onerror = (e) => {
-              callback(e.target.error);
-              e.preventDefault();
-            };
-  
-            var store = transaction.objectStore(IDBFS.DB_STORE_NAME);
-            var index = store.index('timestamp');
-  
-            index.openKeyCursor().onsuccess = (event) => {
-              var cursor = event.target.result;
-  
-              if (!cursor) {
-                return callback(null, { type: 'remote', db, entries });
-              }
-  
-              entries[cursor.primaryKey] = { 'timestamp': cursor.key };
-  
-              cursor.continue();
-            };
-          } catch (e) {
-            return callback(e);
-          }
-        });
-      },
-  loadLocalEntry:(path, callback) => {
-        var stat, node;
-  
-        try {
-          var lookup = FS.lookupPath(path);
-          node = lookup.node;
-          stat = FS.lstat(path);
-        } catch (e) {
-          return callback(e);
-        }
-  
-        if (FS.isDir(stat.mode)) {
-          return callback(null, { 'timestamp': stat.mtime, 'mode': stat.mode });
-        } else if (FS.isLink(stat.mode)) {
-          return callback(null, { 'timestamp': stat.mtime, 'mode': stat.mode, 'link': node.link, });
-        } else if (FS.isFile(stat.mode)) {
-          // Performance consideration: storing a normal JavaScript array to a IndexedDB is much slower than storing a typed array.
-          // Therefore always convert the file contents to a typed array first before writing the data to IndexedDB.
-          node.contents = MEMFS.getFileDataAsTypedArray(node);
-          return callback(null, { 'timestamp': stat.mtime, 'mode': stat.mode, 'contents': node.contents });
-        } else {
-          return callback(new Error('node type not supported'));
-        }
-      },
-  storeLocalEntry:(path, entry, callback) => {
-        try {
-          if (FS.isDir(entry['mode'])) {
-            FS.mkdirTree(path, entry['mode']);
-          } else if (FS.isLink(entry['mode'])) {
-            FS.symlink(entry['link'], path);
-          } else if (FS.isFile(entry['mode'])) {
-            FS.writeFile(path, entry['contents'], { canOwn: true });
-          } else {
-            return callback(new Error('node type not supported'));
-          }
-  
-          FS.chmod(path, entry['mode']);
-          FS.utime(path, entry['timestamp'], entry['timestamp']);
-        } catch (e) {
-          return callback(e);
-        }
-  
-        callback(null);
-      },
-  removeLocalEntry:(path, callback) => {
-        try {
-          var stat = FS.lstat(path);
-  
-          if (FS.isDir(stat.mode)) {
-            FS.rmdir(path);
-          } else {
-            FS.unlink(path);
-          }
-        } catch (e) {
-          return callback(e);
-        }
-  
-        callback(null);
-      },
-  loadRemoteEntry:(store, path, callback) => {
-        var req = store.get(path);
-        req.onsuccess = (event) => callback(null, event.target.result);
-        req.onerror = (e) => {
-          callback(e.target.error);
-          e.preventDefault();
-        };
-      },
-  storeRemoteEntry:(store, path, entry, callback) => {
-        try {
-          var req = store.put(entry, path);
-        } catch (e) {
-          callback(e);
-          return;
-        }
-        req.onsuccess = (event) => callback();
-        req.onerror = (e) => {
-          callback(e.target.error);
-          e.preventDefault();
-        };
-      },
-  removeRemoteEntry:(store, path, callback) => {
-        var req = store.delete(path);
-        req.onsuccess = (event) => callback();
-        req.onerror = (e) => {
-          callback(e.target.error);
-          e.preventDefault();
-        };
-      },
-  reconcile:(src, dst, callback) => {
-        var total = 0;
-  
-        var create = [];
-        for (var [key, e] of Object.entries(src.entries)) {
-          var e2 = dst.entries[key];
-          if (!e2 || e['timestamp'].getTime() != e2['timestamp'].getTime()) {
-            create.push(key);
-            total++;
-          }
-        }
-  
-        var remove = [];
-        for (var key of Object.keys(dst.entries)) {
-          if (!src.entries[key]) {
-            remove.push(key);
-            total++;
-          }
-        }
-  
-        if (!total) {
-          return callback(null);
-        }
-  
-        var errored = false;
-        var db = src.type === 'remote' ? src.db : dst.db;
-        var transaction = db.transaction([IDBFS.DB_STORE_NAME], 'readwrite');
-        var store = transaction.objectStore(IDBFS.DB_STORE_NAME);
-  
-        function done(err) {
-          if (err && !errored) {
-            errored = true;
-            return callback(err);
-          }
-        };
-  
-        // transaction may abort if (for example) there is a QuotaExceededError
-        transaction.onerror = transaction.onabort = (e) => {
-          done(e.target.error);
-          e.preventDefault();
-        };
-  
-        transaction.oncomplete = (e) => {
-          if (!errored) {
-            callback(null);
-          }
-        };
-  
-        // sort paths in ascending order so directory entries are created
-        // before the files inside them
-        for (const path of create.sort()) {
-          if (dst.type === 'local') {
-            IDBFS.loadRemoteEntry(store, path, (err, entry) => {
-              if (err) return done(err);
-              IDBFS.storeLocalEntry(path, entry, done);
-            });
-          } else {
-            IDBFS.loadLocalEntry(path, (err, entry) => {
-              if (err) return done(err);
-              IDBFS.storeRemoteEntry(store, path, entry, done);
-            });
-          }
-        }
-  
-        // sort paths in descending order so files are deleted before their
-        // parent directories
-        for (var path of remove.sort().reverse()) {
-          if (dst.type === 'local') {
-            IDBFS.removeLocalEntry(path, done);
-          } else {
-            IDBFS.removeRemoteEntry(store, path, done);
-          }
-        }
-      },
-  };
-  
-  
-  
-  var strError = (errno) => UTF8ToString(_strerror(errno));
-  
-  var ERRNO_CODES = {
-      'EPERM': 63,
-      'ENOENT': 44,
-      'ESRCH': 71,
-      'EINTR': 27,
-      'EIO': 29,
-      'ENXIO': 60,
-      'E2BIG': 1,
-      'ENOEXEC': 45,
-      'EBADF': 8,
-      'ECHILD': 12,
-      'EAGAIN': 6,
-      'EWOULDBLOCK': 6,
-      'ENOMEM': 48,
-      'EACCES': 2,
-      'EFAULT': 21,
-      'ENOTBLK': 105,
-      'EBUSY': 10,
-      'EEXIST': 20,
-      'EXDEV': 75,
-      'ENODEV': 43,
-      'ENOTDIR': 54,
-      'EISDIR': 31,
-      'EINVAL': 28,
-      'ENFILE': 41,
-      'EMFILE': 33,
-      'ENOTTY': 59,
-      'ETXTBSY': 74,
-      'EFBIG': 22,
-      'ENOSPC': 51,
-      'ESPIPE': 70,
-      'EROFS': 69,
-      'EMLINK': 34,
-      'EPIPE': 64,
-      'EDOM': 18,
-      'ERANGE': 68,
-      'ENOMSG': 49,
-      'EIDRM': 24,
-      'ECHRNG': 106,
-      'EL2NSYNC': 156,
-      'EL3HLT': 107,
-      'EL3RST': 108,
-      'ELNRNG': 109,
-      'EUNATCH': 110,
-      'ENOCSI': 111,
-      'EL2HLT': 112,
-      'EDEADLK': 16,
-      'ENOLCK': 46,
-      'EBADE': 113,
-      'EBADR': 114,
-      'EXFULL': 115,
-      'ENOANO': 104,
-      'EBADRQC': 103,
-      'EBADSLT': 102,
-      'EDEADLOCK': 16,
-      'EBFONT': 101,
-      'ENOSTR': 100,
-      'ENODATA': 116,
-      'ETIME': 117,
-      'ENOSR': 118,
-      'ENONET': 119,
-      'ENOPKG': 120,
-      'EREMOTE': 121,
-      'ENOLINK': 47,
-      'EADV': 122,
-      'ESRMNT': 123,
-      'ECOMM': 124,
-      'EPROTO': 65,
-      'EMULTIHOP': 36,
-      'EDOTDOT': 125,
-      'EBADMSG': 9,
-      'ENOTUNIQ': 126,
-      'EBADFD': 127,
-      'EREMCHG': 128,
-      'ELIBACC': 129,
-      'ELIBBAD': 130,
-      'ELIBSCN': 131,
-      'ELIBMAX': 132,
-      'ELIBEXEC': 133,
-      'ENOSYS': 52,
-      'ENOTEMPTY': 55,
-      'ENAMETOOLONG': 37,
-      'ELOOP': 32,
-      'EOPNOTSUPP': 138,
-      'EPFNOSUPPORT': 139,
-      'ECONNRESET': 15,
-      'ENOBUFS': 42,
-      'EAFNOSUPPORT': 5,
-      'EPROTOTYPE': 67,
-      'ENOTSOCK': 57,
-      'ENOPROTOOPT': 50,
-      'ESHUTDOWN': 140,
-      'ECONNREFUSED': 14,
-      'EADDRINUSE': 3,
-      'ECONNABORTED': 13,
-      'ENETUNREACH': 40,
-      'ENETDOWN': 38,
-      'ETIMEDOUT': 73,
-      'EHOSTDOWN': 142,
-      'EHOSTUNREACH': 23,
-      'EINPROGRESS': 26,
-      'EALREADY': 7,
-      'EDESTADDRREQ': 17,
-      'EMSGSIZE': 35,
-      'EPROTONOSUPPORT': 66,
-      'ESOCKTNOSUPPORT': 137,
-      'EADDRNOTAVAIL': 4,
-      'ENETRESET': 39,
-      'EISCONN': 30,
-      'ENOTCONN': 53,
-      'ETOOMANYREFS': 141,
-      'EUSERS': 136,
-      'EDQUOT': 19,
-      'ESTALE': 72,
-      'ENOTSUP': 138,
-      'ENOMEDIUM': 148,
-      'EILSEQ': 25,
-      'EOVERFLOW': 61,
-      'ECANCELED': 11,
-      'ENOTRECOVERABLE': 56,
-      'EOWNERDEAD': 62,
-      'ESTRPIPE': 135,
-    };
-  
   var asyncLoad = async (url) => {
       var arrayBuffer = await readAsync(url);
-      assert(arrayBuffer, `Loading data file "${url}" failed (no arrayBuffer).`);
       return new Uint8Array(arrayBuffer);
     };
   
@@ -2410,11 +1554,7 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   var FS_createDataFile = (...args) => FS.createDataFile(...args);
   
   var getUniqueRunDependency = (id) => {
-      var orig = id;
-      while (1) {
-        if (!runDependencyTracking[id]) return id;
-        id = orig + Math.random();
-      }
+      return id;
     };
   
   var dependenciesPromise = null;
@@ -2423,29 +1563,15 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   
   
   var dependenciesPromiseResolve = null;
-  
-  var runDependencyTracking = {
-  };
-  
-  var runDependencyWatcher = null;
   var removeRunDependency = (id) => {
       runDependencies--;
   
       Module['monitorRunDependencies']?.(runDependencies);
   
-      assert(id, 'removeRunDependency requires an ID');
-      assert(runDependencyTracking[id]);
-      delete runDependencyTracking[id];
       if (!runDependencies) {
-        if (runDependencyWatcher !== null) {
-          clearInterval(runDependencyWatcher);
-          runDependencyWatcher = null;
-        }
         dependenciesPromiseResolve();
       }
     };
-  
-  
   
   
   var addRunDependency = (id) => {
@@ -2456,33 +1582,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   
       Module['monitorRunDependencies']?.(runDependencies);
   
-      assert(id, 'addRunDependency requires an ID')
-      assert(!runDependencyTracking[id]);
-      runDependencyTracking[id] = 1;
-      if (!runDependencyWatcher && globalThis.setInterval) {
-        // Check for missing dependencies every few seconds
-        runDependencyWatcher = setInterval(() => {
-          if (ABORT) {
-            clearInterval(runDependencyWatcher);
-            runDependencyWatcher = null;
-            return;
-          }
-          var shown = false;
-          for (var dep in runDependencyTracking) {
-            if (!shown) {
-              shown = true;
-              err('still waiting on run dependencies:');
-            }
-            err(`dependency: ${dep}`);
-          }
-          if (shown) {
-            err('(end of list)');
-          }
-        }, 10000);
-        // Prevent this timer from keeping the runtime alive if nothing
-        // else is.
-        runDependencyWatcher.unref?.()
-      }
     };
   
   
@@ -2493,7 +1592,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   
       for (var plugin of preloadPlugins) {
         if (plugin['canHandle'](fullname)) {
-          assert(plugin['handle'].constructor.name === 'AsyncFunction', 'Filesystem plugin handlers must be async functions (See #24914)')
           return plugin['handle'](byteArray, fullname);
         }
       }
@@ -2540,7 +1638,7 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   ignorePermissions:true,
   filesystems:null,
   syncFSRequests:0,
-  ErrnoError:class extends Error {
+  ErrnoError:class {
         name = 'ErrnoError';
         // We set the `name` property to be able to identify `FS.ErrnoError`
         // - the `name` is a standard ECMA-262 property of error objects. Kind of good to have it anyway.
@@ -2549,14 +1647,7 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
         // the test `err instanceof FS.ErrnoError` won't detect an error coming from another filesystem, causing bugs.
         // we'll use the reliable test `err.name == "ErrnoError"` instead
         constructor(errno) {
-          super(runtimeInitialized ? strError(errno) : '');
           this.errno = errno;
-          for (var key in ERRNO_CODES) {
-            if (ERRNO_CODES[key] === errno) {
-              this.code = key;
-              break;
-            }
-          }
         }
       },
   FSStream:class {
@@ -2804,7 +1895,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
         return FS.lookup(parent, name);
       },
   createNode(parent, name, mode, rdev) {
-        assert(typeof parent == 'object')
         var node = new FS.FSNode(parent, name, mode, rdev);
   
         FS.hashAddNode(node);
@@ -2946,7 +2036,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
       },
   getStream:(fd) => FS.streams[fd],
   createStream(stream, fd = -1) {
-        assert(fd >= -1);
   
         // clone it, so we can return an instance of FSStream
         stream = Object.assign(new FS.FSStream(), stream);
@@ -3028,7 +2117,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
         var completed = 0;
   
         function doCallback(errCode) {
-          assert(FS.syncFSRequests > 0);
           FS.syncFSRequests--;
           return callback(errCode);
         }
@@ -3056,11 +2144,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
         }
       },
   mount(type, opts, mountpoint) {
-        if (typeof type == 'string') {
-          // The filesystem was not included, and instead we have an error
-          // message stored in the variable.
-          throw type;
-        }
         var root = mountpoint === '/';
         var pseudo = !mountpoint;
         var node;
@@ -3137,7 +2220,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   
         // remove this mount from the child mounts
         var idx = node.mount.mounts.indexOf(mount);
-        assert(idx !== -1);
         node.mount.mounts.splice(idx, 1);
       },
   lookup(parent, name) {
@@ -3649,7 +2731,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
         return stream.position;
       },
   read(stream, buffer, offset, length, position) {
-        assert(offset >= 0);
         if (length < 0 || position < 0) {
           throw new FS.ErrnoError(28);
         }
@@ -3676,8 +2757,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
         return bytesRead;
       },
   write(stream, buffer, offset, length, position, canOwn) {
-        assert(offset >= 0);
-        assert(buffer.subarray, 'FS.write expects a TypedArray');
         if (length < 0 || position < 0) {
           throw new FS.ErrnoError(28);
         }
@@ -3731,7 +2810,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
         return stream.stream_ops.mmap(stream, length, position, prot, flags);
       },
   msync(stream, buffer, offset, length, mmapFlags) {
-        assert(offset >= 0);
         if (!stream.stream_ops.msync) {
           return 0;
         }
@@ -3885,9 +2963,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
         var stdin = FS.open('/dev/stdin', 0);
         var stdout = FS.open('/dev/stdout', 1);
         var stderr = FS.open('/dev/stderr', 1);
-        assert(stdin.fd === 0, `invalid handle for stdin (${stdin.fd})`);
-        assert(stdout.fd === 1, `invalid handle for stdout (${stdout.fd})`);
-        assert(stderr.fd === 2, `invalid handle for stderr (${stderr.fd})`);
       },
   staticInit() {
         FS.nameTable = new Array(4096);
@@ -3900,11 +2975,9 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   
         FS.filesystems = {
           'MEMFS': MEMFS,
-          'IDBFS': IDBFS,
         };
       },
   init(input, output, error) {
-        assert(!FS.initialized, 'FS.init was previously called. If you want to initialize later with custom parameters, remove any earlier calls (note that one is automatically added to the generated code)');
         FS.initialized = true;
   
         // Allow Module.stdin etc. to provide defaults, if none explicitly passed to us here
@@ -3917,7 +2990,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   quit() {
         FS.initialized = false;
         // force-flush all streams, so we get musl std streams printed out
-        _fflush(0);
         // close all of our streams
         for (var stream of FS.streams) {
           if (stream) {
@@ -4195,7 +3267,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
           if (position >= contents.length)
             return 0;
           var size = Math.min(contents.length - position, length);
-          assert(size >= 0);
           if (contents.slice) { // normal array
             for (var i = 0; i < size; i++) {
               buffer[offset + i] = contents[position + i];
@@ -4229,6 +3300,8 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   
   
   
+  /** @type {!Int32Array} */
+  var HEAP32;
   
   
   /** not-@type {!BigInt64Array} */
@@ -4327,7 +3400,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   try {
   
       path = SYSCALLS.getStr(path);
-      assert(!flags || flags == 512);
       path = SYSCALLS.calculateAt(dirfd, path);
       if (amode & ~7) {
         // need a valid mode
@@ -4354,7 +3426,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   
 
   var syscallGetVarargI = () => {
-      assert(SYSCALLS.varargs != undefined);
       // the `+` prepended here is necessary to convince the JSCompiler that varargs is indeed a number.
       var ret = HEAP32[((+SYSCALLS.varargs)>>2)];
       SYSCALLS.varargs += 4;
@@ -4421,7 +3492,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   
   
   var stringToUTF8 = (str, outPtr, maxBytesToWrite) => {
-      assert(typeof maxBytesToWrite == 'number', 'stringToUTF8 requires a third parameter that specifies the length of the output buffer');
       return stringToUTF8Array(str, HEAPU8, outPtr, maxBytesToWrite);
     };
   function ___syscall_getcwd(buf, size) {
@@ -4594,9 +3664,8 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   
 
   var __abort_js = () =>
-      abort('native code called abort()');
+      abort('');
 
-  
   
   
   var __tzset_js = (timezone, daylight, std_name, dst_name) => {
@@ -4638,10 +3707,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   
       var winterName = extractZone(winterOffset);
       var summerName = extractZone(summerOffset);
-      assert(winterName);
-      assert(summerName);
-      assert(lengthBytesUTF8(winterName) <= 16, `timezone name truncated to fit in TZNAME_MAX (${winterName})`);
-      assert(lengthBytesUTF8(summerName) <= 16, `timezone name truncated to fit in TZNAME_MAX (${summerName})`);
       if (summerOffset < winterOffset) {
         // Northern hemisphere
         stringToUTF8(winterName, std_name, 17);
@@ -4697,20 +3762,11 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   var HEAPF64;
   
   var readEmAsmArgs = (sigPtr, buf) => {
-      // Nobody should have mutated _readEmAsmArgsArray underneath us to be something else than an array.
-      assert(Array.isArray(readEmAsmArgsArray));
-      // The input buffer is allocated on the stack, so it must be stack-aligned.
-      assert(buf % 16 == 0);
       readEmAsmArgsArray.length = 0;
       var ch;
       // Most arguments are i32s, so shift the buffer pointer so it is a plain
       // index into HEAP32.
       while (ch = HEAPU8[sigPtr++]) {
-        var chr = String.fromCharCode(ch);
-        var validChars = ['d', 'f', 'i', 'p'];
-        // In WASM_BIGINT mode we support passing i64 values as bigint.
-        validChars.push('j');
-        assert(validChars.includes(chr), `Invalid character ${ch}("${chr}") in readEmAsmArgs! Use only [${validChars}], and do not specify "v" for void return argument.`);
         // Floats are always passed as doubles, so all types except for 'i'
         // are 8 bytes and require alignment.
         var wide = (ch != 105);
@@ -4730,7 +3786,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
     };
   var runEmAsmFunction = (code, sigPtr, argbuf) => {
       var args = readEmAsmArgs(sigPtr, argbuf);
-      assert(ASM_CONSTS.hasOwnProperty(code), `No EM_ASM constant found at address ${code}.  The loaded WebAssembly file is likely out of sync with the generated JavaScript.`);
       return ASM_CONSTS[code](...args);
     };
   var _emscripten_asm_const_int = (code, sigPtr, argbuf) => {
@@ -4842,8 +3897,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
       },
   registerOrRemoveHandler(eventHandler) {
         if (!eventHandler.target) {
-          err('registerOrRemoveHandler: the target element for event handler registration does not exist, when processing the following event handler registration:');
-          console.dir(eventHandler);
           return -4;
         }
         if (eventHandler.callbackfunc) {
@@ -4924,7 +3977,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
       stringToUTF8(e.mapping, eventStruct + 1176, 64);
     };
   var _emscripten_get_gamepad_status = (index, gamepadState) => {
-      assert(JSEvents.lastGamepadState, 'emscripten_get_gamepad_status() called before emscripten_sample_gamepad_data()');
       // INVALID_PARAM is returned on a Gamepad index that never was there.
       if (index < 0 || index >= JSEvents.lastGamepadState.length) return -5;
   
@@ -4940,7 +3992,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
 
 
   var _emscripten_get_num_gamepads = () => {
-      assert(JSEvents.lastGamepadState, 'emscripten_get_num_gamepads() called before emscripten_sample_gamepad_data()');
       // N.B. Do not call emscripten_get_num_gamepads() unless having first called emscripten_sample_gamepad_data(), and that has returned EMSCRIPTEN_RESULT_SUCCESS.
       // Otherwise the following line will throw an exception.
       return JSEvents.lastGamepadState.length;
@@ -5621,22 +4672,10 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   var _emscripten_glGetAttribLocation = (program, name) =>
       GLctx.getAttribLocation(GL.programs[program], UTF8ToString(name));
 
-  
-  var readI53FromI64 = (ptr) => {
-      return HEAPU32[((ptr)>>2)] + HEAP32[(((ptr)+(4))>>2)] * 4294967296;
-    };
-  
-  var readI53FromU64 = (ptr) => {
-      return HEAPU32[((ptr)>>2)] + HEAPU32[(((ptr)+(4))>>2)] * 4294967296;
-    };
-  
   var writeI53ToI64 = (ptr, num) => {
       HEAPU32[((ptr)>>2)] = num;
       var lower = HEAPU32[((ptr)>>2)];
       HEAPU32[(((ptr)+(4))>>2)] = (num - lower)/4294967296;
-      var deserialized = (num >= 0) ? readI53FromU64(ptr) : readI53FromI64(ptr);
-      var offset = ((ptr)>>2);
-      if (deserialized != num) warnOnce(`writeI53ToI64() out of range: serialized JS Number ${num} to Wasm heap as bytes lo=${ptrToString(HEAPU32[offset])}, hi=${ptrToString(HEAPU32[offset+1])}, which deserializes back to ${deserialized} instead!`);
     };
   
   
@@ -6851,84 +5890,15 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
 
   var _emscripten_glViewport = (x0, x1, x2, x3) => GLctx.viewport(x0, x1, x2, x3);
 
-  var getHeapMax = () =>
-      // Stay one Wasm page short of 4GB: while e.g. Chrome is able to allocate
-      // full 4GB Wasm memories, the size will wrap back to 0 bytes in Wasm side
-      // for any code that deals with heap sizes, which would require special
-      // casing all heap size related code to treat 0 specially.
-      2147483648;
-  
-  var alignMemory = (size, alignment) => {
-      assert(alignment, 'alignment argument is required');
-      return Math.ceil(size / alignment) * alignment;
-    };
-  
-  var growMemory = (size) => {
-      var oldHeapSize = wasmMemory.buffer.byteLength;
-      var pages = ((size - oldHeapSize + 65535) / 65536) | 0;
-      try {
-        // round size grow request up to wasm page size (fixed 64KB per spec)
-        wasmMemory.grow(pages); // .grow() takes a delta compared to the previous size
-        updateMemoryViews();
-        return 1 /*success*/;
-      } catch(e) {
-        err(`growMemory: Attempted to grow heap from ${oldHeapSize} bytes to ${size} bytes, but got error: ${e}`);
-      }
-      // implicit 0 return to save code size (caller will cast 'undefined' into 0
-      // anyhow)
+  var abortOnCannotGrowMemory = (requestedSize) => {
+      abort('OOM');
     };
   
   var _emscripten_resize_heap = (requestedSize) => {
       var oldSize = HEAPU8.length;
       // With CAN_ADDRESS_2GB or MEMORY64, pointers are already unsigned.
       requestedSize >>>= 0;
-      // With multithreaded builds, races can happen (another thread might increase the size
-      // in between), so return a failure, and let the caller retry.
-      assert(requestedSize > oldSize);
-  
-      // Memory resize rules:
-      // 1.  Always increase heap size to at least the requested size, rounded up
-      //     to next page multiple.
-      // 2a. If MEMORY_GROWTH_LINEAR_STEP == -1, excessively resize the heap
-      //     geometrically: increase the heap size according to
-      //     MEMORY_GROWTH_GEOMETRIC_STEP factor (default +20%), At most
-      //     overreserve by MEMORY_GROWTH_GEOMETRIC_CAP bytes (default 96MB).
-      // 2b. If MEMORY_GROWTH_LINEAR_STEP != -1, excessively resize the heap
-      //     linearly: increase the heap size by at least
-      //     MEMORY_GROWTH_LINEAR_STEP bytes.
-      // 3.  Max size for the heap is capped at 2048MB-WASM_PAGE_SIZE, or by
-      //     MAXIMUM_MEMORY, or by ASAN limit, depending on which is smallest
-      // 4.  If we were unable to allocate as much memory, it may be due to
-      //     over-eager decision to excessively reserve due to (3) above.
-      //     Hence if an allocation fails, cut down on the amount of excess
-      //     growth, in an attempt to succeed to perform a smaller allocation.
-  
-      // A limit is set for how much we can grow. We should not exceed that
-      // (the wasm binary specifies it, so if we tried, we'd fail anyhow).
-      var maxHeapSize = getHeapMax();
-      if (requestedSize > maxHeapSize) {
-        err(`Cannot enlarge memory, requested ${requestedSize} bytes, but the limit is ${maxHeapSize} bytes!`);
-        return false;
-      }
-  
-      // Loop through potential heap size increases. If we attempt a too eager
-      // reservation that fails, cut down on the attempted size and reserve a
-      // smaller bump instead. (max 3 times, chosen somewhat arbitrarily)
-      for (var cutDown = 1; cutDown <= 4; cutDown *= 2) {
-        var overGrownHeapSize = oldSize * (1 + 0.2 / cutDown); // ensure geometric growth
-        // but limit overreserving (default to capping at +96MB overgrowth at most)
-        overGrownHeapSize = Math.min(overGrownHeapSize, requestedSize + 100663296 );
-  
-        var newSize = Math.min(maxHeapSize, alignMemory(Math.max(requestedSize, overGrownHeapSize), 65536));
-  
-        var replacement = growMemory(newSize);
-        if (replacement) {
-  
-          return true;
-        }
-      }
-      err(`Failed to grow the heap from ${oldSize} bytes to ${newSize} bytes, not enough memory!`);
-      return false;
+      abortOnCannotGrowMemory(requestedSize);
     };
 
   /** @suppress {checkTypes} */
@@ -6937,7 +5907,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
         if (navigator.getGamepads) return (JSEvents.lastGamepadState = navigator.getGamepads())
           ? 0 : -1;
       } catch(e) {
-        err(`navigator.getGamepads() exists, but failed to execute with exception ${e}. Disabling Gamepad access.`);
         navigator.getGamepads = null; // Disable getGamepads() so that it won't be attempted to be used again.
       }
       return -1;
@@ -6958,7 +5927,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
   
   
   var fillMouseEventData = (eventStruct, e, target) => {
-      assert(eventStruct % 4 == 0);
       HEAPF64[((eventStruct)>>3)] = e.timeStamp;
       var idx = ((eventStruct)>>2);
       HEAP32[idx + 2] = e.screenX;
@@ -6991,8 +5959,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
         /** @suppress {checkTypes} */
         wasmTableMirror[funcPtr] = func = wasmTable.get(funcPtr);
       }
-      /** @suppress {checkTypes} */
-      assert(wasmTable.get(funcPtr) == func, 'table mirror is out of date');
       return func;
     };
   var registerMouseEventCallback = (target, userData, useCapture, callbackfunc, eventTypeId, eventTypeString, targetThread) => {
@@ -7140,12 +6106,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
       if (e instanceof ExitStatus || e == 'unwind') {
         return EXITSTATUS;
       }
-      checkStackCookie();
-      if (e instanceof WebAssembly.RuntimeError) {
-        if (_emscripten_stack_get_current() <= 0) {
-          err('Stack overflow detected.  You can try increasing -sSTACK_SIZE (currently set to 65536)');
-        }
-      }
       quit_(1, e);
     };
   
@@ -7160,19 +6120,9 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
       }
       quit_(code, new ExitStatus(code));
     };
-  
-  
   /** @param {boolean|number=} implicit */
   var exitJS = (status, implicit) => {
       EXITSTATUS = status;
-  
-      checkUnflushedContent();
-  
-      // if exit() was called explicitly, warn the user if the runtime isn't actually being shut down
-      if (keepRuntimeAlive() && !implicit) {
-        var msg = `program exited (with status: ${status}), but keepRuntimeAlive() is set (counter=${runtimeKeepaliveCounter}) due to an async operation, so halting execution but not exiting the runtime or preventing further async execution (you can use emscripten_force_exit, if you want to force a true shutdown)`;
-        err(msg);
-      }
   
       _proc_exit(status);
     };
@@ -7190,7 +6140,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
     };
   var callUserCallback = (func) => {
       if (ABORT) {
-        err('user callback triggered after runtime exited or application aborted.  Ignoring.');
         return;
       }
       try {
@@ -7207,7 +6156,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
       MainLoop.timingValue = value;
   
       if (!MainLoop.func) {
-        err('emscripten_set_main_loop_timing: Cannot set timing mode for main loop since a main loop does not exist! Call emscripten_set_main_loop first to set one up.');
         return 1; // Return non-zero on failure, can't set timing mode when there is no main loop.
       }
   
@@ -7221,7 +6169,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
           MainLoop.requestAnimationFrame(MainLoop.runner);
         };
       } else {
-        assert(mode == 2);
         if (!MainLoop.setImmediate) {
           if (globalThis.scheduler) {
             // Some modern browsers implement scheduler.postTask, but not all.
@@ -7317,7 +6264,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
         for (var post of MainLoop.postMainLoop) {
           post();
         }
-        checkStackCookie();
       },
   nextRAF:0,
   fakeRequestAnimationFrame(func) {
@@ -7350,7 +6296,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
    * @param {boolean=} noSetTiming
    */
   var setMainLoop = (iterFunc, fps, simulateInfiniteLoop, arg, noSetTiming) => {
-      assert(!MainLoop.func, 'emscripten_set_main_loop: there can only be one main loop function at once')
       MainLoop.func = iterFunc;
       MainLoop.arg = arg;
   
@@ -7403,9 +6348,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
           return;
         } else if (MainLoop.timingMode == 0) {
           MainLoop.tickStartTime = _emscripten_get_now();
-          if (Module['ctx']) {
-            warnOnce('Looks like you are rendering without using requestAnimationFrame for the main loop. You should use 0 for the frame rate in emscripten_set_main_loop in order to use requestAnimationFrame, as that can greatly improve your frame rates!');
-          }
         }
   
         MainLoop.runIter(iterFunc);
@@ -7554,7 +6496,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
       target = findEventTarget(target);
   
       var touchEventHandlerFunc = (e) => {
-        assert(e);
         var t, touches = {}, et = e.touches;
         // To ease marshalling different kinds of touches that browser reports (all touches are listed in e.touches,
         // only changed touches in e.changedTouches, and touches on target at a.targetTouches), mark a boolean in
@@ -7645,6 +6586,14 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
       }, timeout);
     };
   
+  var warnOnce = (text) => {
+      warnOnce.shown ||= {};
+      if (!warnOnce.shown[text]) {
+        warnOnce.shown[text] = 1;
+        if (ENVIRONMENT_IS_NODE) text = 'warning: ' + text;
+        err(text);
+      }
+    };
   
   
   
@@ -7685,7 +6634,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
           return new Promise((resolve, reject) => {
             var img = new Image();
             img.onload = () => {
-              assert(img.complete, `Image ${name} could not be decoded`);
               var canvas = /** @type {!HTMLCanvasElement} */ (document.createElement('canvas'));
               canvas.width = img.width;
               canvas.height = img.height;
@@ -7818,7 +6766,6 @@ var stringToUTF8Array = (str, heap, outIdx, maxBytesToWrite) => {
         if (!ctx) return null;
   
         if (setInModule) {
-          if (!useWebGL) assert(typeof GLctx == 'undefined', 'cannot set in module if GLctx is used, but we are a non-GL context that would replace it');
           Module['ctx'] = ctx;
           if (useWebGL) GL.makeContextCurrent(contextHandle);
           Browser.useWebGL = useWebGL;
@@ -9787,26 +8734,8 @@ if (Module['print']) out = Module['print'];
 if (Module['printErr']) err = Module['printErr'];
   // End ATMODULES hooks
 
-  checkIncomingModuleAPI();
-
   if (Module['arguments']) programArgs = Module['arguments'];
   if (Module['thisProgram']) thisProgram = Module['thisProgram'];
-
-  // Assertions on removed incoming Module JS APIs.
-  assert(typeof Module['memoryInitializerPrefixURL'] == 'undefined', 'Module.memoryInitializerPrefixURL option was removed, use Module.locateFile instead');
-  assert(typeof Module['pthreadMainPrefixURL'] == 'undefined', 'Module.pthreadMainPrefixURL option was removed, use Module.locateFile instead');
-  assert(typeof Module['cdInitializerPrefixURL'] == 'undefined', 'Module.cdInitializerPrefixURL option was removed, use Module.locateFile instead');
-  assert(typeof Module['filePackagePrefixURL'] == 'undefined', 'Module.filePackagePrefixURL option was removed, use Module.locateFile instead');
-  assert(typeof Module['read'] == 'undefined', 'Module.read option was removed');
-  assert(typeof Module['readAsync'] == 'undefined', 'Module.readAsync option was removed (modify readAsync in JS)');
-  assert(typeof Module['readBinary'] == 'undefined', 'Module.readBinary option was removed (modify readBinary in JS)');
-  assert(typeof Module['setWindowTitle'] == 'undefined', 'Module.setWindowTitle option was removed (modify emscripten_set_window_title in JS)');
-  assert(typeof Module['TOTAL_MEMORY'] == 'undefined', 'Module.TOTAL_MEMORY has been renamed Module.INITIAL_MEMORY');
-  assert(typeof Module['ENVIRONMENT'] == 'undefined', 'Module.ENVIRONMENT has been deprecated. To force the environment, use the ENVIRONMENT compile-time option (for example, -sENVIRONMENT=web or -sENVIRONMENT=node)');
-  assert(typeof Module['STACK_SIZE'] == 'undefined', 'STACK_SIZE can no longer be set at runtime.  Use -sSTACK_SIZE at link time')
-  // If memory is defined in wasm, the user can't provide it, or set INITIAL_MEMORY
-  assert(typeof Module['wasmMemory'] == 'undefined', 'Use of `wasmMemory` detected.  Use -sIMPORTED_MEMORY to define wasmMemory externally');
-  assert(typeof Module['INITIAL_MEMORY'] == 'undefined', 'Detected runtime INITIAL_MEMORY setting.  Use -sIMPORTED_MEMORY to define wasmMemory dynamically');
 
   var preInit = Module['preInit'];
   if (preInit) {
@@ -9817,7 +8746,6 @@ if (Module['printErr']) err = Module['printErr'];
       preInit.shift()();
     }
   }
-  consumedModuleProp('preInit');
 }
 
 // Begin runtime exports
@@ -9829,529 +8757,77 @@ if (Module['printErr']) err = Module['printErr'];
   Module['FS_createDevice'] = FS_createDevice;
   Module['FS_createDataFile'] = FS_createDataFile;
   Module['FS_createLazyFile'] = FS_createLazyFile;
-  var missingLibrarySymbols = [
-  'writeI53ToI64Clamped',
-  'writeI53ToI64Signaling',
-  'writeI53ToU64Clamped',
-  'writeI53ToU64Signaling',
-  'convertI32PairToI53',
-  'convertI32PairToI53Checked',
-  'convertU32PairToI53',
-  'stackAlloc',
-  'getTempRet0',
-  'setTempRet0',
-  'createNamedFunction',
-  'zeroMemory',
-  'withStackSave',
-  'inetPton4',
-  'inetNtop4',
-  'inetPton6',
-  'inetNtop6',
-  'readSockaddr',
-  'writeSockaddr',
-  'runMainThreadEmAsm',
-  'autoResumeAudioContext',
-  'getDynCaller',
-  'dynCall',
-  'runtimeKeepalivePush',
-  'runtimeKeepalivePop',
-  'asmjsMangle',
-  'HandleAllocator',
-  'addOnInit',
-  'addOnPostCtor',
-  'addOnPreMain',
-  'STACK_SIZE',
-  'STACK_ALIGN',
-  'POINTER_SIZE',
-  'ASSERTIONS',
-  'ccall',
-  'cwrap',
-  'convertJsFunctionToWasm',
-  'getEmptyTableSlot',
-  'updateTableMap',
-  'getFunctionAddress',
-  'addFunction',
-  'removeFunction',
-  'setValue',
-  'getValue',
-  'intArrayToString',
-  'AsciiToString',
-  'stringToAscii',
-  'UTF16ToString',
-  'stringToUTF16',
-  'lengthBytesUTF16',
-  'UTF32ToString',
-  'stringToUTF32',
-  'lengthBytesUTF32',
-  'stringToUTF8OnStack',
-  'writeArrayToMemory',
-  'registerKeyEventCallback',
-  'registerWheelEventCallback',
-  'registerFocusEventCallback',
-  'fillDeviceOrientationEventData',
-  'registerDeviceOrientationEventCallback',
-  'fillDeviceMotionEventData',
-  'registerDeviceMotionEventCallback',
-  'screenOrientation',
-  'fillOrientationChangeEventData',
-  'registerOrientationChangeEventCallback',
-  'callCanvasResizedCallback',
-  'JSEvents_requestFullscreen',
-  'JSEvents_resizeCanvasForFullscreen',
-  'registerRestoreOldStyle',
-  'hideEverythingExceptGivenElement',
-  'restoreHiddenElements',
-  'setLetterbox',
-  'currentFullscreenStrategy',
-  'softFullscreenResizeWebGLRenderTarget',
-  'doRequestFullscreen',
-  'registerPointerlockErrorEventCallback',
-  'requestPointerLock',
-  'fillVisibilityChangeEventData',
-  'registerVisibilityChangeEventCallback',
-  'registerBeforeUnloadEventCallback',
-  'fillBatteryEventData',
-  'registerBatteryEventCallback',
-  'setCanvasElementSize',
-  'getCanvasElementSize',
-  'jsStackTrace',
-  'getCallstack',
-  'convertPCtoSourceLocation',
-  'wasiRightsToMuslOFlags',
-  'wasiOFlagsToMuslOFlags',
-  'setImmediateWrapped',
-  'safeRequestAnimationFrame',
-  'clearImmediateWrapped',
-  'registerPostMainLoop',
-  'registerPreMainLoop',
-  'getPromise',
-  'makePromise',
-  'addPromise',
-  'idsToPromises',
-  'makePromiseCallback',
-  'findMatchingCatch',
-  'incrementUncaughtExceptionCount',
-  'decrementUncaughtExceptionCount',
-  'Browser_asyncPrepareDataCounter',
-  'isLeapYear',
-  'ydayFromDate',
-  'arraySum',
-  'addDays',
-  'getSocketFromFD',
-  'getSocketAddress',
-  'FS_mkdirTree',
-  '_setNetworkCallback',
-  'writeGLArray',
-  'registerWebGlEventCallback',
-  'runAndAbortIfError',
-  'writeStringToMemory',
-  'writeAsciiToMemory',
-  'allocateUTF8',
-  'allocateUTF8OnStack',
-  'demangle',
-  'stackTrace',
-  'getNativeTypeSize',
-];
-missingLibrarySymbols.forEach(missingLibrarySymbol)
-
-  var unexportedSymbols = [
-  'run',
-  'out',
-  'err',
-  'callMain',
-  'abort',
-  'wasmExports',
-  'writeStackCookie',
-  'checkStackCookie',
-  'writeI53ToI64',
-  'readI53FromI64',
-  'readI53FromU64',
-  'INT53_MAX',
-  'INT53_MIN',
-  'bigintToI53Checked',
-  'HEAP8',
-  'HEAPU8',
-  'HEAP16',
-  'HEAPU16',
-  'HEAP32',
-  'HEAPU32',
-  'HEAPF32',
-  'HEAPF64',
-  'HEAP64',
-  'HEAPU64',
-  'stackSave',
-  'stackRestore',
-  'ptrToString',
-  'exitJS',
-  'getHeapMax',
-  'growMemory',
-  'ENV',
-  'ERRNO_CODES',
-  'strError',
-  'DNS',
-  'Protocols',
-  'Sockets',
-  'timers',
-  'warnOnce',
-  'readEmAsmArgsArray',
-  'readEmAsmArgs',
-  'runEmAsmFunction',
-  'jstoi_q',
-  'getExecutableName',
-  'handleException',
-  'keepRuntimeAlive',
-  'callUserCallback',
-  'maybeExit',
-  'asyncLoad',
-  'alignMemory',
-  'mmapAlloc',
-  'wasmTable',
-  'wasmMemory',
-  'getUniqueRunDependency',
-  'noExitRuntime',
-  'addOnPreRun',
-  'addOnExit',
-  'addOnPostRun',
-  'freeTableIndexes',
-  'functionsInTableMap',
-  'PATH',
-  'PATH_FS',
-  'UTF8Decoder',
-  'UTF8ArrayToString',
-  'UTF8ToString',
-  'stringToUTF8Array',
-  'stringToUTF8',
-  'lengthBytesUTF8',
-  'intArrayFromString',
-  'UTF16Decoder',
-  'stringToNewUTF8',
-  'JSEvents',
-  'specialHTMLTargets',
-  'maybeCStringToJsString',
-  'findEventTarget',
-  'findCanvasEventTarget',
-  'getBoundingClientRect',
-  'fillMouseEventData',
-  'registerMouseEventCallback',
-  'registerUiEventCallback',
-  'fillFullscreenChangeEventData',
-  'registerFullscreenChangeEventCallback',
-  'restoreOldWindowedStyle',
-  'fillPointerlockChangeEventData',
-  'registerPointerlockChangeEventCallback',
-  'registerTouchEventCallback',
-  'fillGamepadEventData',
-  'registerGamepadEventCallback',
-  'UNWIND_CACHE',
-  'ExitStatus',
-  'getEnvStrings',
-  'checkWasiClock',
-  'doReadv',
-  'doWritev',
-  'initRandomFill',
-  'randomFill',
-  'safeSetTimeout',
-  'emSetImmediate',
-  'emClearImmediate_deps',
-  'emClearImmediate',
-  'promiseMap',
-  'uncaughtExceptionCount',
-  'exceptionCaught',
-  'ExceptionInfo',
-  'Browser',
-  'requestFullscreen',
-  'setCanvasSize',
-  'getUserMedia',
-  'createContext',
-  'getPreloadedImageData__data',
-  'wget',
-  'MONTH_DAYS_REGULAR',
-  'MONTH_DAYS_LEAP',
-  'MONTH_DAYS_REGULAR_CUMULATIVE',
-  'MONTH_DAYS_LEAP_CUMULATIVE',
-  'SYSCALLS',
-  'preloadPlugins',
-  'FS_createPreloadedFile',
-  'FS_modeStringToFlags',
-  'FS_getMode',
-  'FS_fileDataToTypedArray',
-  'FS_stdin_getChar_buffer',
-  'FS_stdin_getChar',
-  'FS_readFile',
-  'FS',
-  'FS_root',
-  'FS_mounts',
-  'FS_devices',
-  'FS_streams',
-  'FS_nextInode',
-  'FS_nameTable',
-  'FS_currentPath',
-  'FS_initialized',
-  'FS_ignorePermissions',
-  'FS_filesystems',
-  'FS_syncFSRequests',
-  'FS_lookupPath',
-  'FS_getPath',
-  'FS_hashName',
-  'FS_hashAddNode',
-  'FS_hashRemoveNode',
-  'FS_lookupNode',
-  'FS_createNode',
-  'FS_destroyNode',
-  'FS_isRoot',
-  'FS_isMountpoint',
-  'FS_isFile',
-  'FS_isDir',
-  'FS_isLink',
-  'FS_isChrdev',
-  'FS_isBlkdev',
-  'FS_isFIFO',
-  'FS_isSocket',
-  'FS_flagsToPermissionString',
-  'FS_nodePermissions',
-  'FS_mayLookup',
-  'FS_mayCreate',
-  'FS_mayDelete',
-  'FS_mayOpen',
-  'FS_checkOpExists',
-  'FS_nextfd',
-  'FS_getStreamChecked',
-  'FS_getStream',
-  'FS_createStream',
-  'FS_closeStream',
-  'FS_dupStream',
-  'FS_doSetAttr',
-  'FS_chrdev_stream_ops',
-  'FS_major',
-  'FS_minor',
-  'FS_makedev',
-  'FS_registerDevice',
-  'FS_getDevice',
-  'FS_getMounts',
-  'FS_syncfs',
-  'FS_mount',
-  'FS_unmount',
-  'FS_lookup',
-  'FS_mknod',
-  'FS_statfs',
-  'FS_statfsStream',
-  'FS_statfsNode',
-  'FS_create',
-  'FS_mkdir',
-  'FS_mkdev',
-  'FS_symlink',
-  'FS_link',
-  'FS_rename',
-  'FS_rmdir',
-  'FS_readdir',
-  'FS_readlink',
-  'FS_stat',
-  'FS_fstat',
-  'FS_lstat',
-  'FS_doChmod',
-  'FS_chmod',
-  'FS_lchmod',
-  'FS_fchmod',
-  'FS_doChown',
-  'FS_chown',
-  'FS_lchown',
-  'FS_fchown',
-  'FS_doTruncate',
-  'FS_truncate',
-  'FS_ftruncate',
-  'FS_utime',
-  'FS_open',
-  'FS_close',
-  'FS_isClosed',
-  'FS_llseek',
-  'FS_read',
-  'FS_write',
-  'FS_mmap',
-  'FS_msync',
-  'FS_ioctl',
-  'FS_writeFile',
-  'FS_cwd',
-  'FS_chdir',
-  'FS_createDefaultDirectories',
-  'FS_createDefaultDevices',
-  'FS_createSpecialDirectories',
-  'FS_createStandardStreams',
-  'FS_staticInit',
-  'FS_init',
-  'FS_quit',
-  'FS_findObject',
-  'FS_analyzePath',
-  'FS_createFile',
-  'FS_forceLoadFile',
-  'MEMFS',
-  'TTY',
-  'PIPEFS',
-  'SOCKFS',
-  'tempFixedLengthArray',
-  'miniTempWebGLFloatBuffers',
-  'miniTempWebGLIntBuffers',
-  'heapObjectForWebGLType',
-  'toTypedArrayIndex',
-  'webgl_enable_ANGLE_instanced_arrays',
-  'webgl_enable_OES_vertex_array_object',
-  'webgl_enable_WEBGL_draw_buffers',
-  'webgl_enable_WEBGL_multi_draw',
-  'webgl_enable_EXT_polygon_offset_clamp',
-  'webgl_enable_EXT_clip_control',
-  'webgl_enable_WEBGL_polygon_mode',
-  'GL',
-  'emscriptenWebGLGet',
-  'computeUnpackAlignedImageSize',
-  'colorChannelsInGlTextureFormat',
-  'emscriptenWebGLGetTexPixelData',
-  'emscriptenWebGLGetUniform',
-  'webglGetProgramUniformLocation',
-  'webglGetUniformLocation',
-  'webglPrepareUniformLocationsBeforeFirstUse',
-  'webglGetLeftBracePos',
-  'emscriptenWebGLGetVertexAttrib',
-  '__glGetActiveAttribOrUniform',
-  'AL',
-  'GLUT',
-  'EGL',
-  'GLEW',
-  'IDBStore',
-  'SDL',
-  'SDL_gfx',
-  'GLFW_Window',
-  'GLFW',
-  'print',
-  'printErr',
-  'jstoi_s',
-  'IDBFS',
-];
-unexportedSymbols.forEach(unexportedRuntimeSymbol);
-
   // End runtime exports
   // Begin JS library exports
   // End JS library exports
 
 // end include: postlibrary.js
 
-function checkIncomingModuleAPI() {
-  ignoredModuleProp('fetchSettings');
-  ignoredModuleProp('logReadFiles');
-  ignoredModuleProp('loadSplitModule');
-  ignoredModuleProp('onMalloc');
-  ignoredModuleProp('onRealloc');
-  ignoredModuleProp('onFree');
-  ignoredModuleProp('onSbrkGrow');
-  ignoredModuleProp('onCOSCacheHit');
-  ignoredModuleProp('onCOSCacheMiss');
-  ignoredModuleProp('onCOSStore');
-  ignoredModuleProp('GL_MAX_TEXTURE_IMAGE_UNITS');
-  ignoredModuleProp('SDL_canPlayWithWebAudio');
-  ignoredModuleProp('SDL_numSimultaneouslyQueuedBuffers');
-  ignoredModuleProp('freePreloadedMediaOnUse');
-  ignoredModuleProp('preinitializedWebGLContext');
-  ignoredModuleProp('keyboardListeningElement');
-  ignoredModuleProp('doNotCaptureKeyboard');
-  ignoredModuleProp('extraStackTrace');
-  ignoredModuleProp('preloadPlugins');
-  ignoredModuleProp('preMainLoop');
-  ignoredModuleProp('postMainLoop');
-  ignoredModuleProp('forcedAspectRatio');
-  ignoredModuleProp('mainScriptUrlOrBlob');
-  ignoredModuleProp('onFullScreen');
-  ignoredModuleProp('INITIAL_MEMORY');
-  ignoredModuleProp('wasmMemory');
-  ignoredModuleProp('wasmBinary');
-}
 var ASM_CONSTS = {
-  181106: () => { if (document.fullscreenElement) return 1; },  
- 181152: () => { return document.getElementById('canvas').width; },  
- 181204: () => { return parseInt(document.getElementById('canvas').style.width); },  
- 181272: () => { document.exitFullscreen(); },  
- 181299: () => { setTimeout(function() { Module.requestFullscreen(false, false); }, 100); },  
- 181372: () => { if (document.fullscreenElement) return 1; },  
- 181418: () => { return document.getElementById('canvas').width; },  
- 181470: () => { return screen.width; },  
- 181495: () => { document.exitFullscreen(); },  
- 181522: () => { setTimeout(function() { Module.requestFullscreen(false, true); setTimeout(function() { canvas.style.width="unset"; }, 100); }, 100); },  
- 181655: () => { return window.innerWidth; },  
- 181681: () => { return window.innerHeight; },  
- 181708: () => { if (document.fullscreenElement) return 1; },  
- 181754: () => { return document.getElementById('canvas').width; },  
- 181806: () => { return parseInt(document.getElementById('canvas').style.width); },  
- 181874: () => { if (document.fullscreenElement) return 1; },  
- 181920: () => { return document.getElementById('canvas').width; },  
- 181972: () => { return screen.width; },  
- 181997: () => { return window.innerWidth; },  
- 182023: () => { return window.innerHeight; },  
- 182050: () => { if (document.fullscreenElement) return 1; },  
- 182096: () => { return document.getElementById('canvas').width; },  
- 182148: () => { return screen.width; },  
- 182173: () => { document.exitFullscreen(); },  
- 182200: () => { if (document.fullscreenElement) return 1; },  
- 182246: () => { return document.getElementById('canvas').width; },  
- 182298: () => { return parseInt(document.getElementById('canvas').style.width); },  
- 182366: () => { document.exitFullscreen(); },  
- 182393: ($0) => { document.getElementById('canvas').style.opacity = $0; },  
- 182451: () => { return screen.width; },  
- 182476: () => { return screen.height; },  
- 182502: () => { return window.screenX; },  
- 182529: () => { return window.screenY; },  
- 182556: ($0) => { navigator.clipboard.writeText(UTF8ToString($0)); },  
- 182609: ($0) => { document.getElementById("canvas").style.cursor = UTF8ToString($0); },  
- 182680: () => { document.getElementById('canvas').style.cursor = 'none'; },  
- 182737: ($0, $1, $2, $3) => { try { navigator.getGamepads()[$0].vibrationActuator.playEffect('dual-rumble', { startDelay: 0, duration: $3, weakMagnitude: $1, strongMagnitude: $2 }); } catch (e) { try { navigator.getGamepads()[$0].hapticActuators[0].pulse($2, $3); } catch (e) { } } },  
- 182993: ($0) => { document.getElementById('canvas').style.cursor = UTF8ToString($0); },  
- 183064: () => { if (document.fullscreenElement) return 1; },  
- 183110: () => { return window.innerWidth; },  
- 183136: () => { return window.innerHeight; },  
- 183163: () => { if (document.pointerLockElement) return 1; }
+  115354: () => { if (document.fullscreenElement) return 1; },  
+ 115400: () => { return document.getElementById('canvas').width; },  
+ 115452: () => { return parseInt(document.getElementById('canvas').style.width); },  
+ 115520: () => { document.exitFullscreen(); },  
+ 115547: () => { setTimeout(function() { Module.requestFullscreen(false, false); }, 100); },  
+ 115620: () => { if (document.fullscreenElement) return 1; },  
+ 115666: () => { return document.getElementById('canvas').width; },  
+ 115718: () => { return screen.width; },  
+ 115743: () => { document.exitFullscreen(); },  
+ 115770: () => { setTimeout(function() { Module.requestFullscreen(false, true); setTimeout(function() { canvas.style.width="unset"; }, 100); }, 100); },  
+ 115903: () => { return window.innerWidth; },  
+ 115929: () => { return window.innerHeight; },  
+ 115956: () => { if (document.fullscreenElement) return 1; },  
+ 116002: () => { return document.getElementById('canvas').width; },  
+ 116054: () => { return parseInt(document.getElementById('canvas').style.width); },  
+ 116122: () => { if (document.fullscreenElement) return 1; },  
+ 116168: () => { return document.getElementById('canvas').width; },  
+ 116220: () => { return screen.width; },  
+ 116245: () => { return window.innerWidth; },  
+ 116271: () => { return window.innerHeight; },  
+ 116298: () => { if (document.fullscreenElement) return 1; },  
+ 116344: () => { return document.getElementById('canvas').width; },  
+ 116396: () => { return screen.width; },  
+ 116421: () => { document.exitFullscreen(); },  
+ 116448: () => { if (document.fullscreenElement) return 1; },  
+ 116494: () => { return document.getElementById('canvas').width; },  
+ 116546: () => { return parseInt(document.getElementById('canvas').style.width); },  
+ 116614: () => { document.exitFullscreen(); },  
+ 116641: ($0) => { document.getElementById('canvas').style.opacity = $0; },  
+ 116699: () => { return screen.width; },  
+ 116724: () => { return screen.height; },  
+ 116750: () => { return window.screenX; },  
+ 116777: () => { return window.screenY; },  
+ 116804: ($0) => { navigator.clipboard.writeText(UTF8ToString($0)); },  
+ 116857: ($0) => { document.getElementById("canvas").style.cursor = UTF8ToString($0); },  
+ 116928: () => { document.getElementById('canvas').style.cursor = 'none'; },  
+ 116985: ($0, $1, $2, $3) => { try { navigator.getGamepads()[$0].vibrationActuator.playEffect('dual-rumble', { startDelay: 0, duration: $3, weakMagnitude: $1, strongMagnitude: $2 }); } catch (e) { try { navigator.getGamepads()[$0].hapticActuators[0].pulse($2, $3); } catch (e) { } } },  
+ 117241: ($0) => { document.getElementById('canvas').style.cursor = UTF8ToString($0); },  
+ 117312: () => { if (document.fullscreenElement) return 1; },  
+ 117358: () => { return window.innerWidth; },  
+ 117384: () => { return window.innerHeight; },  
+ 117411: () => { if (document.pointerLockElement) return 1; }
 };
 function JS_InitPersistence() { try { FS.mkdir('/persist'); } catch (e) {} FS.mount(IDBFS, {}, '/persist'); FS.syncfs(true, function(err) { if (err) console.error('Town Forge: IDBFS initial load failed', err); Module._TF_persistReady = 1; }); }
 function JS_PersistReady() { return (typeof Module._TF_persistReady !== 'undefined' && Module._TF_persistReady) ? 1 : 0; }
 function JS_FlushPersistence() { FS.syncfs(false, function(err) { if (err) console.error('Town Forge: IDBFS save flush failed', err); }); }
 
 // Imports from the Wasm binary.
-var _malloc = makeInvalidEarlyAccess('_malloc');
-var _main = Module['_main'] = makeInvalidEarlyAccess('_main');
-var _free = makeInvalidEarlyAccess('_free');
-var _fflush = makeInvalidEarlyAccess('_fflush');
-var _strerror = makeInvalidEarlyAccess('_strerror');
-var _emscripten_stack_get_end = makeInvalidEarlyAccess('_emscripten_stack_get_end');
-var _emscripten_stack_get_base = makeInvalidEarlyAccess('_emscripten_stack_get_base');
-var _emscripten_stack_init = makeInvalidEarlyAccess('_emscripten_stack_init');
-var _emscripten_stack_get_free = makeInvalidEarlyAccess('_emscripten_stack_get_free');
-var __emscripten_stack_restore = makeInvalidEarlyAccess('__emscripten_stack_restore');
-var __emscripten_stack_alloc = makeInvalidEarlyAccess('__emscripten_stack_alloc');
-var _emscripten_stack_get_current = makeInvalidEarlyAccess('_emscripten_stack_get_current');
-var memory = makeInvalidEarlyAccess('memory');
-var __indirect_function_table = makeInvalidEarlyAccess('__indirect_function_table');
-var wasmMemory = makeInvalidEarlyAccess('wasmMemory');
-var wasmTable = makeInvalidEarlyAccess('wasmTable');
+var _malloc,
+  _main,
+  _free,
+  __emscripten_stack_restore,
+  __emscripten_stack_alloc,
+  _emscripten_stack_get_current,
+  memory,
+  __indirect_function_table,
+  wasmMemory,
+  wasmTable;
+
 
 function assignWasmExports(wasmExports) {
-  assert(typeof wasmExports['malloc'] != 'undefined', 'missing Wasm export: malloc');
-  assert(typeof wasmExports['main'] != 'undefined', 'missing Wasm export: main');
-  assert(typeof wasmExports['free'] != 'undefined', 'missing Wasm export: free');
-  assert(typeof wasmExports['fflush'] != 'undefined', 'missing Wasm export: fflush');
-  assert(typeof wasmExports['strerror'] != 'undefined', 'missing Wasm export: strerror');
-  assert(typeof wasmExports['emscripten_stack_get_end'] != 'undefined', 'missing Wasm export: emscripten_stack_get_end');
-  assert(typeof wasmExports['emscripten_stack_get_base'] != 'undefined', 'missing Wasm export: emscripten_stack_get_base');
-  assert(typeof wasmExports['emscripten_stack_init'] != 'undefined', 'missing Wasm export: emscripten_stack_init');
-  assert(typeof wasmExports['emscripten_stack_get_free'] != 'undefined', 'missing Wasm export: emscripten_stack_get_free');
-  assert(typeof wasmExports['_emscripten_stack_restore'] != 'undefined', 'missing Wasm export: _emscripten_stack_restore');
-  assert(typeof wasmExports['_emscripten_stack_alloc'] != 'undefined', 'missing Wasm export: _emscripten_stack_alloc');
-  assert(typeof wasmExports['emscripten_stack_get_current'] != 'undefined', 'missing Wasm export: emscripten_stack_get_current');
-  assert(typeof wasmExports['memory'] != 'undefined', 'missing Wasm export: memory');
-  assert(typeof wasmExports['__indirect_function_table'] != 'undefined', 'missing Wasm export: __indirect_function_table');
-  _malloc = createExportWrapper('malloc', wasmExports['malloc'], 1);
-  _main = Module['_main'] = createExportWrapper('main', wasmExports['main'], 2);
-  _free = createExportWrapper('free', wasmExports['free'], 1);
-  _fflush = createExportWrapper('fflush', wasmExports['fflush'], 1);
-  _strerror = createExportWrapper('strerror', wasmExports['strerror'], 1);
-  _emscripten_stack_get_end = wasmExports['emscripten_stack_get_end'];
-  _emscripten_stack_get_base = wasmExports['emscripten_stack_get_base'];
-  _emscripten_stack_init = wasmExports['emscripten_stack_init'];
-  _emscripten_stack_get_free = wasmExports['emscripten_stack_get_free'];
+  _malloc = wasmExports['malloc'];
+  _main = Module['_main'] = wasmExports['main'];
+  _free = wasmExports['free'];
   __emscripten_stack_restore = wasmExports['_emscripten_stack_restore'];
   __emscripten_stack_alloc = wasmExports['_emscripten_stack_alloc'];
   _emscripten_stack_get_current = wasmExports['emscripten_stack_get_current'];
@@ -10974,11 +9450,7 @@ var wasmImports = {
 // include: postamble.js
 // === Auto-generated postamble setup entry stuff ===
 
-var calledRun;
-
 function callMain() {
-  assert(runDependencies == 0, 'cannot call main when async dependencies remain! (listen on Module["onRuntimeInitialized"])');
-  assert(typeof onPreRuns === 'undefined' || onPreRuns.length == 0, 'cannot call main when preRun functions remain to be called');
 
   var entryFunction = _main;
 
@@ -10997,20 +9469,7 @@ function callMain() {
   }
 }
 
-function stackCheckInit() {
-  // This is normally called automatically during __wasm_call_ctors but need to
-  // get these values before even running any of the ctors so we call it redundantly
-  // here.
-  _emscripten_stack_init();
-  // TODO(sbc): Move writeStackCookie to native to to avoid this.
-  writeStackCookie();
-}
-
 async function run() {
-  assert(!calledRun);
-  calledRun = true;
-
-  stackCheckInit();
 
   preRun();
 
@@ -11034,51 +9493,11 @@ async function run() {
   // No ATMAINS hooks
 
   Module['onRuntimeInitialized']?.();
-  consumedModuleProp('onRuntimeInitialized');
 
   var noInitialRun = Module['noInitialRun'] || false;
   if (!noInitialRun) callMain();
 
   postRun();
-}
-
-function checkUnflushedContent() {
-  // Compiler settings do not allow exiting the runtime, so flushing
-  // the streams is not possible. but in ASSERTIONS mode we check
-  // if there was something to flush, and if so tell the user they
-  // should request that the runtime be exitable.
-  // Normally we would not even include flush() at all, but in ASSERTIONS
-  // builds we do so just for this check, and here we see if there is any
-  // content to flush, that is, we check if there would have been
-  // something a non-ASSERTIONS build would have not seen.
-  // How we flush the streams depends on whether we are in SYSCALLS_REQUIRE_FILESYSTEM=0
-  // mode (which has its own special function for this; otherwise, all
-  // the code is inside libc)
-  var oldOut = out;
-  var oldErr = err;
-  var has = false;
-  out = err = (x) => {
-    has = true;
-  }
-  try { // it doesn't matter if it fails
-    _fflush(0);
-    // also flush in the JS FS layer
-    for (var name of ['stdout', 'stderr']) {
-      var info = FS.analyzePath('/dev/' + name);
-      if (!info) return;
-      var stream = info.object;
-      var rdev = stream.rdev;
-      var tty = TTY.ttys[rdev];
-      if (tty?.output?.length) {
-        has = true;
-      }
-    }
-  } catch(e) {}
-  out = oldOut;
-  err = oldErr;
-  if (has) {
-    warnOnce('stdio streams had content in them that was not flushed. you should set EXIT_RUNTIME to 1 (see the Emscripten FAQ), or make sure to emit a newline when you printf etc.');
-  }
 }
 
 var wasmExports;
