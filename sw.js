@@ -2,7 +2,7 @@
 // and play offline. Every deploy stamps a new VERSION, so the browser installs a
 // fresh copy of the whole game (page, script, wasm, data - always as one matching
 // set) in the background; the new version is used from the next launch.
-const VERSION = '20260927190833-1c9c178';
+const VERSION = '20260927191227-1c9c178';
 const CACHE = 'townforge-' + VERSION;
 const CORE = [
   './', './index.html', './townforge.js', './townforge.wasm', './townforge.data',
@@ -28,6 +28,7 @@ self.addEventListener('activate', (e) => {
 self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET' || new URL(req.url).origin !== self.location.origin) return;
+  if (new URL(req.url).pathname.indexOf('/wiki/') !== -1) return; // the wiki is a normal web page, never the game
   e.respondWith((async () => {
     const cache = await caches.open(CACHE);
     const hit = await cache.match(req, { ignoreSearch: true }) ||
