@@ -1,1 +1,1 @@
-window.TF_CLOUD = null; // cloud saves not configured (set SUPABASE_URL + SUPABASE_ANON_KEY)
+window.TF_CLOUD = { url: "https://qcqhytzvjkqgtcwsmrnr.supabase.co", key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFjcWh5dHp2amtxZ3Rjd3Ntcm5yIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA0NTI0ODUsImV4cCI6MjEwNjAyODQ4NX0.tz4sZG5F9NjDH3_GhnpMLF2rUs-GBu5Ggwt4TBGtkJ8" };
