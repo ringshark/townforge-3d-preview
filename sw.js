@@ -2,7 +2,7 @@
 // and play offline. Every deploy stamps a new VERSION, so the browser installs a
 // fresh copy of the whole game (page, script, wasm, data - always as one matching
 // set) in the background; the new version is used from the next launch.
-const VERSION = '20260928230752-2aa7fc0';
+const VERSION = '20260928234811-6413222';
 const CACHE = 'townforge-' + VERSION;
 const CORE = [
   './', './index.html', './townforge.js', './townforge.wasm', './townforge.data',
