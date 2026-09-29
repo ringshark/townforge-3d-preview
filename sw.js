@@ -2,11 +2,11 @@
 // and play offline. Every deploy stamps a new VERSION, so the browser installs a
 // fresh copy of the whole game (page, script, wasm, data - always as one matching
 // set) in the background; the new version is used from the next launch.
-const VERSION = '20260929202401-57c9abf';
+const VERSION = '20260929203406-52585d7';
 const CACHE = 'townforge-' + VERSION;
 const CORE = [
   './', './index.html', './townforge.js', './townforge.wasm', './townforge.data',
-  './manifest.webmanifest', './cloud.js', './cloud-config.js', './guildnet.js', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png',
+  './manifest.webmanifest', './cloud.js', './cloud-config.js', './guildnet.js', './mp-config.js', './mpnet.js', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png',
 ];
 
 self.addEventListener('install', (e) => {
