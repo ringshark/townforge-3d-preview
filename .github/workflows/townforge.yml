@@ -53,6 +53,7 @@ jobs:
           node tests/guildnet-hub.cjs
           node tests/guildnet-refresh.cjs
           node tests/guild-project.cjs
+          python tests/guild-parser.py
       - name: Compile game
         if: steps.changed.outputs.build == 'true'
         working-directory: source
