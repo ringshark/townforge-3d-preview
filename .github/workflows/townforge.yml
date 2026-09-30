@@ -1,4 +1,4 @@
-# Release 49a94c1fe44c5ad040d6cc9c38833f6f82084a35
+# Release f9f37f94f555a074f4e4822155fcf16dc61229ff
 name: Build and deploy Town Forge
 on:
   push:
@@ -56,6 +56,13 @@ jobs:
           node tests/guild-project.cjs
           python tests/guild-parser.py
           node tests/guild-city-cloud.cjs
+      - name: Check combat and movement
+        if: steps.changed.outputs.build == 'true'
+        working-directory: source
+        run: |
+          g++ -std=c++17 tests/combat-motion.cpp -o /tmp/tf-combat-test
+          /tmp/tf-combat-test
+          python tests/player-movement.py
       - name: Compile game
         if: steps.changed.outputs.build == 'true'
         working-directory: source
