@@ -1,4 +1,4 @@
-# Release c1afd1a9ffca081e3f1b747f62f5a546455a68fb
+# Release 1043119157159ab84c47184329da7b202624f1e3
 name: Build and deploy Town Forge
 on:
   push:
@@ -63,6 +63,7 @@ jobs:
           g++ -std=c++17 tests/combat-motion.cpp -o /tmp/tf-combat-test
           /tmp/tf-combat-test
           python tests/player-movement.py
+          python tests/ui-input.py
       - name: Compile game
         if: steps.changed.outputs.build == 'true'
         working-directory: source
