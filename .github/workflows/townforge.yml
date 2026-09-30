@@ -1,4 +1,4 @@
-# Release bb38d0d18fc89a8ea2dafb0bfd22f9e4ddb8cff9
+# Release c5af2098e9ede3d7f45d91baea573dc96a4378f6
 name: Build and deploy Town Forge
 on:
   push:
@@ -67,6 +67,7 @@ jobs:
           python tests/mobile-combat.py
           python tests/menu-status.py
           python tests/equipment-preview.py
+          python tests/hero-model.py
           node server/mp/test/den.mjs
           node server/mp/test/ladder.mjs
           node tests/den-client.cjs
