@@ -1,4 +1,4 @@
-# Release 4b47298ff1fb2a8ae651fcb80dcc05047c113bda
+# Release c6f793ff52cf47f23a5db0787a9e6392a9a4c541
 name: Build and deploy Town Forge
 on:
   push:
