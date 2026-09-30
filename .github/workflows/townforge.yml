@@ -1,4 +1,4 @@
-# Release c6f793ff52cf47f23a5db0787a9e6392a9a4c541
+# Release 1696f6061ce8831dd8d40fa16efee52a7f95dcbc
 name: Build and deploy Town Forge
 on:
   push:
@@ -66,6 +66,7 @@ jobs:
           python tests/ui-input.py
           python tests/menu-status.py
           node server/mp/test/den.mjs
+          node server/mp/test/ladder.mjs
           node tests/den-client.cjs
       - name: Compile game
         if: steps.changed.outputs.build == 'true'
