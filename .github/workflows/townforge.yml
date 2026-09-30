@@ -1,4 +1,4 @@
-# Release a0a23d7dddfda00b1199d3371b72b034e20c3860
+# Release bb38d0d18fc89a8ea2dafb0bfd22f9e4ddb8cff9
 name: Build and deploy Town Forge
 on:
   push:
@@ -64,6 +64,7 @@ jobs:
           /tmp/tf-combat-test
           python tests/player-movement.py
           python tests/ui-input.py
+          python tests/mobile-combat.py
           python tests/menu-status.py
           python tests/equipment-preview.py
           node server/mp/test/den.mjs
