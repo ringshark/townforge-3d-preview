@@ -1,3 +1,4 @@
+# Release 4ec02a2b5984b6b509834fcfc8a5745edeae3f7c
 name: Build and deploy Town Forge
 on:
   push:
@@ -79,4 +80,3 @@ jobs:
         if: steps.changed.outputs.build == 'true'
         uses: actions/deploy-pages@v4
 
-# Release: 720a8eaf includes the Storehouse completion gate.
