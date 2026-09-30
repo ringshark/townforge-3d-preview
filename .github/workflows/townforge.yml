@@ -1,4 +1,4 @@
-# Release c5af2098e9ede3d7f45d91baea573dc96a4378f6
+# Release e946b2fd283104c5bd853779f2462e93d58233dd
 name: Build and deploy Town Forge
 on:
   push:
@@ -77,6 +77,7 @@ jobs:
         run: |
           git clone --depth 1 --branch 6.0 https://github.com/raysan5/raylib.git /tmp/raylib
           make -C /tmp/raylib/src PLATFORM=PLATFORM_WEB -j2
+          RAYLIB_DIR=/tmp/raylib python tests/avatar-motion.py
           RAYLIB_DIR=/tmp/raylib bash web/build_web.sh
       - name: Package and preserve online configuration
         if: steps.changed.outputs.build == 'true'
