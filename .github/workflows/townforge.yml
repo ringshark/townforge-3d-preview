@@ -77,3 +77,5 @@ jobs:
         id: deployment
         if: steps.changed.outputs.build == 'true'
         uses: actions/deploy-pages@v4
+
+# Release: 720a8eaf includes the Storehouse completion gate.
