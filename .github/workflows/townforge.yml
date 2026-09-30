@@ -1,4 +1,4 @@
-# Release 3ec33fcafdad205a0f057b3a9e6486989a00d2a7
+# Release 49a94c1fe44c5ad040d6cc9c38833f6f82084a35
 name: Build and deploy Town Forge
 on:
   push:
@@ -55,6 +55,7 @@ jobs:
           node tests/guildnet-refresh.cjs
           node tests/guild-project.cjs
           python tests/guild-parser.py
+          node tests/guild-city-cloud.cjs
       - name: Compile game
         if: steps.changed.outputs.build == 'true'
         working-directory: source
