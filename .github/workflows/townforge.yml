@@ -1,4 +1,4 @@
-# Release 0644831362e1ef9dc05855ecaea298405097d0bf
+# Release c690d37f7d44c10abcdb776c49c2567a5f3863aa
 name: Build and deploy Town Forge
 on:
   push:
@@ -65,6 +65,7 @@ jobs:
           g++ -std=c++17 tests/landscape-layout.cpp -o /tmp/tf-layout-test
           /tmp/tf-layout-test
           python tests/landscape-pointer.py
+          python tests/transitions.py
           node tests/landscape-shell.cjs
           python tests/player-movement.py
           python tests/ui-input.py
