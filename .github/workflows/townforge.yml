@@ -1,4 +1,4 @@
-# Release 70b462b00cecf1915bb70b83a051daf49b0d7db9
+# Release 3fee3b796030d13bdb904243bf06848a7a657a47
 name: Build and deploy Town Forge
 on:
   push:
@@ -69,6 +69,7 @@ jobs:
           node tests/landscape-shell.cjs
           python tests/player-movement.py
           python tests/ui-input.py
+          python tests/menu-scroll.py
           python tests/mobile-combat.py
           python tests/menu-status.py
           python tests/equipment-preview.py
@@ -83,6 +84,7 @@ jobs:
           git clone --depth 1 --branch 6.0 https://github.com/raysan5/raylib.git /tmp/raylib
           make -C /tmp/raylib/src PLATFORM=PLATFORM_WEB -j2
           RAYLIB_DIR=/tmp/raylib python tests/avatar-motion.py
+          RAYLIB_DIR=/tmp/raylib python tests/landscape-menus.py
           RAYLIB_DIR=/tmp/raylib bash web/build_web.sh
       - name: Package and preserve online configuration
         if: steps.changed.outputs.build == 'true'
