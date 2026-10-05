@@ -2,11 +2,11 @@
 // and play offline. Every deploy stamps a new VERSION, so the browser installs a
 // fresh copy of the whole game (page, script, wasm, data - always as one matching
 // set) in the background; the new version is used from the next launch.
-const VERSION = '20260930031033-b6786b3';
+const VERSION = '20261005175651-323e0b4';
 const CACHE = 'townforge-' + VERSION;
 const CORE = [
   './', './index.html', './townforge.js', './townforge.wasm', './townforge.data',
-  './manifest.webmanifest', './cloud.js', './cloud-config.js', './guildnet.js', './mp-config.js', './mpnet.js', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png',
+  './manifest.webmanifest', './landscape.js', './cloud.js', './cloud-config.js', './guildnet.js', './mp-config.js', './mpnet.js', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png',
 ];
 
 self.addEventListener('install', (e) => {
@@ -29,6 +29,8 @@ self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET' || new URL(req.url).origin !== self.location.origin) return;
   if (new URL(req.url).pathname.indexOf('/wiki/') !== -1) return; // the wiki is a normal web page, never the game
+  // Release checks must read the published marker, not the cached game shell.
+  if (new URL(req.url).pathname.endsWith('/source-version.txt')) return;
   e.respondWith((async () => {
     const cache = await caches.open(CACHE);
     const hit = await cache.match(req, { ignoreSearch: true }) ||
