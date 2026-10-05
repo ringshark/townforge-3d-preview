@@ -1,0 +1,107 @@
+# Release d9586d00a833a37b78155763fb7838b93306fd6a
+name: Build and deploy Town Forge
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/townforge.yml']
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: townforge-pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout deployed configuration
+        uses: actions/checkout@v4
+        with:
+          path: current-site
+      - name: Checkout active game source
+        uses: actions/checkout@v4
+        with:
+          repository: ringshark/townforge-source
+          ref: ringshark-patch-1
+          path: source
+      - name: Check for a new source commit
+        id: changed
+        shell: bash
+        run: |
+          sha=$(git -C source rev-parse HEAD)
+          deployed=$(curl --fail --silent https://ringshark.github.io/townforge-3d-preview/source-version.txt || true)
+          if [ "$sha" = "$deployed" ]; then
+            echo 'build=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'build=true' >> "$GITHUB_OUTPUT"
+          fi
+      - uses: mymindstorm/setup-emsdk@v14
+        if: steps.changed.outputs.build == 'true'
+        with:
+          version: '4.0.20'
+          actions-cache-folder: emsdk-cache
+      - name: Check guild client
+        if: steps.changed.outputs.build == 'true'
+        working-directory: source
+        run: |
+          node tests/guildnet-hub.cjs
+          node tests/guildnet-refresh.cjs
+          node tests/guild-project.cjs
+          python tests/guild-parser.py
+          node tests/guild-city-cloud.cjs
+      - name: Check combat and movement
+        if: steps.changed.outputs.build == 'true'
+        working-directory: source
+        run: |
+          g++ -std=c++17 tests/combat-motion.cpp -o /tmp/tf-combat-test
+          /tmp/tf-combat-test
+          g++ -std=c++17 tests/landscape-layout.cpp -o /tmp/tf-layout-test
+          /tmp/tf-layout-test
+          python tests/landscape-pointer.py
+          python tests/transitions.py
+          node tests/landscape-shell.cjs
+          python tests/player-movement.py
+          python tests/ui-input.py
+          python tests/menu-scroll.py
+          python tests/mobile-combat.py
+          python tests/menu-status.py
+          python tests/equipment-preview.py
+          python tests/hero-model.py
+          python tests/armor-assets.py
+          node server/mp/test/den.mjs
+          node server/mp/test/ladder.mjs
+          node tests/den-client.cjs
+      - name: Compile game
+        if: steps.changed.outputs.build == 'true'
+        working-directory: source
+        run: |
+          git clone --depth 1 --branch 6.0 https://github.com/raysan5/raylib.git /tmp/raylib
+          make -C /tmp/raylib/src PLATFORM=PLATFORM_WEB -j2
+          RAYLIB_DIR=/tmp/raylib python tests/avatar-motion.py
+          RAYLIB_DIR=/tmp/raylib python tests/landscape-menus.py
+          RAYLIB_DIR=/tmp/raylib bash web/build_web.sh
+      - name: Package and preserve online configuration
+        if: steps.changed.outputs.build == 'true'
+        working-directory: source
+        run: |
+          mkdir -p site
+          cp ../current-site/cloud-config.js ../current-site/mp-config.js site/
+          bash web/deploy_web.sh build-web site
+          git rev-parse HEAD > site/source-version.txt
+          touch site/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.changed.outputs.build == 'true'
+        with:
+          path: source/site
+      - name: Deploy game
+        id: deployment
+        if: steps.changed.outputs.build == 'true'
+        uses: actions/deploy-pages@v4
+
